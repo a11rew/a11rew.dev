@@ -1,10 +1,10 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import React from "react"
+import { graphql, PageProps } from "gatsby"
 
 import Layout from "./blog/components/layout"
 import Seo from "../components/seo"
 
-const NotFoundPage = ({ data, location }) => {
+const NotFoundPage: React.FC<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -27,3 +27,13 @@ export const pageQuery = graphql`
     }
   }
 `
+
+interface Props extends PageProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+  }
+}

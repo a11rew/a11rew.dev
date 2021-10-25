@@ -1,11 +1,11 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react"
+import { Link, graphql, PageProps } from "gatsby"
 
 import Bio from "./components/bio"
 import Layout from "./components/layout"
 import Seo from "../../components/seo"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -15,9 +15,11 @@ const BlogIndex = ({ data, location }) => {
         <Seo title="All posts" />
         <Bio />
         <p>
+          {`
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
           gatsby-config.js).
+          `}
         </p>
       </Layout>
     )
@@ -48,6 +50,7 @@ const BlogIndex = ({ data, location }) => {
                 </header>
                 <section>
                   <p
+                    // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{
                       __html: post.frontmatter.description || post.excerpt,
                     }}
@@ -87,3 +90,26 @@ export const pageQuery = graphql`
     }
   }
 `
+
+interface BlogIndexProps extends PageProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    allMarkdownRemark: {
+      nodes: Array<{
+        excerpt: string
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          date: string
+          title: string
+          description: string
+        }
+      }>
+    }
+  }
+}

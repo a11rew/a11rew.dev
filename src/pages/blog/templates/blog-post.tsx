@@ -29,6 +29,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
           <p>{post.frontmatter.date}</p>
         </header>
         <section
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
