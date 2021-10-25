@@ -8,6 +8,8 @@
     "url": "https://github.com/a11rew/a11rew.dev/issues"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.0",
+    "babel-plugin-styled-components": "^1.13.3",
     "gatsby": "^4.0.0",
     "gatsby-plugin-feed": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
@@ -17,6 +19,7 @@
     "gatsby-plugin-offline": "^5.0.0",
     "gatsby-plugin-react-helmet": "^5.0.0",
     "gatsby-plugin-sharp": "^4.0.0",
+    "gatsby-plugin-styled-components": "^5.0.0",
     "gatsby-remark-copy-linked-files": "^5.0.0",
     "gatsby-remark-images": "^6.0.0",
     "gatsby-remark-prismjs": "^6.0.0",
@@ -29,11 +32,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.3",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.4",
+    "@types/styled-components": "^5.1.15",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
     "prettier": "^2.4.1",

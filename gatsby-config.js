@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Andrew's Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Andrew Glago`,
+      summary: `General enthusiast living and learning in Accra, Ghana.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Andrew Glago's blog and portfolio.`,
+    siteUrl: `https://github.com/a11rew/a11rew.dev`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `a11rew`,
     },
   },
   plugins: [
@@ -128,5 +128,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-styled-components`,
   ],
 }
