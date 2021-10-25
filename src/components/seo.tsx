@@ -35,7 +35,7 @@ const Seo: React.FC<Props> = ({ description, lang, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
+      titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : `${defaultTitle}`}
       meta={[
         {
           name: `description`,
