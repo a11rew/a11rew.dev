@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "gatsby": "^4.0.0",
+    "gatsby-plugin-codegen": "^3.0.1",
     "gatsby-plugin-feed": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
     "gatsby-plugin-google-analytics": "^4.0.0",
