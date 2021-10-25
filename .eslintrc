@@ -7,6 +7,7 @@
         "project": ["./tsconfig.json"]
       },
       "rules": {
+        "prettier/prettier": ["error", { "singleQuote": true }],
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": "off"
       }
