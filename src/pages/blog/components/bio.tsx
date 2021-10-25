@@ -8,6 +8,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import styled from "styled-components"
 
 const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -36,23 +37,33 @@ const Bio: React.FC = () => {
         className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
-        src="../../../images/profile-pic.png"
+        src="../../../images/profile-pic.jpg"
         width={50}
         height={50}
         quality={95}
-        alt="Profile picture"
+        alt="A picture of Andrew smiling"
       />
       {author?.name && (
-        <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+        <ProfileBlock>
+          <p>
+            Written by <strong>{author.name}</strong>
+          </p>
+
+          {author?.summary || null}
           {` `}
           <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+            You should follow me on Twitter
           </a>
-        </p>
+        </ProfileBlock>
       )}
     </div>
   )
 }
+
+const ProfileBlock = styled.div`
+  a {
+    display: block;
+  }
+`
 
 export default Bio
