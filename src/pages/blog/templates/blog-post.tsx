@@ -1,11 +1,14 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Seo from "../../../components/seo"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
+  data,
+  location,
+}) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
@@ -65,6 +68,42 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 
 export default BlogPostTemplate
+
+interface BlogPostTemplateProps extends PageProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    markdownRemark: {
+      id: string
+      excerpt: string
+      html: string
+      frontmatter: {
+        title: string
+        date: string
+        description: string
+      }
+    }
+    previous: {
+      fields: {
+        slug: string
+      }
+      frontmatter: {
+        title: string
+      }
+    }
+    next: {
+      fields: {
+        slug: string
+      }
+      frontmatter: {
+        title: string
+      }
+    }
+  }
+}
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
