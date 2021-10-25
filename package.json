@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "a11rew.dev",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Andrew's personal portfolio and blog.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Andrew Glago <andrewglago1@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/a11rew/a11rew.dev/issues"
   },
   "dependencies": {
     "gatsby": "^4.0.0",
@@ -35,19 +35,16 @@
   "devDependencies": {
     "prettier": "^2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
+  "homepage": "https://github.com/a11rew/a11rew.dev#readme",
+  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/a11rew/a11rew.dev.git"
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
