@@ -5,6 +5,7 @@ import GlobalStyles from '../variables.globals'
 import Header from '../components/header'
 import Seo from '../components/seo'
 import IntroProse from '../components/introProse'
+import SocialBanner from '../components/socialBanner'
 
 const Home: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
       <GlobalStyles />
       <Header />
       <IntroProse />
+      <SocialBanner />
     </Container>
   )
 }
