@@ -1,9 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import GlobalStyles from "../variables.globals"
+import React from 'react'
+import styled from 'styled-components'
+import GlobalStyles from '../variables.globals'
 
-import Header from "../components/header"
-import Seo from "../components/seo"
+import Header from '../components/header'
+import Seo from '../components/seo'
+import IntroProse from '../components/introProse'
 
 const Home: React.FC = () => {
   return (
@@ -11,12 +12,15 @@ const Home: React.FC = () => {
       <Seo title="Hello" />
       <GlobalStyles />
       <Header />
-      <p>Home I guess</p>
+      <IntroProse />
     </Container>
   )
 }
 
 const Container = styled.div`
   padding: 50px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-10);
 `
 export default Home

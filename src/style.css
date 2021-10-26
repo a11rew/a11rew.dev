@@ -1,7 +1,7 @@
 /* CSS Custom Properties Definitions */
 
 :root {
-  --maxWidth-none: "none";
+  --maxWidth-none: 'none';
   --maxWidth-xs: 20rem;
   --maxWidth-sm: 24rem;
   --maxWidth-md: 28rem;
@@ -10,9 +10,9 @@
   --maxWidth-2xl: 42rem;
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
-  --maxWidth-full: "100%";
+  --maxWidth-full: '100%';
   --maxWidth-wrapper: var(--maxWidth-2xl);
-  --spacing-px: "1px";
+  --spacing-px: '1px';
   --spacing-0: 0;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -28,9 +28,9 @@
   --spacing-24: 6rem;
   --spacing-32: 8rem;
   --fontFamily-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: Inter, "Georgia", Cambria, "Times New Roman", Times, serif;
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --fontFamily-serif: Inter, 'Georgia', Cambria, 'Times New Roman', Times, serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
@@ -59,6 +59,7 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --color-text-secondary: #838b91;
 }
 
 /* HTML elements */
@@ -245,7 +246,7 @@ a:focus {
   padding: var(--spacing-10) var(--spacing-5);
 }
 
-.global-wrapper[data-is-root-path="true"] .bio {
+.global-wrapper[data-is-root-path='true'] .bio {
   margin-bottom: var(--spacing-20);
 }
 

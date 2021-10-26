@@ -59,4 +59,5 @@ export default createGlobalStyle`
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --color-text-secondary: #838b91;
 `
