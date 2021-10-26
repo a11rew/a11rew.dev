@@ -1,3 +1,7 @@
+/**
+ * Moved to https://github.com/a11rew/spotify-lp-lambda
+ */
+
 const express = require('express')
 const SpotifyWebApi = require('spotify-web-api-node')
 
@@ -6,7 +10,7 @@ require('dotenv').config()
 const app = express()
 
 const scopes = ['user-read-recently-played'],
-  state = 'cthulhu-324-$19'
+  state = process.env.HANDSHAKE_STATE
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SP_CLIENT_ID,
@@ -55,6 +59,7 @@ app.get('/callback', async (req, res) => {
 })
 
 app.get('/lp', async (req, res) => {
+  await tokenRefresh()
   const tracks = await getLastPlayed()
   res.json(tracks)
 })
@@ -63,7 +68,8 @@ app.get('/authenticate', async (req, res) => {
   res.redirect(authorizeURL)
 })
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  await tokenRefresh()
   res.send(`
   Wanna hear a Cthulhu joke? 
   Never mind it's an old one`)
