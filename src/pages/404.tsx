@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql, PageProps } from "gatsby"
+import React from 'react'
+import { graphql, PageProps } from 'gatsby'
 
-import Layout from "./blog/components/layout"
-import Seo from "../components/seo"
+import Layout from './blog/components/layout'
+import Seo from '../components/seo'
 
 const NotFoundPage: React.FC<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
