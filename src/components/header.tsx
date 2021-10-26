@@ -28,7 +28,13 @@ const Header: React.FC = (): ReactElement => {
 
 const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 4px;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: unset;
+  }
 `
 
 const HomeTag = styled.div`

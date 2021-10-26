@@ -20,9 +20,13 @@ const Home: React.FC = () => {
 }
 
 const Container = styled.div`
-  padding: 50px 80px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-10);
+  padding: 10px 20px;
+
+  @media (min-width: 600px) {
+    padding: 50px 80px;
+  }
 `
 export default Home

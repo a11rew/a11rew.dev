@@ -1,5 +1,5 @@
-import React from "react"
-import { Link, PageRendererProps } from "gatsby"
+import React from 'react'
+import { Link, PageRendererProps } from 'gatsby'
 
 const Layout: React.FC<LayoutProps> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`

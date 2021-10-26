@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FiTwitter, FiGithub } from 'react-icons/fi'
-import { NavLink } from '../header'
 
 const Socials: React.FC = () => {
   return (
@@ -9,23 +8,23 @@ const Socials: React.FC = () => {
       <h5>Get to know me</h5>
       <SocialList>
         <SocialItem>
-          <NavLink
-            to="https://github.com/a11rew"
+          <ExternalLink
+            href="https://github.com/a11rew"
             target="_blank"
             rel="noopener noreferrer"
           >
             Github
-          </NavLink>
+          </ExternalLink>
           <FiGithub />
         </SocialItem>
         <SocialItem last>
-          <NavLink
-            to="https://twitter.com/a11rew"
+          <ExternalLink
+            href="https://twitter.com/a11rew"
             target="_blank"
             rel="noopener noreferrer"
           >
             Twitter
-          </NavLink>
+          </ExternalLink>
           <FiTwitter />
         </SocialItem>
       </SocialList>
@@ -45,6 +44,9 @@ const SocialContainer = styled.div`
 
 const SocialList = styled.ul`
   display: flex;
+  @media (max-width: 600px) {
+    margin-top: 4px;
+  }
 `
 
 const SocialItem = styled.li`
@@ -62,6 +64,28 @@ const SocialItem = styled.li`
     content: '|';
     transform: rotate(25deg);
     padding: 0 15px;
+  }
+`
+
+export const ExternalLink = styled.a`
+  position: relative;
+  text-decoration: none;
+  ::after {
+    display: block;
+    content: '';
+    border-bottom: 2px solid var(--color-text);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: 0 50%;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    display: block;
+    position: absolute;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `
 
