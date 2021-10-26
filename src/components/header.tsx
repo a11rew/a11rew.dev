@@ -49,7 +49,7 @@ const Nav = styled.nav`
   }
 `
 
-const NavLink = styled(Link)`
+export const NavLink = styled(Link)`
   position: relative;
   text-decoration: none;
   ::after {

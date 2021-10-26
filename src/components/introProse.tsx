@@ -18,7 +18,7 @@ const IntroProse: React.FC = (): ReactElement => {
 }
 
 const StyledIntro = styled.div`
-  font-size: var(--fontSize-4);
+  font-size: var(--fontSize-3);
   color: var(--color-text-secondary);
 
   strong {
