@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { BsSpotify } from 'react-icons/bs'
 
 const LastPlayed: React.FC = (): ReactElement => {
   const [songData, setSongData] = useState<SongData>()
@@ -56,7 +57,12 @@ const LastPlayed: React.FC = (): ReactElement => {
 
   return (
     <Container>
-      <h5>Last Played</h5>
+      <div>
+        <h5>Last Played</h5>
+        <a href={songData?.songHref} target="_blank" rel="noreferrer noopener">
+          <BsSpotify size={20} />
+        </a>
+      </div>
       {songData ? (
         <>
           <SongTitle>{songData?.songTitle}</SongTitle>
@@ -77,10 +83,19 @@ const Container = styled.div`
   flex-direction: column;
   text-align: right;
 
+  div:first-of-type {
+    display: flex;
+    align-self: flex-end;
+    svg {
+      margin-left: var(--spacing-2);
+    }
+  }
+
   h5 {
     margin: unset;
     color: var(--color-text-secondary);
     margin-bottom: 8px;
+    align-self: center;
   }
 `
 
