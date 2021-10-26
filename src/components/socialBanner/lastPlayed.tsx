@@ -36,7 +36,7 @@ const LastPlayed: React.FC = (): ReactElement => {
         })
       } catch (error) {
         setSongData({
-          songTitle: 'Palace/Curse',
+          songTitle: 'Special Affair',
           songAlbum: 'Ego Death',
           songArtists: [
             {
@@ -49,7 +49,7 @@ const LastPlayed: React.FC = (): ReactElement => {
               name: 'Tyler, The Creator',
             },
           ],
-          songHref: 'https://open.spotify.com/track/300DUx4tdtCdGEUXR032jA',
+          songHref: 'https://open.spotify.com/track/3NWTRZ0A8xKlBP1qgNftql',
         })
       }
     })()
