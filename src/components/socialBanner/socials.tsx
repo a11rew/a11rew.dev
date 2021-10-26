@@ -1,10 +1,9 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { FiTwitter, FiGithub } from 'react-icons/fi'
+import { NavLink } from '../header'
 
-import { NavLink } from './header'
-
-const SocialBanner: React.FC = (): ReactElement => {
+const Socials: React.FC = () => {
   return (
     <SocialContainer>
       <h5>Get to know me</h5>
@@ -66,4 +65,4 @@ const SocialItem = styled.li`
   }
 `
 
-export default SocialBanner
+export default Socials
