@@ -81,13 +81,18 @@ const LastPlayed: React.FC = (): ReactElement => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: right;
+  @media (min-width: 600px) {
+    text-align: right;
+  }
 
   div:first-of-type {
     display: flex;
-    align-self: flex-end;
-    svg {
+    a {
       margin-left: var(--spacing-2);
+      display: flex;
+    }
+    @media (min-width: 600px) {
+      align-self: flex-end;
     }
   }
 
@@ -96,11 +101,17 @@ const Container = styled.div`
     color: var(--color-text-secondary);
     margin-bottom: 8px;
     align-self: center;
+    @media (max-width: 600px) {
+      margin-bottom: unset;
+    }
   }
 `
 
 const SongTitle = styled.div`
   font-size: var(--fontSize-2);
+  @media (max-width: 600px) {
+    margin-top: 4px;
+  }
 `
 
 const SongInfo = styled.div`

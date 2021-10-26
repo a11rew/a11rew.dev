@@ -15,7 +15,13 @@ const SocialBanner: React.FC = (): ReactElement => {
 
 const BannerContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: unset;
+  }
 `
 
 export default SocialBanner

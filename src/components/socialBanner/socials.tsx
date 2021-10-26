@@ -44,6 +44,9 @@ const SocialContainer = styled.div`
 
 const SocialList = styled.ul`
   display: flex;
+  @media (max-width: 600px) {
+    margin-top: 4px;
+  }
 `
 
 const SocialItem = styled.li`
