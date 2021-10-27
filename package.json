@@ -11,6 +11,7 @@
     "@fontsource/inter": "^4.5.0",
     "babel-plugin-styled-components": "^1.13.3",
     "gatsby": "^4.0.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-feed": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
     "gatsby-plugin-google-analytics": "^4.0.0",
@@ -42,6 +43,8 @@
     "@types/styled-components": "^5.1.15",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   },
