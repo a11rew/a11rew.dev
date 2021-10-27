@@ -16,7 +16,7 @@ const LastPlayed: React.FC = (): ReactElement => {
     ;(async () => {
       try {
         const data: Response = await fetch(
-          `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=a11rew&limit=1&api_key=${process.env.GATSBY_LAST_KEY}&format=json`
+          `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=a11rew&limit=1&api_key=${process.env.GATSBY_LAST_KEY}&format=json`
         )
 
         const res = await data.json()
