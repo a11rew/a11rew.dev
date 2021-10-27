@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql, PageProps } from 'gatsby'
+import styled from 'styled-components'
 
 import Seo from '@components/seo'
 import Bio from './components/bio'
@@ -26,7 +27,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
 
   return (
     <BlogLayout location={location}>
-      <Seo title="All posts" />
+      <Seo title="Blog" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
@@ -34,11 +35,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
 
           return (
             <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+              <PostListItem itemScope itemType="http://schema.org/Article">
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
@@ -56,7 +53,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
                     itemProp="description"
                   />
                 </section>
-              </article>
+              </PostListItem>
             </li>
           )
         })}
@@ -66,6 +63,11 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
 }
 
 export default BlogIndex
+
+const PostListItem = styled.article`
+  margin-bottom: var(--spacing-8);
+  margin-top: var(--spacing-8);
+`
 
 export const pageQuery = graphql`
   query {

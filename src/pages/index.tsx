@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import GlobalStyles from '../variables.globals'
 
 import Header from '../components/header'
 import Seo from '../components/seo'
@@ -11,7 +10,6 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Seo title="Hello" />
-      <GlobalStyles />
       <Header />
       <IntroProse />
       <SocialBanner />

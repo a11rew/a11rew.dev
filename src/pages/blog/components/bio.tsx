@@ -24,7 +24,7 @@ const Bio: React.FC = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className="bio">
+    <StyledBio>
       <StaticImage
         className="bio-avatar"
         layout="fixed"
@@ -48,7 +48,7 @@ const Bio: React.FC = () => {
           </a>
         </ProfileBlock>
       )}
-    </div>
+    </StyledBio>
   )
 }
 
@@ -56,6 +56,22 @@ const ProfileBlock = styled.div`
   a {
     display: block;
   }
+`
+
+const StyledBio = styled.div`
+  display: flex;
+  margin-bottom: var(--spacing-16);
+
+  p {
+    margin-bottom: var(--spacing-0);
+  }
+`
+
+const BioAvatar = styled(StaticImage)`
+  margin-right: var(--spacing-4);
+  margin-bottom: var(--spacing-0);
+  min-width: 50px;
+  border-radius: 100%;
 `
 
 export default Bio
