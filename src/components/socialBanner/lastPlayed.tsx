@@ -105,6 +105,9 @@ const SongTitle = styled.div`
 
 const SongInfo = styled.div`
   display: flex;
+  @media (min-width: 600px) {
+    justify-content: flex-end;
+  }
 `
 
 const SongAlbum = styled.span`
