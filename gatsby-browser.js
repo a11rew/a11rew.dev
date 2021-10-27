@@ -11,8 +11,8 @@ import './src/normalize.css'
 import 'prismjs/themes/prism.css'
 
 export const wrapRootElement = ({ element }) => (
-  <div id="root">
+  <>
     <GlobalStyles />
     {element}
-  </div>
+  </>
 )
