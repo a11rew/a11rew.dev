@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
+import { ExternalLink } from '@components/socialBanner/socials'
+
 const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -36,26 +38,30 @@ const Bio: React.FC = () => {
         alt="A picture of Andrew smiling"
       />
       {author?.name && (
-        <ProfileBlock>
+        <div>
           <p>
             Written by <strong>{author.name}</strong>
           </p>
 
           {author?.summary || null}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow me on Twitter
-          </a>
-        </ProfileBlock>
+          <TwitterBlock>
+            <ExternalLink
+              href={`https://twitter.com/${social?.twitter || ``}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              You should follow me on Twitter
+            </ExternalLink>
+          </TwitterBlock>
+        </div>
       )}
     </StyledBio>
   )
 }
 
-const ProfileBlock = styled.div`
-  a {
-    display: block;
-  }
+const TwitterBlock = styled.div`
+  margin-top: 4px;
 `
 
 const StyledBio = styled.div`
@@ -65,13 +71,6 @@ const StyledBio = styled.div`
   p {
     margin-bottom: var(--spacing-0);
   }
-`
-
-const BioAvatar = styled(StaticImage)`
-  margin-right: var(--spacing-4);
-  margin-bottom: var(--spacing-0);
-  min-width: 50px;
-  border-radius: 100%;
 `
 
 export default Bio
