@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb-typescript-prettier",
+  "extends": ["airbnb-typescript-prettier", "plugin:import/typescript"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
@@ -9,9 +9,27 @@
       "rules": {
         "prettier/prettier": ["error", { "singleQuote": true }],
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": "off"
+        "@typescript-eslint/no-use-before-define": "off",
+        "import/extensions": "off"
       }
     }
   ],
-  "parser": "@typescript-eslint/parser"
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "alias": [
+        ["@components/*", "./src/components"],
+        ["@images/*", "./src/images"],
+        ["@pages/*", "./src/pages"],
+        ["@blog/*", "./src/pages/blog"],
+        ["@resume/*", "./src/pages/resume"],
+        ["@projects/*", "./src/pages/projects"],
+        ["@about/*", "./src/pages/about"]
+      ]
+    }
+  }
 }

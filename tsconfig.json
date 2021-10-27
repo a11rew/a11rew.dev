@@ -11,7 +11,17 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": false
+    "removeComments": false,
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@images/*": ["images/*"],
+      "@pages/*": ["pages/*"],
+      "@blog/*": ["pages/blog/*"],
+      "@resume/*": ["pages/resume/*"],
+      "@projects/*": ["pages/projects/*"],
+      "@about/*": ["pages/about/*"]
+    }
   },
   "include": ["./src/**/*"]
 }

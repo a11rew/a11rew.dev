@@ -1,17 +1,17 @@
-import React from "react"
-import { Link, graphql, PageProps } from "gatsby"
+import React from 'react'
+import { Link, graphql, PageProps } from 'gatsby'
+import styled from 'styled-components'
 
-import Bio from "./components/bio"
-import Layout from "./components/layout"
-import Seo from "../../components/seo"
+import Seo from '@components/seo'
+import Bio from './components/bio'
+import BlogLayout from './components/layout'
 
 const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <BlogLayout location={location}>
         <Seo title="All posts" />
         <Bio />
         <p>
@@ -21,13 +21,13 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
           gatsby-config.js).
           `}
         </p>
-      </Layout>
+      </BlogLayout>
     )
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
+    <BlogLayout location={location}>
+      <Seo title="Blog" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
@@ -35,11 +35,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
 
           return (
             <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+              <PostListItem itemScope itemType="http://schema.org/Article">
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
@@ -57,16 +53,25 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
                     itemProp="description"
                   />
                 </section>
-              </article>
+              </PostListItem>
             </li>
           )
         })}
       </ol>
-    </Layout>
+    </BlogLayout>
   )
 }
 
 export default BlogIndex
+
+const PostListItem = styled.article`
+  margin-bottom: var(--spacing-8);
+  margin-top: var(--spacing-8);
+
+  h2 {
+    color: var(--color-primary);
+  }
+`
 
 export const pageQuery = graphql`
   query {

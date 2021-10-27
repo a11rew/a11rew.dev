@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link, graphql, PageProps } from 'gatsby'
+import styled from 'styled-components'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
@@ -10,20 +11,15 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
   location,
 }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
+      <BlogPost itemScope itemType="http://schema.org/Article">
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -37,8 +33,8 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
         <footer>
           <Bio />
         </footer>
-      </article>
-      <nav className="blog-post-nav">
+      </BlogPost>
+      <BlogPostNav>
         <ul
           style={{
             display: `flex`,
@@ -63,12 +59,29 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
             )}
           </li>
         </ul>
-      </nav>
+      </BlogPostNav>
     </Layout>
   )
 }
 
 export default BlogPostTemplate
+
+const BlogPost = styled.article`
+  header h1 {
+    margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+  }
+
+  header p {
+    font-size: var(--fontSize-2);
+    font-family: var(--font-heading);
+  }
+`
+
+const BlogPostNav = styled.nav`
+  ul {
+    margin: var(--spacing-0);
+  }
+`
 
 interface BlogPostTemplateProps extends PageProps {
   data: {

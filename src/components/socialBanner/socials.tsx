@@ -73,19 +73,19 @@ export const ExternalLink = styled.a`
   ::after {
     display: block;
     content: '';
-    border-bottom: 2px solid var(--color-text);
+    border-bottom: 2px solid var(--color-primary);
     transform: scaleX(0);
-    transition: transform 0.25s ease;
-    transform-origin: 0 50%;
+    transition: transform 0.35s ease;
+    transform-origin: right;
     left: 0;
-    bottom: 0px;
+    bottom: -4px;
     width: 100%;
     display: block;
     position: absolute;
   }
   &:hover::after {
     transform: scaleX(1);
-    transform-origin: left;
+    transform-origin: 0;
   }
 `
 

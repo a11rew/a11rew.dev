@@ -1,14 +1,9 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-import styled from "styled-components"
+import { ExternalLink } from '@components/socialBanner/socials'
 
 const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -27,16 +22,15 @@ const Bio: React.FC = () => {
     }
   `)
 
-  // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className="bio">
+    <StyledBio>
       <StaticImage
         className="bio-avatar"
         layout="fixed"
-        formats={["auto", "webp", "avif"]}
+        formats={['auto', 'webp', 'avif']}
         src="../../../images/profile-pic.jpg"
         width={50}
         height={50}
@@ -44,25 +38,38 @@ const Bio: React.FC = () => {
         alt="A picture of Andrew smiling"
       />
       {author?.name && (
-        <ProfileBlock>
+        <div>
           <p>
             Written by <strong>{author.name}</strong>
           </p>
 
           {author?.summary || null}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow me on Twitter
-          </a>
-        </ProfileBlock>
+          <TwitterBlock>
+            <ExternalLink
+              href={`https://twitter.com/${social?.twitter || ``}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              You should follow me on Twitter
+            </ExternalLink>
+          </TwitterBlock>
+        </div>
       )}
-    </div>
+    </StyledBio>
   )
 }
 
-const ProfileBlock = styled.div`
-  a {
-    display: block;
+const TwitterBlock = styled.div`
+  margin-top: 4px;
+`
+
+const StyledBio = styled.div`
+  display: flex;
+  margin-bottom: var(--spacing-16);
+
+  p {
+    margin-bottom: var(--spacing-0);
   }
 `
 
