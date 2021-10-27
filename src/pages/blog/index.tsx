@@ -1,17 +1,16 @@
-import React from "react"
-import { Link, graphql, PageProps } from "gatsby"
+import React from 'react'
+import { Link, graphql, PageProps } from 'gatsby'
 
-import Bio from "./components/bio"
-import Layout from "./components/layout"
-import Seo from "../../components/seo"
+import Seo from '@components/seo'
+import Bio from './components/bio'
+import BlogLayout from './components/layout'
 
 const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <BlogLayout location={location}>
         <Seo title="All posts" />
         <Bio />
         <p>
@@ -21,12 +20,12 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
           gatsby-config.js).
           `}
         </p>
-      </Layout>
+      </BlogLayout>
     )
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <BlogLayout location={location}>
       <Seo title="All posts" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
@@ -62,7 +61,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
           )
         })}
       </ol>
-    </Layout>
+    </BlogLayout>
   )
 }
 
