@@ -1,8 +1,15 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
+import Header from '@components/header'
+
 const Layout: React.FC = ({ children }): ReactElement => {
-  return <Container>{children}</Container>
+  return (
+    <Container>
+      <Header />
+      {children}
+    </Container>
+  )
 }
 
 const Container = styled.div`
