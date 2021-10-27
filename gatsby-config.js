@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: `Andrew Glago`,
@@ -25,6 +27,20 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@images': path.resolve(__dirname, 'src/images'),
+          '@pages': path.resolve(__dirname, 'src/pages'),
+          '@blog': path.resolve(__dirname, 'src/pages/blog'),
+          '@resume': path.resolve(__dirname, 'src/pages/resume'),
+          '@projects': path.resolve(__dirname, 'src/pages/projects'),
+          '@about': path.resolve(__dirname, 'src/pages/about'),
+        },
       },
     },
     {
@@ -81,7 +97,7 @@ module.exports = {
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ 'content:encoded': node.html }],
                 })
               })
             },
@@ -104,8 +120,8 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            output: '/rss.xml',
+            title: 'Gatsby Starter Blog RSS Feed',
           },
         ],
       },
