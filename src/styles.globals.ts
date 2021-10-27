@@ -74,6 +74,7 @@ export default createGlobalStyle`
     font-size: var(--fontSize-root);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
   }
 
   body {
