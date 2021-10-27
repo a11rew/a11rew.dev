@@ -75,7 +75,7 @@ export const ExternalLink = styled.a`
     content: '';
     border-bottom: 2px solid var(--color-primary);
     transform: scaleX(0);
-    transition: transform 0.25s ease;
+    transition: transform 0.35s ease;
     transform-origin: right;
     left: 0;
     bottom: -4px;
