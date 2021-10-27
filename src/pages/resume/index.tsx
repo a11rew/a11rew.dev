@@ -1,25 +1,20 @@
 import React, { ReactElement } from 'react'
 // import { useStaticQuery, graphql } from 'gatsby'
 // import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Layout from '@components/layout'
-import Header from '@components/header'
 import styled from 'styled-components'
-import Bio from '@pages/blog/components/bio'
 
 const Resume: React.FC = (): ReactElement => {
   // const resumeData = useStaticQuery(resumeQuery)
 
   return (
-    <Layout>
-      <Header />
-      <Bio />
+    <>
       <ResumeBody>
         Coming soon :)
         {/* {resumeData && (
           <MDXRenderer>{resumeData.allMdx.nodes[0].body}</MDXRenderer>
         )} */}
       </ResumeBody>
-    </Layout>
+    </>
   )
 }
 

@@ -67,6 +67,10 @@ export default BlogIndex
 const PostListItem = styled.article`
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
+
+  h2 {
+    color: var(--color-primary);
+  }
 `
 
 export const pageQuery = graphql`
