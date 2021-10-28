@@ -14,6 +14,14 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `G-66BSQ6DB4J`,
+        enableWebVitalsTracking: true,
+        head: true,
+      },
+    },
     `gatsby-plugin-layout`,
     `gatsby-plugin-image`,
     {
@@ -94,12 +102,7 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
+
     {
       resolve: `gatsby-plugin-feed`,
       options: {
