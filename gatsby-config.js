@@ -15,11 +15,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `G-66BSQ6DB4J`,
-        enableWebVitalsTracking: true,
-        head: true,
+        trackingIds: ['G-66BSQ6DB4J'],
       },
     },
     `gatsby-plugin-layout`,
