@@ -23,5 +23,5 @@
       "@about/*": ["pages/about/*"]
     }
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./api/**/*"]
 }
