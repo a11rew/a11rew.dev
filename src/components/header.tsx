@@ -25,11 +25,6 @@ const Header: React.FC = (): ReactElement => {
           </NavLink>
         </div>
         <div>
-          <NavLink to="/resume" $active={pathname === '/resume'}>
-            resume
-          </NavLink>
-        </div>
-        <div>
           <NavLink to="/projects" $active={pathname === '/projects'}>
             projects
           </NavLink>

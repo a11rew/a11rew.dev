@@ -13,6 +13,8 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@reach/router": "^1.3.4",
+    "@vercel/node": "^1.12.1",
+    "axios": "^0.24.0",
     "babel-plugin-styled-components": "^1.13.3",
     "gatsby": "^4.0.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -42,7 +44,8 @@
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.3",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-montserrat": "0.0.75",
+    "vercel": "^23.1.2"
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.4",
@@ -64,6 +67,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "dev:vercel": "vercel dev -l 8001",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
