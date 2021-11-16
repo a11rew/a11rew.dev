@@ -79,6 +79,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
+  min-height: 100vh;
 }
 
 footer {
@@ -234,6 +235,23 @@ a {
 a:hover,
 a:focus {
   text-decoration: none;
+}
+
+.flecked-bg {
+  background-color: var(--background-color);
+  background-image: paint(fleck);
+}
+
+.flecked-bg[data-theme='white'] {
+  --fleck-seed: 123456;
+  --fleck-count: 500;
+  --fleck-size-base: 5px;
+  --fleck-color-1: #ffb5d7;
+  --fleck-color-2: #a6bfeb;
+  --fleck-color-3: #cce0ee;
+  --fleck-color-4: #ebaedc;
+
+  --background-color: hsl(213, 48%, 97%);
 }
 
 .global-wrapper {

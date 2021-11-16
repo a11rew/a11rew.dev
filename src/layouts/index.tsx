@@ -5,7 +5,7 @@ import Header from '@components/header'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (
-    <Container>
+    <Container className="flecked-bg" data-theme="white">
       <Header />
       {children}
     </Container>
