@@ -73,9 +73,12 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+  height: 100%;
+  background-color: var(--background-color);
 }
 
 body {
+  background-image: paint(fleck);
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
@@ -119,7 +122,7 @@ h6 {
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
-  color: var(--color-heading-black);
+  color: var(--color-heading);
 }
 
 h2 {
@@ -237,14 +240,14 @@ a:focus {
   text-decoration: none;
 }
 
-.flecked-bg {
-  background-color: var(--background-color);
-  background-image: paint(fleck);
-}
+/** 
+* Credit to George Francis for the amazing generative art
+* (https://codepen.io/georgedoescode/pen/eYvjOMN)
+*/
 
-.flecked-bg[data-theme='white'] {
+html[theme='light'] {
   --fleck-seed: 123456;
-  --fleck-count: 500;
+  --fleck-count: 150;
   --fleck-size-base: 5px;
   --fleck-color-1: #ffb5d7;
   --fleck-color-2: #a6bfeb;
@@ -252,6 +255,40 @@ a:focus {
   --fleck-color-4: #ebaedc;
 
   --background-color: hsl(213, 48%, 97%);
+}
+
+@media (max-width: 425px) {
+  html[theme='light'] {
+    --fleck-count: 50;
+  }
+}
+
+html[theme='dark'] {
+  --fleck-seed: 123453;
+  --fleck-count: 150;
+  --fleck-size-base: 4px;
+  --fleck-color-1: #e8ad3c;
+  --fleck-color-2: #a96c1a;
+  --fleck-color-3: #d7b54e;
+  --fleck-color-4: #e2b84b;
+  --fleck-color-5: #d6cdc4;
+
+  --background-color: hsl(20, 6%, 10%);
+
+  /** Text */
+  --color-primary: #be93e4;
+  --color-text: #c9d1d9;
+  --color-text-light: #8b949e;
+  --color-heading: #be93e4;
+  --color-heading-black: black;
+  --color-accent: #d1dce5;
+  --color-text-secondary: hsl(51, 6%, 77.1%);
+}
+
+@media (max-width: 425px) {
+  html[theme='dark'] {
+    --fleck-count: 50;
+  }
 }
 
 .global-wrapper {

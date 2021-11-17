@@ -55,6 +55,7 @@ const SocialItem = styled.li`
   list-style-type: none;
 
   svg {
+    color: var(--color-text);
     margin-left: 0.5rem;
   }
 

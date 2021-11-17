@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
+import Seo from '@components/seo'
 
 const Projects: React.FC = (): ReactElement => {
   return (
     <>
+      <Seo title="Projects" />
       <ProjectsBody>Coming soon :)</ProjectsBody>
     </>
   )

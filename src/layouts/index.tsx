@@ -5,7 +5,7 @@ import Header from '@components/header'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (
-    <Container className="flecked-bg" data-theme="white">
+    <Container>
       <Header />
       {children}
     </Container>
@@ -17,6 +17,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: var(--spacing-10);
   padding: 10px 20px;
+  min-height: 100vh;
 
   @media (min-width: 600px) {
     padding: 50px 80px;

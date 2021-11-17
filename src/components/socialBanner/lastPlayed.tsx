@@ -101,6 +101,7 @@ const Container = styled.div`
 `
 
 const SongTitle = styled.div`
+  color: var(--color-text);
   font-size: var(--fontSize-2);
   @media (max-width: 600px) {
     margin-top: 4px;
@@ -127,6 +128,7 @@ const SongAlbum = styled.span`
 `
 
 const SongArtist = styled.span`
+  color: var(--color-text);
   font-size: var(--fontSize-0);
 `
 

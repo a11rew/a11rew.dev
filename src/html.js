@@ -15,13 +15,16 @@ export default function HTML(props) {
         />
         <script
           dangerouslySetInnerHTML={{
-            /** Polyfill paint */
+            /** Polyfill paint API */
             __html: `
                 if (CSS["paintWorklet"] === undefined) {
-                  await import ("https://unpkg.com/css-paint-polyfill")
+                  import("https://unpkg.com/css-paint-polyfill").then(() => {
+                    CSS.paintWorklet.addModule("https://unpkg.com/@georgedoescode/houdini-fleck")
+                  })
+                } else {
+                  CSS.paintWorklet.addModule("https://unpkg.com/@georgedoescode/houdini-fleck")
                 }
 
-                CSS.paintWorklet.addModule("https://unpkg.com/@georgedoescode/houdini-fleck");
               `,
           }}
         />
