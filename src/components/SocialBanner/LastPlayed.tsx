@@ -1,72 +1,65 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 import { BsSpotify } from 'react-icons/bs'
+import useSWR from 'swr'
+
+const fetchLastplayed = async (): Promise<SongData> => {
+  const data = await fetch(
+    `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=a11rew&limit=1&api_key=${process.env.GATSBY_LAST_KEY}&format=json`
+  )
+  const res = await data.json()
+  const track = res.recenttracks.track[0]
+
+  return {
+    songTitle: track.name,
+    songAlbum: track.album['#text'],
+    songArtist: track.artist['#text'],
+    songHref: track.url,
+  }
+}
+
+interface SongData {
+  songTitle: string
+  songAlbum: string
+  songArtist: string
+  songHref: string
+}
 
 const LastPlayed: React.FC = (): ReactElement => {
-  const [songData, setSongData] = useState<SongData>()
-
-  interface SongData {
-    songTitle: string
-    songAlbum: string
-    songArtist: string
-    songHref: string
-  }
-
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const data: Response = await fetch(
-          `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=a11rew&limit=1&api_key=${process.env.GATSBY_LAST_KEY}&format=json`
-        )
-
-        const res = await data.json()
-        if (res.statusCode > 201) {
-          throw Error(res.body.error.message)
-        }
-
-        const track = res.recenttracks.track[0]
-
-        setSongData({
-          songTitle: track.name,
-          songAlbum: track.album['#text'],
-          songArtist: track.artist['#text'],
-          songHref: track.url,
-        })
-      } catch (error) {
-        // console.log(error)
-        setSongData({
-          songTitle: 'Special Affair',
-          songAlbum: 'Ego Death',
-          songArtist: 'The Internet',
-          songHref: 'https://open.spotify.com/track/3NWTRZ0A8xKlBP1qgNftql',
-        })
-      }
-    })()
-  }, [])
+  const { data, error } = useSWR('lp', fetchLastplayed)
 
   return (
     <Container>
       <div>
         <h5>Last Played</h5>
-        <a href={songData?.songHref} target="_blank" rel="noreferrer noopener">
+        <a href={data?.songHref} target="_blank" rel="noreferrer noopener">
           <HiddenDescription>
-            Last.fm link to the song {songData?.songTitle} by{' '}
-            {songData?.songArtist}{' '}
+            Last.fm link to the song {data?.songTitle} by {data?.songArtist}{' '}
           </HiddenDescription>
           <BsSpotify size={20} />
         </a>
       </div>
-      {songData ? (
+      {data && !error && (
         <>
-          <SongTitle>{songData?.songTitle}</SongTitle>
+          <SongTitle>{data?.songTitle}</SongTitle>
           <SongInfo>
-            <SongAlbum>{songData?.songAlbum}</SongAlbum>
-            <SongArtist>{songData?.songArtist}</SongArtist>
+            <SongAlbum>{data?.songAlbum}</SongAlbum>
+            <SongArtist>{data?.songArtist}</SongArtist>
           </SongInfo>
         </>
-      ) : (
-        <div>Loading</div>
       )}
+
+      {error && !data && (
+        <>
+          <SongTitle>Special Affair</SongTitle>
+          <SongInfo>
+            <SongAlbum>Ego Death</SongAlbum>
+            <SongArtist>The Internet</SongArtist>
+          </SongInfo>
+        </>
+      )}
+
+      {!data && !error && <div>Loading</div>}
     </Container>
   )
 }
