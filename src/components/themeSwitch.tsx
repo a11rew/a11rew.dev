@@ -17,15 +17,51 @@ const ThemeSwitch: React.FC = (): React.ReactElement => {
   }
 
   return (
-    <SwitchButton role="button" onClick={handleSwitch}>
-      {theme === 'light' ? <BsSun /> : <FiMoon />}
-      <Helmet htmlAttributes={{ theme }} />
-    </SwitchButton>
+    <SwitchWrapper role="button" onClick={handleSwitch}>
+      <RotaryAxis
+        style={{
+          transform: `rotate(${theme === 'light' ? '0' : '-180'}deg)`,
+        }}
+      >
+        <Sun />
+        <Moon />
+        <Helmet htmlAttributes={{ theme }} />
+      </RotaryAxis>
+    </SwitchWrapper>
   )
 }
 
-const SwitchButton = styled.div`
+const SwitchWrapper = styled.div`
   cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 100%;
+`
+
+const RotaryAxis = styled.div`
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  transition-property: all;
+  transition-timing-function: ease-in;
+  transition-duration: 1000ms;
+`
+
+const Sun = styled(BsSun)`
+  position: absolute;
+  top: -6px;
+  right: calc(50% - 7px);
+`
+
+const Moon = styled(FiMoon)`
+  position: absolute;
+  top: calc(100% - 8px);
+  right: calc(50% - 7px);
+  transform: rotate(180deg);
 `
 
 export default ThemeSwitch
