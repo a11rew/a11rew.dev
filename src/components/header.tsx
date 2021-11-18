@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
+import ThemeSwitch from './themeSwitch'
 
 const Header: React.FC = (): ReactElement => {
   const { pathname } = useLocation()
@@ -28,6 +29,9 @@ const Header: React.FC = (): ReactElement => {
           <NavLink to="/projects" $active={pathname === '/projects'}>
             projects
           </NavLink>
+        </div>
+        <div>
+          <ThemeSwitch />
         </div>
       </Nav>
     </StyledHeader>

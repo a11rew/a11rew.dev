@@ -68,10 +68,12 @@ export default BlogPostTemplate
 
 const BlogPost = styled.article`
   header h1 {
+    color: var(--color-primary);
     margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
   }
 
   header p {
+    color: var(--color-text-secondary);
     font-size: var(--fontSize-2);
     font-family: var(--font-heading);
   }

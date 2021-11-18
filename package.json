@@ -38,6 +38,7 @@
     "gatsby-transformer-remark": "^5.0.0",
     "gatsby-transformer-sharp": "^4.0.0",
     "prismjs": "^1.25.0",
+    "qs": "^6.10.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
@@ -48,13 +49,22 @@
     "vercel": "^23.1.2"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/qs": "^6.9.7",
     "@types/react-helmet": "^6.1.4",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.15",
+    "babel-jest": "^27.3.1",
+    "babel-preset-gatsby": "^2.2.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^2.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   },
   "homepage": "https://github.com/a11rew/a11rew.dev#readme",
@@ -72,6 +82,6 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   }
 }

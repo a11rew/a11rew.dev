@@ -1,4 +1,9 @@
 gatsby-browser.js
 gatsby-config.js
 gatsby-node.js
+jest.config.js
+jest-preprocess.js
+loadershim.js
 lambda
+html.js
+__mocks__/gatsby.js

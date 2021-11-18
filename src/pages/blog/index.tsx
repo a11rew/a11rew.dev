@@ -71,6 +71,14 @@ const PostListItem = styled.article`
   h2 {
     color: var(--color-primary);
   }
+
+  small {
+    color: var(--color-text-secondary);
+  }
+
+  p {
+    color: var(--color-text);
+  }
 `
 
 export const pageQuery = graphql`

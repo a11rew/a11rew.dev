@@ -42,8 +42,7 @@ const Bio: React.FC = () => {
           <p>
             Written by <strong>{author.name}</strong>
           </p>
-
-          {author?.summary || null}
+          <p>{author?.summary || null}</p>
           {` `}
           <TwitterBlock>
             <ExternalLink
@@ -69,7 +68,12 @@ const StyledBio = styled.div`
   margin-bottom: var(--spacing-16);
 
   p {
+    color: var(--color-text);
     margin-bottom: var(--spacing-0);
+  }
+
+  p:last-of-type {
+    color: var(--color-text-secondary);
   }
 `
 

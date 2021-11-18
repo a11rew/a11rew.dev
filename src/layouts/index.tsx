@@ -2,13 +2,17 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import Header from '@components/header'
+import ConstructionBanner from '@components/constructionBanner'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (
-    <Container>
-      <Header />
-      {children}
-    </Container>
+    <>
+      <ConstructionBanner />
+      <Container>
+        <Header />
+        {children}
+      </Container>
+    </>
   )
 }
 
@@ -17,6 +21,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: var(--spacing-10);
   padding: 10px 20px;
+  min-height: 100vh;
 
   @media (min-width: 600px) {
     padding: 50px 80px;
