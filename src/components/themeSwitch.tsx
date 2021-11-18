@@ -6,7 +6,11 @@ import { BsSun } from 'react-icons/bs'
 import { FiMoon } from 'react-icons/fi'
 
 const ThemeSwitch: React.FC = (): React.ReactElement => {
-  const [theme, setTheme] = useState<'dark' | 'light'>('light')
+  const prefersDark = window?.matchMedia('(prefers-color-scheme: dark)').matches
+
+  const [theme, setTheme] = useState<'dark' | 'light'>(
+    prefersDark ? 'dark' : 'light'
+  )
 
   const handleSwitch = (): void => {
     setTheme(theme === 'light' ? 'dark' : 'light')
@@ -48,7 +52,7 @@ const RotaryAxis = styled.div`
   border-radius: 100%;
   transition-property: all;
   transition-timing-function: ease-in;
-  transition-duration: 1000ms;
+  transition-duration: 500ms;
 `
 
 const Sun = styled(BsSun)`

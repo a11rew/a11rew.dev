@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   color: black;
   line-height: 2rem;
   letter-spacing: 0.025rem;
-  transition: background-color 1s;
+  transition: background-color 500ms;
 
   strong {
     &::before {
