@@ -6,7 +6,10 @@ import { BsSun } from 'react-icons/bs'
 import { FiMoon } from 'react-icons/fi'
 
 const ThemeSwitch: React.FC = (): React.ReactElement => {
-  const prefersDark = window?.matchMedia('(prefers-color-scheme: dark)').matches
+  // Use user theme preference
+  const prefersDark =
+    typeof window !== undefined ??
+    window.matchMedia('(prefers-color-scheme: dark)').matches
 
   const [theme, setTheme] = useState<'dark' | 'light'>(
     prefersDark ? 'dark' : 'light'
@@ -21,7 +24,13 @@ const ThemeSwitch: React.FC = (): React.ReactElement => {
   }
 
   return (
-    <SwitchWrapper role="button" onClick={handleSwitch}>
+    <SwitchWrapper
+      role="button"
+      aria-label={`Toggle button to switch theme from ${theme} to ${
+        theme === 'light' ? 'dark' : 'light'
+      }`}
+      onClick={handleSwitch}
+    >
       <RotaryAxis
         style={{
           transform: `rotate(${theme === 'light' ? '0' : '-180'}deg)`,

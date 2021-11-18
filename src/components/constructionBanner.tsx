@@ -5,13 +5,12 @@ const ConstructionBanner = (): React.ReactElement => {
   return (
     <Wrapper>
       <strong>
-        Under{' '}
         <a
           target="_blank"
           rel="noreferrer noopener"
           href="https://github.com/a11rew/a11rew.dev"
         >
-          construction
+          Under construction
         </a>
       </strong>
     </Wrapper>
