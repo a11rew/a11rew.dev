@@ -33,7 +33,6 @@ const Seo: React.FC<Props> = ({ description, lang, title }) => {
     <Helmet
       htmlAttributes={{
         lang,
-        theme: 'dark',
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s - ${defaultTitle}` : `${defaultTitle}`}

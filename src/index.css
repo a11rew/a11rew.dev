@@ -75,6 +75,7 @@ html {
   overflow-y: scroll;
   height: 100%;
   background-color: var(--background-color);
+  transition: background-color 0.2s;
 }
 
 body {
