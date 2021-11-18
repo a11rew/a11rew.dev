@@ -2,13 +2,17 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import Header from '@components/header'
+import ConstructionBanner from '@components/constructionBanner'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (
-    <Container>
-      <Header />
-      {children}
-    </Container>
+    <>
+      <ConstructionBanner />
+      <Container>
+        <Header />
+        {children}
+      </Container>
+    </>
   )
 }
 

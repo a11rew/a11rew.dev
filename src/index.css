@@ -256,6 +256,9 @@ html[theme='light'] {
   --fleck-color-4: #ebaedc;
 
   --background-color: hsl(213, 48%, 97%);
+
+  /** Banner */
+  --banner-background: hsl(24, 64%, 75%);
 }
 
 @media (max-width: 425px) {
@@ -284,6 +287,9 @@ html[theme='dark'] {
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --color-text-secondary: hsl(51, 6%, 77.1%);
+
+  /** Banner */
+  --banner-background: hsl(24, 100%, 50%);
 }
 
 @media (max-width: 425px) {
