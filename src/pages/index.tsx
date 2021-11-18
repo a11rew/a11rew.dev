@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Seo from '../components/seo'
-import IntroProse from '../components/introProse'
-import SocialBanner from '../components/socialBanner'
+import Seo from '../components/Seo'
+import IntroProse from '../components/IntroProse'
+import SocialBanner from '../components/SocialBanner'
 
 const Home: React.FC = () => {
   return (

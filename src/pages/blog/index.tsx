@@ -2,9 +2,9 @@ import React from 'react'
 import { Link, graphql, PageProps } from 'gatsby'
 import styled from 'styled-components'
 
-import Seo from '@components/seo'
-import Bio from './components/bio'
-import BlogLayout from './components/layout'
+import Seo from '@components/Seo'
+import Bio from './components/Bio'
+import BlogLayout from './components/BlogLayout'
 
 const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes

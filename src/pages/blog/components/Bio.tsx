@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
-import { ExternalLink } from '@components/socialBanner/socials'
+import { ExternalLink } from '@components/SocialBanner/Socials'
 
 const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
