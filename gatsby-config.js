@@ -50,6 +50,7 @@ module.exports = {
           '@components': path.resolve(__dirname, 'src/components'),
           '@images': path.resolve(__dirname, 'src/images'),
           '@pages': path.resolve(__dirname, 'src/pages'),
+          '@layouts': path.resolve(__dirname, 'src/layouts'),
           '@blog': path.resolve(__dirname, 'src/pages/blog'),
           '@resume': path.resolve(__dirname, 'src/pages/resume'),
           '@projects': path.resolve(__dirname, 'src/pages/projects'),

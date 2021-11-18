@@ -2,9 +2,9 @@ import * as React from 'react'
 import { Link, graphql, PageProps } from 'gatsby'
 import styled from 'styled-components'
 
-import Bio from '../components/bio'
-import Layout from '../components/layout'
-import Seo from '../../../components/seo'
+import Seo from '@components/Seo'
+import Bio from '../components/Bio'
+import BlogLayout from '../components/BlogLayout'
 
 const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
   data,
@@ -14,7 +14,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
   const { previous, next } = data
 
   return (
-    <Layout location={location}>
+    <BlogLayout location={location}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -60,7 +60,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
           </li>
         </ul>
       </BlogPostNav>
-    </Layout>
+    </BlogLayout>
   )
 }
 

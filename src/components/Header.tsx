@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
-import ThemeSwitch from './themeSwitch'
+import ThemeSwitch from './ThemeSwitch'
 
 const Header: React.FC = (): ReactElement => {
   const { pathname } = useLocation()

@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
-import Header from '@components/header'
-import ConstructionBanner from '@components/constructionBanner'
+import Header from '@components/Header'
+import ConstructionBanner from '@components/ConstructionBanner'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (

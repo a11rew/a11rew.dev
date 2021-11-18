@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
-import Seo from '@components/seo'
+import Seo from '@components/Seo'
 
 const About: React.FC = (): ReactElement => {
   return (

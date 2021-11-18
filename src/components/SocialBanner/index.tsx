@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
-import LastPlayed from './lastPlayed'
+import LastPlayed from './LastPlayed'
 
-import Socials from './socials'
+import Socials from './Socials'
 
 const SocialBanner: React.FC = (): ReactElement => {
   return (
