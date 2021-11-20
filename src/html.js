@@ -19,10 +19,10 @@ export default function HTML(props) {
             __html: `
                 if (CSS["paintWorklet"] === undefined) {
                   import("https://unpkg.com/css-paint-polyfill").then(() => {
-                    CSS.paintWorklet.addModule("https://unpkg.com/@georgedoescode/houdini-fleck")
+                    CSS.paintWorklet.addModule("/fleck-worklet.js")
                   })
                 } else {
-                  CSS.paintWorklet.addModule("https://unpkg.com/@georgedoescode/houdini-fleck")
+                  CSS.paintWorklet.addModule("/fleck-worklet.js")
                 }
 
               `,
