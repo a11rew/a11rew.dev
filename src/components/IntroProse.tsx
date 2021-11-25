@@ -6,7 +6,7 @@ const IntroProse: React.FC = (): ReactElement => {
     <StyledIntro>
       <p>
         Hi I&apos;m <strong>Andrew Glago</strong>, a{' '}
-        <strong>software engineer</strong> from Accra, <strong>Ghana</strong>.
+        <strong>software developer</strong> from Accra, <strong>Ghana</strong>.
       </p>
       <p>
         I&apos;m <strong>passionate</strong> about building{' '}

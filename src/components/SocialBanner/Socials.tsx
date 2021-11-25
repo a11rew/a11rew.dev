@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FiTwitter, FiGithub } from 'react-icons/fi'
+import { SiGenius } from 'react-icons/si'
 
 const Socials: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const Socials: React.FC = () => {
           </ExternalLink>
           <FiGithub />
         </SocialItem>
-        <SocialItem last>
+        <SocialItem>
           <ExternalLink
             href="https://twitter.com/a11rew"
             target="_blank"
@@ -26,6 +27,16 @@ const Socials: React.FC = () => {
             Twitter
           </ExternalLink>
           <FiTwitter />
+        </SocialItem>
+        <SocialItem last>
+          <ExternalLink
+            href="https://genius.com/AndrewHGA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Genius
+          </ExternalLink>
+          <SiGenius />
         </SocialItem>
       </SocialList>
     </SocialContainer>
