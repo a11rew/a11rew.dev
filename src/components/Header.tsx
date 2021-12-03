@@ -31,6 +31,11 @@ const Header: React.FC = (): ReactElement => {
           </NavLink>
         </div>
         <div>
+          <NavLink to="/contact" $active={pathname === '/contact'}>
+            contact
+          </NavLink>
+        </div>
+        <div>
           <ThemeSwitch />
         </div>
       </Nav>
