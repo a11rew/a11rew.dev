@@ -15,7 +15,8 @@ const validate = (body: ReqBody) => {
   if (!body.name || !body.email || !body.message)
     throw Error('Validation failed')
   let regexp =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
   if (!body.email.match(regexp)) {
     throw Error('Validation failed')
   }
