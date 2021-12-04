@@ -17,7 +17,7 @@ const Contact: React.FC = (): ReactElement => {
       </IntroMessage>
       <EmailMessage>
         Or if you&apos;d rather, send me{' '}
-        <a href="mailto:andrewglago1@gmail.com">an email directly</a>
+        <a href="mailto:andrewglago1@gmail.com">an email directly.</a>
       </EmailMessage>
       <div>
         <ContactForm />

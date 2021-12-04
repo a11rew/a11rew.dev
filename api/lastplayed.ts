@@ -1,5 +1,5 @@
 /**
- * Vercel Serverless Function to obtain last played from Spotify profile
+ * Serverless Function to obtain last played from Spotify profile
  * using Spotify OAuth (https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)
  */
 
@@ -49,7 +49,7 @@ const refreshAccess = async (): Promise<string> => {
     })
 
     return res.data.access_token
-  } catch (error) {
+  } catch (error: any) {
     return error
   }
 }
