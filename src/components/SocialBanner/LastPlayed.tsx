@@ -105,14 +105,15 @@ const Container = styled.div`
 const SongTitle = styled.div`
   color: var(--color-text);
   font-size: var(--fontSize-3);
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     margin-top: 4px;
+    font-size: var(--fontSize-1);
   }
 `
 
 const SongInfo = styled.div`
   display: flex;
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
     justify-content: flex-end;
   }
 `
@@ -120,6 +121,10 @@ const SongInfo = styled.div`
 const SongAlbum = styled.span`
   color: var(--color-text-secondary);
   font-size: var(--fontSize-1);
+
+  @media (max-width: 768px) {
+    font-size: var(--fontSize-1);
+  }
 
   ::after {
     display: inline-block;

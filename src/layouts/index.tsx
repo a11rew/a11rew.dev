@@ -23,8 +23,8 @@ const Container = styled.div`
   width: 80%;
   margin: 0 auto;
 
-  @media (min-width: 600px) {
-    /* padding: 50px 80px; */
+  @media (max-width: 600px) {
+    width: 90%;
   }
 `
 

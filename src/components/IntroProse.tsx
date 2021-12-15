@@ -30,13 +30,24 @@ const StyledIntro = styled.div`
     font-size: 5rem;
     line-height: 140%;
     color: unset;
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
   }
 
   p {
-    width: 50%;
+    width: 95%;
     line-height: 150%;
     margin: 20px 0;
     font-weight: 300;
+
+    @media (min-width: 1024px) {
+      width: 50%;
+    }
+
+    @media (max-width: 768px) {
+      font-size: var(--fontSize-2);
+    }
   }
 `
 
