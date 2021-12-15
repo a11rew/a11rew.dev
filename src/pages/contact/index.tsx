@@ -12,8 +12,7 @@ const Contact: React.FC = (): ReactElement => {
         I&apos;m always looking to connect with other developers, designers and
         product people in general.
         <br />
-        Re: an idea, positions I&apos;d be a good fit for or just to say hello,
-        do drop me a line below.
+        Re: an idea, positions or just to say hello, drop me a line below.
       </IntroMessage>
       <EmailMessage>
         Or if you&apos;d rather, send me{' '}

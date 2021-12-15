@@ -87,6 +87,18 @@ body {
   min-height: 100vh;
 }
 
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 footer {
   padding: var(--spacing-6) var(--spacing-0);
 }
@@ -276,6 +288,7 @@ html[theme='light'] {
   --fleck-color-2: #a6bfeb;
   --fleck-color-3: #cce0ee;
   --fleck-color-4: #ebaedc;
+  --cursor: 166, 191, 235;
 
   --background-color: hsl(213, 48%, 97%);
 
@@ -310,6 +323,7 @@ html[theme='dark'] {
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --color-text-secondary: hsl(51, 6%, 77.1%);
+  --cursor: 232, 173, 60;
 
   /** Banner */
   --banner-background: hsl(24, 100%, 50%);
@@ -411,4 +425,29 @@ html[theme='dark'] {
   ol {
     list-style-position: inside;
   }
+}
+
+/* Cursor */
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  width: 0;
+
+  background-color: transparent;
+}
+
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(var(--cursor), 0.2);
 }
