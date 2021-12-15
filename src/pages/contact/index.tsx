@@ -12,8 +12,8 @@ const Contact: React.FC = (): ReactElement => {
         I&apos;m always looking to connect with other developers, designers and
         product people in general.
         <br />
-        Re. an idea, job position or just to say hello, please do drop me a line
-        below.
+        Re: an idea, positions I&apos;d be a good fit for or just to say hello,
+        do drop me a line below.
       </IntroMessage>
       <EmailMessage>
         Or if you&apos;d rather, send me{' '}
@@ -27,7 +27,7 @@ const Contact: React.FC = (): ReactElement => {
 }
 
 const Wrapper = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 300;
 
   @media (max-width: 600px) {
@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 
 const CallToAction = styled.h1`
   color: unset;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 5rem;
 
   @media (max-width: 600px) {

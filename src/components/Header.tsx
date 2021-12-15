@@ -48,6 +48,7 @@ const StyledHeader = styled.header`
   flex-direction: column;
   gap: 4px;
   padding: 40px 0;
+  font-size: 1.1rem;
   @media (min-width: 600px) {
     flex-direction: row;
     justify-content: space-between;

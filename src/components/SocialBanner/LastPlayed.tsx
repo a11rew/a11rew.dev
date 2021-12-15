@@ -59,7 +59,16 @@ const LastPlayed: React.FC = (): ReactElement => {
         </>
       )}
 
-      {!data && !error && <div>Loading</div>}
+      {!data && !error && (
+        <>
+          <SongTitle>Loading</SongTitle>
+          {/* Placeholder to deal with layout shift */}
+          <SongInfo style={{ visibility: 'hidden' }}>
+            <SongAlbum>Ego Death</SongAlbum>
+            <SongArtist>The Internet</SongArtist>
+          </SongInfo>
+        </>
+      )}
     </Container>
   )
 }
@@ -95,7 +104,7 @@ const Container = styled.div`
 
 const SongTitle = styled.div`
   color: var(--color-text);
-  font-size: var(--fontSize-2);
+  font-size: var(--fontSize-3);
   @media (max-width: 600px) {
     margin-top: 4px;
   }
@@ -110,7 +119,7 @@ const SongInfo = styled.div`
 
 const SongAlbum = styled.span`
   color: var(--color-text-secondary);
-  font-size: var(--fontSize-0);
+  font-size: var(--fontSize-1);
 
   ::after {
     display: inline-block;
@@ -122,7 +131,7 @@ const SongAlbum = styled.span`
 
 const SongArtist = styled.span`
   color: var(--color-text);
-  font-size: var(--fontSize-0);
+  font-size: var(--fontSize-1);
 `
 
 const HiddenDescription = styled.span`
