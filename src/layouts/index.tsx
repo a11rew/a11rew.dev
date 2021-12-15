@@ -19,12 +19,12 @@ const Layout: React.FC = ({ children }): ReactElement => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-10);
-  padding: 10px 20px;
   min-height: 100vh;
+  width: 80%;
+  margin: 0 auto;
 
   @media (min-width: 600px) {
-    padding: 50px 80px;
+    /* padding: 50px 80px; */
   }
 `
 

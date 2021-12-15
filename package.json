@@ -83,7 +83,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "dev:vercel": "vercel dev -l 8001",
+    "dev:vercel": "vercel dev -l 8000",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",

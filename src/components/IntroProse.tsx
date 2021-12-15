@@ -4,25 +4,39 @@ import styled from 'styled-components'
 const IntroProse: React.FC = (): ReactElement => {
   return (
     <StyledIntro>
+      <h1>
+        Hey, there.
+        <br />
+        I&apos;m Andrew Glago.
+      </h1>
       <p>
-        Hi I&apos;m <strong>Andrew Glago</strong>, a{' '}
-        <strong>software developer</strong> from Accra, <strong>Ghana</strong>.
-      </p>
-      <p>
-        I&apos;m <strong>passionate</strong> about building{' '}
-        <strong>beautiful</strong>,{` `}
-        <strong>performant</strong> applications for the web.
+        👋 Software developer passionate about building beautiful, performant
+        applications for the web and mobile.
       </p>
     </StyledIntro>
   )
 }
 
 const StyledIntro = styled.div`
-  font-size: var(--fontSize-3);
-  color: var(--color-text-secondary);
+  font-size: var(--fontSize-5);
+  color: var(--color-text-primary);
 
   strong {
     color: var(--color-text);
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 5rem;
+    line-height: 140%;
+    color: unset;
+  }
+
+  p {
+    width: 50%;
+    line-height: 150%;
+    margin: 20px 0;
+    font-weight: 300;
   }
 `
 

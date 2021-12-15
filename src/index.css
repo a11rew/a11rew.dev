@@ -270,7 +270,7 @@ input:-webkit-autofill:active {
 
 html[theme='light'] {
   --fleck-seed: 123456;
-  --fleck-count: 150;
+  --fleck-count: 120;
   --fleck-size-base: 5px;
   --fleck-color-1: #ffb5d7;
   --fleck-color-2: #a6bfeb;

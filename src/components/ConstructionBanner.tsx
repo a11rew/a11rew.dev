@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ConstructionBanner = (): React.ReactElement => {
+const ConstructionBanner: React.FC = (): React.ReactElement => {
   return (
     <Wrapper>
       <strong>

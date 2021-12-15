@@ -9,7 +9,9 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Seo title="Hello" />
-      <IntroProse />
+      <IntroContainer>
+        <IntroProse />
+      </IntroContainer>
       <SocialBanner />
     </Container>
   )
@@ -17,7 +19,16 @@ const Home: React.FC = () => {
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
+  padding-bottom: 40px;
+
   flex-direction: column;
   gap: var(--spacing-10);
+`
+
+const IntroContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
 `
 export default Home
