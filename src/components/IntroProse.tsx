@@ -27,7 +27,7 @@ const StyledIntro = styled.div`
 
   h1 {
     font-weight: 300;
-    font-size: 5rem;
+    font-size: 4rem;
     line-height: 140%;
     color: unset;
     @media (max-width: 768px) {

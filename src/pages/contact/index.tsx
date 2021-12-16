@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 const CallToAction = styled.h1`
   color: unset;
   font-weight: 300;
-  font-size: 5rem;
+  font-size: 4rem;
 
   @media (max-width: 600px) {
     font-size: 3.5rem;

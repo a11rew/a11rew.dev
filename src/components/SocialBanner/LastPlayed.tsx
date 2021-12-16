@@ -104,7 +104,7 @@ const Container = styled.div`
 
 const SongTitle = styled.div`
   color: var(--color-text);
-  font-size: var(--fontSize-3);
+  font-size: var(--fontSize-2);
   @media (max-width: 768px) {
     margin-top: 4px;
     font-size: var(--fontSize-1);
