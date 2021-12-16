@@ -28,6 +28,7 @@ const Contact: React.FC = (): ReactElement => {
 const Wrapper = styled.div`
   font-size: 1.3rem;
   font-weight: 300;
+  padding-bottom: 2em;
 
   @media (max-width: 600px) {
     font-size: initial;

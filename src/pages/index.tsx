@@ -20,7 +20,7 @@ const Home: React.FC = () => {
 const Container = styled.div`
   display: flex;
   flex: 1;
-  padding-bottom: 40px;
+  padding-bottom: 2em;
 
   flex-direction: column;
   gap: var(--spacing-10);
