@@ -4,6 +4,22 @@ import { renderWithRouter } from '../../../__mocks__/Router.mock'
 import Header from '../Header'
 
 describe('Page header', () => {
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // Deprecated
+        removeListener: jest.fn(), // Deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      })),
+    })
+  })
+
   it('renders correctly', () => {
     const { container } = renderWithRouter(<Header />)
 
