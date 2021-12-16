@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
 import ThemeSwitch from './ThemeSwitch'
 
-const Header: React.FC = (): ReactElement => {
+const Header: React.FC = () => {
   const { pathname } = useLocation()
 
   return (
@@ -31,6 +31,11 @@ const Header: React.FC = (): ReactElement => {
           </NavLink>
         </div>
         <div>
+          <NavLink to="/contact" $active={pathname === '/contact'}>
+            contact
+          </NavLink>
+        </div>
+        <div>
           <ThemeSwitch />
         </div>
       </Nav>
@@ -42,6 +47,8 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 40px 0;
+  font-size: 1.1rem;
   @media (min-width: 600px) {
     flex-direction: row;
     justify-content: space-between;

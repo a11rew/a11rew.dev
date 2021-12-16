@@ -12,6 +12,7 @@
         "@typescript-eslint/no-use-before-define": "off",
         "import/extensions": "off",
         "camelcase": "off",
+        "no-nested-ternary": "off",
         "@typescript-eslint/explicit-module-boundary-types": [
           "error",
           {

@@ -53,6 +53,7 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
+  --color-primary-dec: 0, 91, 153;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
@@ -84,6 +85,18 @@ body {
   font-size: var(--fontSize-1);
   color: var(--color-text);
   min-height: 100vh;
+}
+
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 footer {
@@ -241,6 +254,27 @@ a:focus {
   text-decoration: none;
 }
 
+/* Fix for chrome auutcomplete changing input styles */
+input:-webkit-autofill {
+  transition-delay: 99999999s;
+  transition-property: background-color, color;
+}
+
+input:-webkit-autofill:hover {
+  transition-delay: 99999999s;
+  transition-property: background-color, color;
+}
+
+input:-webkit-autofill:focus {
+  transition-delay: 99999999s;
+  transition-property: background-color, color;
+}
+
+input:-webkit-autofill:active {
+  transition-delay: 99999999s;
+  transition-property: background-color, color;
+}
+
 /** 
 * Credit to George Francis for the amazing generative art
 * (https://codepen.io/georgedoescode/pen/eYvjOMN)
@@ -248,12 +282,13 @@ a:focus {
 
 html[theme='light'] {
   --fleck-seed: 123456;
-  --fleck-count: 150;
+  --fleck-count: 120;
   --fleck-size-base: 5px;
   --fleck-color-1: #ffb5d7;
   --fleck-color-2: #a6bfeb;
   --fleck-color-3: #cce0ee;
   --fleck-color-4: #ebaedc;
+  --cursor: 166, 191, 235;
 
   --background-color: hsl(213, 48%, 97%);
 
@@ -280,13 +315,15 @@ html[theme='dark'] {
   --background-color: hsl(20, 6%, 10%);
 
   /** Text */
-  --color-primary: #be93e4;
-  --color-text: #c9d1d9;
+  --color-primary: rgb(190 147 228);
+  --color-primary-dec: 190, 147, 228;
+  --color-text: rgb(201 209 217);
   --color-text-light: #8b949e;
   --color-heading: #be93e4;
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --color-text-secondary: hsl(51, 6%, 77.1%);
+  --cursor: 232, 173, 60;
 
   /** Banner */
   --banner-background: hsl(24, 100%, 50%);
@@ -388,4 +425,29 @@ html[theme='dark'] {
   ol {
     list-style-position: inside;
   }
+}
+
+/* Cursor */
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  width: 0;
+
+  background-color: transparent;
+}
+
+.cursor-dot-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(var(--cursor), 0.2);
 }

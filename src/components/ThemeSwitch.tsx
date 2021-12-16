@@ -8,7 +8,7 @@ import { FiMoon } from 'react-icons/fi'
 const ThemeSwitch: React.FC = (): React.ReactElement => {
   // Use user theme preference
   const prefersDark =
-    typeof window !== undefined ??
+    typeof window !== 'undefined' &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
 
   const [theme, setTheme] = useState<'dark' | 'light'>(

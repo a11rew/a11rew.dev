@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, graphql, PageProps } from 'gatsby'
-import styled from 'styled-components'
+import { graphql, PageProps } from 'gatsby'
+// import styled from 'styled-components'
 
 import Seo from '@components/Seo'
 import Bio from './components/Bio'
@@ -29,7 +29,8 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
     <BlogLayout location={location}>
       <Seo title="Blog" />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <div>I haven&apos;t written anything yet, check back soon :)</div>
+      {/* <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -57,47 +58,44 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ data, location }) => {
             </li>
           )
         })}
-      </ol>
+      </ol> */}
     </BlogLayout>
   )
 }
 
 export default BlogIndex
 
-const PostListItem = styled.article`
-  margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
+// const PostListItem = styled.article`
+//   margin-bottom: var(--spacing-8);
+//   margin-top: var(--spacing-8);
 
-  h2 {
-    color: var(--color-primary);
-  }
+//   h2 {
+//     color: var(--color-primary);
+//   }
 
-  small {
-    color: var(--color-text-secondary);
-  }
+//   small {
+//     color: var(--color-text-secondary);
+//   }
 
-  p {
-    color: var(--color-text);
-  }
-`
+//   p {
+//     color: var(--color-text);
+//   }
+// `
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: ASC }
+      limit: 1000
+      filter: {
+        fileAbsolutePath: { regex: "/blog/" }
+        fields: { slug: { regex: "/^((?!t$mp).)*$/" } }
       }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    ) {
       nodes {
-        excerpt
+        id
         fields {
           slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
         }
       }
     }
