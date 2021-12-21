@@ -1,13 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FiTwitter, FiGithub } from 'react-icons/fi'
-import { SiGenius } from 'react-icons/si'
+import { RiLinkedinLine } from 'react-icons/ri'
+import { BsLinkedin } from 'react-icons/bs'
 
 const Socials: React.FC = () => {
   return (
     <SocialContainer>
-      <h5>Get to know me</h5>
       <SocialList>
+        <SocialItem>
+          <ExternalLink
+            href="https://github.com/a11rew"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </ExternalLink>
+          <LiIcon />
+        </SocialItem>
         <SocialItem>
           <ExternalLink
             href="https://github.com/a11rew"
@@ -18,7 +28,7 @@ const Socials: React.FC = () => {
           </ExternalLink>
           <FiGithub />
         </SocialItem>
-        <SocialItem>
+        <SocialItem last>
           <ExternalLink
             href="https://twitter.com/a11rew"
             target="_blank"
@@ -27,16 +37,6 @@ const Socials: React.FC = () => {
             Twitter
           </ExternalLink>
           <FiTwitter />
-        </SocialItem>
-        <SocialItem last>
-          <ExternalLink
-            href="https://genius.com/AndrewHGA"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Genius
-          </ExternalLink>
-          <SiGenius />
         </SocialItem>
       </SocialList>
     </SocialContainer>
@@ -77,6 +77,11 @@ const SocialItem = styled.li`
     transform: rotate(25deg);
     padding: 0 15px;
   }
+`
+
+const LiIcon = styled(RiLinkedinLine)`
+  font-size: 22px;
+  padding-bottom: 4px;
 `
 
 export const ExternalLink = styled.a`

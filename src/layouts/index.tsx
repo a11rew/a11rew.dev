@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Header from '@components/Header'
 import ConstructionBanner from '@components/ConstructionBanner'
+import Footer from '@components/Footer'
 
 const Layout: React.FC = ({ children }): ReactElement => {
   return (
@@ -12,6 +13,7 @@ const Layout: React.FC = ({ children }): ReactElement => {
         <Header />
         {children}
       </Container>
+      <Footer />
     </>
   )
 }
