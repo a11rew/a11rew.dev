@@ -16,7 +16,7 @@
   &::before {
     @include glitchCopy;
     left: 2px;
-    text-shadow: -2px 0 #ff00c1;
+    text-shadow: -2px 0 #{'var(--glitch-color-1)'};
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 7s infinite linear alternate-reverse;
   }
@@ -24,7 +24,8 @@
   &::after {
     @include glitchCopy;
     left: -2px;
-    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    text-shadow: -2px 0 #{'var(--glitch-color-2)'},
+      2px 2px #{'var(--glitch-color-1)'};
     animation: glitch-anim2 4s infinite linear alternate-reverse;
   }
 }

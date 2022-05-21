@@ -290,6 +290,9 @@ html[theme='light'] {
   --fleck-color-4: #ebaedc;
   --cursor: 166, 191, 235;
 
+  --glitch-color-1: #ff00c1;
+  --glitch-color-2: #00fff9;
+
   --background-color: hsl(213, 48%, 97%);
 
   /** Banner */
@@ -311,6 +314,9 @@ html[theme='dark'] {
   --fleck-color-3: #d7b54e;
   --fleck-color-4: #e2b84b;
   --fleck-color-5: #d6cdc4;
+
+  --glitch-color-1: #e2b84b;
+  --glitch-color-2: #be93e4;
 
   --background-color: hsl(20, 6%, 10%);
 
