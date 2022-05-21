@@ -9,8 +9,7 @@ const IntroProse: React.FC = (): ReactElement => {
         Hi there.
         <br />
         <GlitchTextWrapper>
-          I&apos;m
-          <GlitchyText>Andrew Glago.</GlitchyText>
+          I&apos;m&nbsp;<GlitchyText>Andrew Glago.</GlitchyText>
         </GlitchTextWrapper>
       </h1>
       <p>
@@ -59,7 +58,6 @@ const StyledIntro = styled.div`
 
 const GlitchTextWrapper = styled.div`
   display: flex;
-  gap: 1rem;
 `
 
 export default IntroProse
