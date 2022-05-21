@@ -80,7 +80,7 @@ html {
 }
 
 body {
-  background-image: paint(fleck);
+  /* background-image: paint(fleck); */
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);

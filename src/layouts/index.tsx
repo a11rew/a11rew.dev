@@ -1,18 +1,30 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
+import { PageProps } from 'gatsby'
 import styled from 'styled-components'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import Header from '@components/Header'
-import ConstructionBanner from '@components/ConstructionBanner'
 
-const Layout: React.FC = ({ children }): ReactElement => {
+const Layout: React.FC<PageProps> = ({ children, location }) => {
   return (
-    <>
-      <ConstructionBanner />
-      <Container>
-        <Header />
-        {children}
-      </Container>
-    </>
+    <AnimatePresence exitBeforeEnter>
+      {/* <ConstructionBanner /> */}
+      <motion.main
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          type: 'linear',
+          duration: 0.2,
+        }}
+      >
+        <Container>
+          <Header />
+          {children}
+        </Container>
+      </motion.main>
+    </AnimatePresence>
   )
 }
 

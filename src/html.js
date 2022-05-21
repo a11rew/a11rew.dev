@@ -38,14 +38,14 @@ export default function HTML(props) {
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
-        <div className="cursor-dot-outline"></div>
-        <div className="cursor-dot"></div>
         <div
           key={`body`}
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
+        <div className="cursor-dot-outline"></div>
+        <div className="cursor-dot"></div>
         <script src="/cursor.js" />
       </body>
     </html>

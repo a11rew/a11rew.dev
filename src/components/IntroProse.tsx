@@ -16,8 +16,6 @@ const IntroProse: React.FC = (): ReactElement => {
         👋 Software developer passionate about building performant applications
         for the web and beyond.
       </p>
-
-      <div></div>
     </StyledIntro>
   )
 }

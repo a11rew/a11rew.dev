@@ -1,5 +1,7 @@
 import React from 'react'
-import GlobalStyles from './src/styles.globals'
+import { AnimatePresence } from 'framer-motion'
+
+import Layout from './src/layouts/'
 
 // typography
 import './src/typography.css'
@@ -11,9 +13,24 @@ import './src/index.css'
 // Highlighting for code blocks
 import 'prismjs/themes/prism.css'
 
-export const wrapRootElement = ({ element }) => (
-  <>
-    <GlobalStyles />
-    {element}
-  </>
+export const wrapPageElement = ({ element, props }) => (
+  <Layout {...props}>{element}</Layout>
 )
+
+export const shouldUpdateScroll = ({
+  routerProps: { location },
+  getSavedScrollPosition,
+}) => {
+  const transitionDelay = 200
+
+  if (location.action === 'PUSH') {
+    window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
+  } else {
+    const savedPosition = getSavedScrollPosition(location)
+    window.setTimeout(
+      () => window.scrollTo(...(savedPosition || [0, 0])),
+      transitionDelay
+    )
+  }
+  return false
+}

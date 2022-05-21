@@ -20,7 +20,6 @@ module.exports = {
         trackingIds: ['G-66BSQ6DB4J'],
       },
     },
-    `gatsby-plugin-layout`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
