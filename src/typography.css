@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('./fonts/acf-bold-700.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('./fonts/acf-demi-bold-700.woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('./fonts/acf-med-500.woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('./fonts/acf-reg-400.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

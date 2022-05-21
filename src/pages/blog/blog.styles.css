@@ -25,13 +25,13 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --fontFamily-serif: 'Articulat CF', 'Georgia', Cambria, 'Times New Roman',
+  --fontFamily-serif: 'Merriweather', 'Georgia', Cambria, 'Times New Roman',
     Times, serif;
   --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-serif);
+  --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
   --fontWeight-medium: 500;
   --fontWeight-semibold: 600;
@@ -53,14 +53,14 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
-  --color-primary-dec: 0, 91, 153;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
-  --color-text-secondary: #6f767b;
 }
+
+/* HTML elements */
 
 *,
 :after,
@@ -73,30 +73,12 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-y: scroll;
-  height: 100%;
-  background-color: var(--background-color);
-  transition: background-color 500ms;
 }
 
 body {
-  background-image: paint(fleck);
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
-  min-height: 100vh;
-}
-
-.cursor-dot,
-.cursor-dot-outline {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 footer {
@@ -136,7 +118,7 @@ h6 {
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
-  color: var(--color-heading);
+  color: var(--color-heading-black);
 }
 
 h2 {
@@ -188,7 +170,7 @@ ol {
   margin-left: var(--spacing-0);
   margin-right: var(--spacing-0);
   padding: var(--spacing-0);
-  margin-bottom: var(--spacing-0);
+  margin-bottom: var(--spacing-8);
   list-style-position: outside;
   list-style-image: none;
 }
@@ -254,86 +236,7 @@ a:focus {
   text-decoration: none;
 }
 
-/* Fix for chrome auutcomplete changing input styles */
-input:-webkit-autofill {
-  transition-delay: 99999999s;
-  transition-property: background-color, color;
-}
-
-input:-webkit-autofill:hover {
-  transition-delay: 99999999s;
-  transition-property: background-color, color;
-}
-
-input:-webkit-autofill:focus {
-  transition-delay: 99999999s;
-  transition-property: background-color, color;
-}
-
-input:-webkit-autofill:active {
-  transition-delay: 99999999s;
-  transition-property: background-color, color;
-}
-
-/** 
-* Credit to George Francis for the amazing generative art
-* (https://codepen.io/georgedoescode/pen/eYvjOMN)
-*/
-
-html[theme='light'] {
-  --fleck-seed: 123456;
-  --fleck-count: 120;
-  --fleck-size-base: 5px;
-  --fleck-color-1: #ffb5d7;
-  --fleck-color-2: #a6bfeb;
-  --fleck-color-3: #cce0ee;
-  --fleck-color-4: #ebaedc;
-  --cursor: 166, 191, 235;
-
-  --background-color: hsl(213, 48%, 97%);
-
-  /** Banner */
-  --banner-background: hsl(24, 64%, 75%);
-}
-
-@media (max-width: 425px) {
-  html[theme='light'] {
-    --fleck-count: 50;
-  }
-}
-
-html[theme='dark'] {
-  --fleck-seed: 123453;
-  --fleck-count: 150;
-  --fleck-size-base: 4px;
-  --fleck-color-1: #e8ad3c;
-  --fleck-color-2: #a96c1a;
-  --fleck-color-3: #d7b54e;
-  --fleck-color-4: #e2b84b;
-  --fleck-color-5: #d6cdc4;
-
-  --background-color: hsl(20, 6%, 10%);
-
-  /** Text */
-  --color-primary: rgb(190 147 228);
-  --color-primary-dec: 190, 147, 228;
-  --color-text: rgb(201 209 217);
-  --color-text-light: #8b949e;
-  --color-heading: #be93e4;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
-  --color-text-secondary: hsl(51, 6%, 77.1%);
-  --cursor: 232, 173, 60;
-
-  /** Banner */
-  --banner-background: hsl(24, 100%, 50%);
-}
-
-@media (max-width: 425px) {
-  html[theme='dark'] {
-    --fleck-count: 50;
-  }
-}
+/* Custom classes */
 
 .global-wrapper {
   margin: var(--spacing-0) auto;
@@ -425,29 +328,4 @@ html[theme='dark'] {
   ol {
     list-style-position: inside;
   }
-}
-
-/* Cursor */
-.cursor-dot,
-.cursor-dot-outline {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.cursor-dot {
-  width: 0;
-
-  background-color: transparent;
-}
-
-.cursor-dot-outline {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(var(--cursor), 0.2);
 }
