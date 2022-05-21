@@ -66,13 +66,13 @@ const RotaryAxis = styled.div`
 
 const Sun = styled(BsSun)`
   position: absolute;
-  top: -6px;
+  top: -8px;
   right: calc(50% - 7px);
 `
 
 const Moon = styled(FiMoon)`
   position: absolute;
-  top: calc(100% - 8px);
+  top: calc(100% - 7px);
   right: calc(50% - 7px);
   transform: rotate(180deg);
 `

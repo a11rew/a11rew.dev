@@ -1,18 +1,24 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
+import GlitchyText from './GlitchyText'
 
 const IntroProse: React.FC = (): ReactElement => {
   return (
     <StyledIntro>
       <h1>
-        Hey, there.
+        Hi there.
         <br />
-        I&apos;m Andrew Glago.
+        <GlitchTextWrapper>
+          I&apos;m
+          <GlitchyText>Andrew Glago.</GlitchyText>
+        </GlitchTextWrapper>
       </h1>
       <p>
-        👋 Software developer passionate about building beautiful, performant
-        applications for the web and mobile.
+        👋 Software developer passionate about building performant applications
+        for the web and beyond.
       </p>
+
+      <div></div>
     </StyledIntro>
   )
 }
@@ -26,7 +32,7 @@ const StyledIntro = styled.div`
   }
 
   h1 {
-    font-weight: 300;
+    font-weight: 700;
     font-size: 4rem;
     line-height: 140%;
     color: unset;
@@ -39,7 +45,7 @@ const StyledIntro = styled.div`
     width: 95%;
     line-height: 150%;
     margin: 20px 0;
-    font-weight: 300;
+    /* font-weight: 300; */
 
     @media (min-width: 1024px) {
       width: 50%;
@@ -49,6 +55,11 @@ const StyledIntro = styled.div`
       font-size: var(--fontSize-2);
     }
   }
+`
+
+const GlitchTextWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
 `
 
 export default IntroProse
