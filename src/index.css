@@ -135,7 +135,7 @@ h6 {
 
 h1 {
   font-weight: var(--fontWeight-black);
-  font-size: var(--fontSize-6);
+  font-size: var(--fontSize-4);
   color: var(--color-heading);
 }
 

@@ -6,7 +6,9 @@ const Projects: React.FC = (): ReactElement => {
   return (
     <>
       <Seo title="Projects" />
-      <ProjectsBody>Coming soon :)</ProjectsBody>
+      <ProjectsBody>
+        <h1>Projects.</h1>
+      </ProjectsBody>
     </>
   )
 }
