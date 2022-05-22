@@ -8,7 +8,6 @@ import Header from '@components/Header'
 const Layout: React.FC<PageProps> = ({ children, location }) => {
   return (
     <AnimatePresence exitBeforeEnter>
-      {/* <ConstructionBanner /> */}
       <motion.main
         key={location.pathname}
         initial={{ opacity: 0 }}
