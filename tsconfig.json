@@ -17,6 +17,8 @@
       "@components/*": ["components/*"],
       "@images/*": ["images/*"],
       "@layouts/*": ["layouts/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"],
       "@pages/*": ["pages/*"],
       "@blog/*": ["pages/blog/*"],
       "@resume/*": ["pages/resume/*"],

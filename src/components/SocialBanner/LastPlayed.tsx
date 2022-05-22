@@ -31,7 +31,7 @@ const LastPlayed: React.FC = (): ReactElement => {
   return (
     <Container>
       <div>
-        <h5>Last Played</h5>
+        <h2>Last Played</h2>
         <a href={data?.songHref} target="_blank" rel="noreferrer noopener">
           <HiddenDescription>
             Last.fm link to the song {data?.songTitle} by {data?.songArtist}{' '}
@@ -91,7 +91,8 @@ const Container = styled.div`
     }
   }
 
-  h5 {
+  h2 {
+    font-size: var(--fontSize-2);
     margin: unset;
     color: var(--color-text-secondary);
     margin-bottom: 8px;

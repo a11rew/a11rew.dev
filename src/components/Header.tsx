@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const { pathname } = useLocation()
 
   return (
-    <StyledHeader>
+    <StyledHeader id="header">
       <HomeTag>
         <NavLink to="/" $black>
           a11rew.
