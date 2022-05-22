@@ -27,8 +27,7 @@ const ContactForm: React.FC = (): React.ReactElement => {
         postContact(formData)
       }}
     >
-      <h5>Get in touch.</h5>
-      <div>
+      <IDWrapper>
         <label htmlFor="name">
           Name
           <input
@@ -48,7 +47,7 @@ const ContactForm: React.FC = (): React.ReactElement => {
             type="email"
           />
         </label>
-      </div>
+      </IDWrapper>
       <Message htmlFor="message">
         Message
         <textarea
@@ -85,27 +84,12 @@ const SubmitWrapper = styled.div`
 const FormWrapper = styled.form`
   width: fit-content;
 
-  h5 {
-    margin: unset;
-    margin: 60px 0;
-    font-size: 1.7rem;
-    font-weight: 500;
-
-    @media (max-width: 600px) {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-    }
-  }
-
   label {
-    font-size: 1.2rem;
     display: inline-flex;
     flex-direction: column;
     gap: 10px;
-    margin-right: 60px;
 
     @media (max-width: 600px) {
-      font-size: initial;
       margin-top: 10px;
     }
   }
@@ -128,7 +112,7 @@ const FormWrapper = styled.form`
 
 const Message = styled.label`
   display: flex;
-  width: 80%;
+  width: 100%;
   margin-top: 40px;
   transition: all 0.2s ease-in-out;
 
@@ -151,7 +135,6 @@ const Message = styled.label`
 `
 
 const SubmitButton = styled.button`
-  font-size: 1.2rem;
   background-color: var(--color-primary);
   color: white;
   padding: 10px 40px;
@@ -166,8 +149,12 @@ const SubmitButton = styled.button`
   }
 
   @media (max-width: 600px) {
-    font-size: initial;
   }
+`
+
+const IDWrapper = styled.div`
+  display: flex;
+  gap: 48px;
 `
 
 export default ContactForm

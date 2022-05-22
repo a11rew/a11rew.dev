@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
-// import styled from 'styled-components'
 
 import Seo from '@components/Seo'
 import Bio from './components/Bio'

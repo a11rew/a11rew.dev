@@ -20,7 +20,6 @@ module.exports = {
         trackingIds: ['G-66BSQ6DB4J'],
       },
     },
-    `gatsby-plugin-layout`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -176,5 +175,6 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sass`,
   ],
 }

@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <StyledHeader id="header">
       <HomeTag>
         <NavLink to="/" $black>
-          Andrew.
+          a11rew.
         </NavLink>
       </HomeTag>
       <Nav>
@@ -20,11 +20,11 @@ const Header: React.FC = () => {
             about
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to="/blog" $active={pathname === '/blog'}>
             blog
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <NavLink to="/projects" $active={pathname === '/projects'}>
             projects
@@ -48,7 +48,7 @@ const StyledHeader = styled.header`
   flex-direction: column;
   gap: 4px;
   padding: 40px 0;
-  font-size: 1.1rem;
+
   @media (min-width: 600px) {
     flex-direction: row;
     justify-content: space-between;

@@ -31,7 +31,6 @@ const useContact = (): {
       setIsLoading(false)
       setIsSuccess(true)
     } catch (err: any) {
-      console.log('Submit error', err)
       setError(err)
     }
 

@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { FiTwitter, FiGithub } from 'react-icons/fi'
 import { RiLinkedinLine } from 'react-icons/ri'
-import { BsLinkedin } from 'react-icons/bs'
 
 const Socials: React.FC = () => {
   return (
     <SocialContainer>
+      {/* <h5>Get to know me</h5> */}
       <SocialList>
         <SocialItem>
           <ExternalLink

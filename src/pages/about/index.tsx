@@ -6,7 +6,9 @@ const About: React.FC = (): ReactElement => {
   return (
     <>
       <Seo title="About" />
-      <AboutBody>Coming soon :)</AboutBody>
+      <AboutBody>
+        <h1>About.</h1>
+      </AboutBody>
     </>
   )
 }
