@@ -23,7 +23,7 @@ describe('Page header', () => {
   it('renders correctly', () => {
     const { container } = renderWithRouter(<Header />)
 
-    expect(container.innerHTML).toMatch('Andrew.')
+    expect(container.innerHTML).toMatch('a11rew.')
   })
 })
 
