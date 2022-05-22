@@ -20,11 +20,11 @@ const Header: React.FC = () => {
             about
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to="/blog" $active={pathname === '/blog'}>
             blog
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <NavLink to="/projects" $active={pathname === '/projects'}>
             projects

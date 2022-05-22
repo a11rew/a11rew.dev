@@ -20,17 +20,21 @@ var cursor = {
   setupEventListeners: function () {
     var self = this
 
-    // Anchor hovering
-    document.querySelectorAll('a').forEach(function (el) {
-      el.addEventListener('mouseover', function () {
-        self.cursorEnlarged = true
-        self.toggleCursorSize()
+    window.onload = function () {
+      // Anchor hovering
+      document.querySelectorAll('a').forEach(function (el) {
+        el.addEventListener('mouseover', function () {
+          self.cursorEnlarged = true
+          console.log('cursor enlarged')
+          self.toggleCursorSize()
+        })
+        el.addEventListener('mouseout', function () {
+          self.cursorEnlarged = false
+          console.log('cursor shrunk')
+          self.toggleCursorSize()
+        })
       })
-      el.addEventListener('mouseout', function () {
-        self.cursorEnlarged = false
-        self.toggleCursorSize()
-      })
-    })
+    }
 
     // Click events
     document.addEventListener('mousedown', function () {
@@ -85,10 +89,8 @@ var cursor = {
     var self = this
 
     if (self.cursorEnlarged) {
-      self.$dot.style.transform = 'translate(-50%, -50%) scale(0.75)'
-      self.$outline.style.transform = 'translate(-50%, -50%) scale(1.5)'
+      self.$outline.style.transform = 'translate(-50%, -50%) scale(1.7)'
     } else {
-      self.$dot.style.transform = 'translate(-50%, -50%) scale(1)'
       self.$outline.style.transform = 'translate(-50%, -50%) scale(1)'
     }
   },

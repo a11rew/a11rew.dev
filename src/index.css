@@ -43,15 +43,15 @@
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.75;
   --lineHeight-relaxed: 1.625;
-  /* 1.200 Minor Third Type Scale */
-  --fontSize-0: 0.833rem;
+  /* 1.200 Perfect Fourth Type Scale */
+  --fontSize-0: 0.75rem;
   --fontSize-1: 1rem;
-  --fontSize-2: 1.2rem;
-  --fontSize-3: 1.44rem;
-  --fontSize-4: 1.728rem;
-  --fontSize-5: 2.074rem;
-  --fontSize-6: 2.488rem;
-  --fontSize-7: 2.986rem;
+  --fontSize-2: 1.333rem;
+  --fontSize-3: 1.777rem;
+  --fontSize-4: 2.369rem;
+  --fontSize-5: 3.157rem;
+  --fontSize-6: 4.209rem;
+  --fontSize-7: 5.61rem;
   --color-primary: #005b99;
   --color-primary-dec: 0, 91, 153;
   --color-text: #2e353f;
@@ -80,7 +80,7 @@ html {
 }
 
 body {
-  /* background-image: paint(fleck); */
+  background-image: paint(fleck);
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
@@ -297,6 +297,9 @@ html[theme='light'] {
 
   /** Banner */
   --banner-background: hsl(24, 64%, 75%);
+
+  /** Divider */
+  --color-accent: hsl(0, 0%, 0%);
 }
 
 @media (max-width: 425px) {

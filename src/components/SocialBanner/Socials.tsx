@@ -6,7 +6,7 @@ import { SiGenius } from 'react-icons/si'
 const Socials: React.FC = () => {
   return (
     <SocialContainer>
-      <h5>Get to know me</h5>
+      {/* <h5>Get to know me</h5> */}
       <SocialList>
         <SocialItem>
           <ExternalLink
