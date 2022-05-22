@@ -7,16 +7,11 @@ const Contact: React.FC = (): ReactElement => {
   return (
     <Wrapper>
       <Seo title="Reach me" />
-      <CallToAction> We should work together!</CallToAction>
-      <IntroMessage>
-        I&apos;m always looking to connect with other developers, designers and
-        product people in general.
-        <br />
-        Re: an idea, positions or just to say hello, drop me a line below.
-      </IntroMessage>
+      <CallToAction>Contact.</CallToAction>
+
       <EmailMessage>
-        Or if you&apos;d rather, send me{' '}
-        <a href="mailto:andrewglago1@gmail.com">an email directly.</a>
+        Or if you&apos;d rather, send me an email at{' '}
+        <a href="mailto:hi@a11rew.dev"> hi@a11rew.dev.</a>
       </EmailMessage>
       <div>
         <ContactForm />
@@ -26,7 +21,6 @@ const Contact: React.FC = (): ReactElement => {
 }
 
 const Wrapper = styled.div`
-  font-size: 1.3rem;
   font-weight: 300;
   padding-bottom: 2em;
 
@@ -37,9 +31,7 @@ const Wrapper = styled.div`
 `
 
 const CallToAction = styled.h1`
-  color: unset;
-  font-weight: 300;
-  font-size: 4rem;
+  font-size: var(--fontSize-4);
 
   @media (max-width: 600px) {
     font-size: 3.5rem;
@@ -52,12 +44,12 @@ const CallToAction = styled.h1`
   }
 `
 
-const IntroMessage = styled.p``
-
 const EmailMessage = styled.p`
   a {
     text-decoration: none;
   }
+
+  margin-bottom: 5em;
 `
 
 export default Contact
