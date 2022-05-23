@@ -8,7 +8,7 @@ import Header from '@components/Header'
 const Layout: React.FC<PageProps> = ({ children, location }) => {
   return (
     <AnimatePresence exitBeforeEnter>
-      <motion.main
+      {/* <motion.main
         key={location.pathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -17,12 +17,12 @@ const Layout: React.FC<PageProps> = ({ children, location }) => {
           type: 'linear',
           duration: 0.2,
         }}
-      >
-        <Container>
-          <Header />
-          {children}
-        </Container>
-      </motion.main>
+      > */}
+      <Container>
+        <Header />
+        {children}
+      </Container>
+      {/* </motion.main> */}
     </AnimatePresence>
   )
 }
