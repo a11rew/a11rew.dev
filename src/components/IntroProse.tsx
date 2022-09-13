@@ -19,10 +19,10 @@ const IntroProse: React.FC = (): ReactElement => {
         for the web and beyond.
       </p>
 
-      <MoreInfoLink to="/about">
+      {/* <MoreInfoLink to="/about">
         <span>More about me</span>
         <div>⟶</div>
-      </MoreInfoLink>
+      </MoreInfoLink> */}
     </StyledIntro>
   )
 }
