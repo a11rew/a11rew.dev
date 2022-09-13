@@ -14,19 +14,19 @@ const Socials: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn
-          </ExternalLink>
-          <LiIcon />
-        </SocialItem>
-        <SocialItem>
-          <ExternalLink
-            href="https://github.com/a11rew"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
             Github
           </ExternalLink>
           <FiGithub />
+        </SocialItem>
+        <SocialItem>
+          <ExternalLink
+            href="https://www.linkedin.com/in/andrew-glago-50b6b4146/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </ExternalLink>
+          <LiIcon />
         </SocialItem>
         <SocialItem last>
           <ExternalLink
