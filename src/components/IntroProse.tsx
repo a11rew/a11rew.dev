@@ -2,6 +2,7 @@ import { Link } from 'gatsby'
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 import GlitchyText from './GlitchyText'
+import Socials from './SocialBanner/Socials'
 
 const IntroProse: React.FC = (): ReactElement => {
   return (
@@ -19,10 +20,7 @@ const IntroProse: React.FC = (): ReactElement => {
         for the web and beyond.
       </p>
 
-      {/* <MoreInfoLink to="/about">
-        <span>More about me</span>
-        <div>⟶</div>
-      </MoreInfoLink> */}
+      <Socials />
     </StyledIntro>
   )
 }
