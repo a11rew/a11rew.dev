@@ -15,21 +15,21 @@ const Header: React.FC = () => {
         </NavLink>
       </HomeTag>
       <Nav>
-        <div>
+        {/* <div>
           <NavLink to="/about" $active={pathname === '/about'}>
             about
           </NavLink>
-        </div>
+        </div> */}
         {/* <div>
           <NavLink to="/blog" $active={pathname === '/blog'}>
             blog
           </NavLink>
         </div> */}
-        <div>
+        {/* <div>
           <NavLink to="/projects" $active={pathname === '/projects'}>
             projects
           </NavLink>
-        </div>
+        </div> */}
         <div>
           <NavLink to="/contact" $active={pathname === '/contact'}>
             contact
