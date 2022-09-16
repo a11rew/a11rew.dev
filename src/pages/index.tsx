@@ -40,3 +40,4 @@ function LandingPage() {
     </div>
   );
 }
+
