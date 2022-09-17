@@ -6,14 +6,15 @@ const parent: Variants = {
     transition: {
       when: "beforeChildren",
       // Time between first and second text element animating in
-      staggerChildren: 0.8,
+      staggerChildren: 1.2,
     },
   },
   hidden: {},
   leaving: {
     transition: {
+      delayChildren: 1,
       // Time between first and second text element animating out
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
@@ -23,7 +24,7 @@ const child: Variants = {
     y: 0,
     transition: {
       type: "tween",
-      duration: 1.2,
+      duration: 0.8,
     },
   },
   hidden: {
@@ -55,13 +56,13 @@ export default function HomeIntro() {
         animate="visible"
         exit="leaving"
         onAnimationComplete={animationEnded}
-        className="h-screen bg-theme-bg-white w-full flex items-center justify-center"
+        className="flex items-center justify-center w-full h-screen bg-theme-bg-white"
       >
         <motion.div
           exit={{
             height: "50vh",
           }}
-          className="flex gap-2 text-2xl leading-9 font-bold overflow-hidden items-center"
+          className="flex items-center gap-1 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl"
         >
           <motion.p variants={child}>Andrew Glago.</motion.p>
           <motion.p variants={child}>Software Developer</motion.p>
@@ -72,6 +73,7 @@ export default function HomeIntro() {
         exit={{
           height: "100vh",
           transition: {
+            delay: 1,
             type: "tween",
             duration: 1,
           },
@@ -81,6 +83,7 @@ export default function HomeIntro() {
           exit={{
             height: 0,
             transition: {
+              delay: 1,
               type: "tween",
               duration: 1,
             },
