@@ -14,7 +14,7 @@ const parent: Variants = {
     transition: {
       delayChildren: 1,
       // Time between first and second text element animating out
-      staggerChildren: 1,
+      staggerChildren: 0.7,
     },
   },
 };
@@ -62,7 +62,7 @@ export default function HomeIntro() {
           exit={{
             height: "50vh",
           }}
-          className="flex items-center gap-1 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl"
+          className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl"
         >
           <motion.p variants={child}>Andrew Glago.</motion.p>
           <motion.p variants={child}>Software Developer</motion.p>
