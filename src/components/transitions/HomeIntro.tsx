@@ -7,7 +7,8 @@ const parent: Variants = {
       when: "beforeChildren",
       delayChildren: 0.2,
       // Time between first and second text element animating in
-      staggerChildren: 0.8,
+      // 0.8s is the time for the first
+      staggerChildren: 1.2,
     },
   },
   hidden: {},
@@ -16,7 +17,7 @@ const parent: Variants = {
     transition: {
       delayChildren: 1,
       // Time between first and second text element animating out
-      staggerChildren: -0.8,
+      staggerChildren: -1.2,
     },
   },
 };
@@ -63,11 +64,9 @@ export default function HomeIntro() {
         onAnimationComplete={animationEnded}
         className="flex items-center justify-center w-full h-screen bg-theme-bg-white"
       >
-        <motion.div className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl">
+        <motion.div className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 tracking-tighter sm:gap-2 sm:text-2xl">
           <motion.p variants={child}>Andrew Glago.</motion.p>
-          <motion.p className="translate-y-8" variants={child}>
-            Software Developer
-          </motion.p>
+          <motion.p variants={child}>Software Developer</motion.p>
         </motion.div>
       </motion.div>
       <motion.div
