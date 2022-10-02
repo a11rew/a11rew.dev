@@ -5,8 +5,9 @@ const parent: Variants = {
   visible: {
     transition: {
       when: "beforeChildren",
+      delayChildren: 0.2,
       // Time between first and second text element animating in
-      staggerChildren: 1.2,
+      staggerChildren: 0.8,
     },
   },
   hidden: {},
@@ -15,7 +16,7 @@ const parent: Variants = {
     transition: {
       delayChildren: 1,
       // Time between first and second text element animating out
-      staggerChildren: -1.2,
+      staggerChildren: -0.8,
     },
   },
 };
@@ -24,8 +25,11 @@ const child: Variants = {
   visible: {
     y: 0,
     transition: {
-      type: "tween",
+      type: "spring",
       duration: 0.8,
+      stiffness: 45.02,
+      damping: 15,
+      mass: 1,
     },
   },
   hidden: {
@@ -46,7 +50,7 @@ export default function HomeIntro() {
   } = useTransitionContext();
 
   function animationEnded() {
-    setIsTransitionComplete(true);
+    // setIsTransitionComplete(true);
   }
 
   return (
@@ -61,7 +65,9 @@ export default function HomeIntro() {
       >
         <motion.div className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl">
           <motion.p variants={child}>Andrew Glago.</motion.p>
-          <motion.p variants={child}>Software Developer</motion.p>
+          <motion.p className="translate-y-8" variants={child}>
+            Software Developer
+          </motion.p>
         </motion.div>
       </motion.div>
       <motion.div
