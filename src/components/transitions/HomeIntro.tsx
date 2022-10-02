@@ -34,7 +34,7 @@ const child: Variants = {
     y: "-150px",
     transition: {
       type: "tween",
-      duration: 2.4,
+      duration: 2.4 * 4,
     },
   },
 };
@@ -75,7 +75,7 @@ export default function HomeIntro() {
           transition: {
             delay: 1,
             type: "tween",
-            duration: 2,
+            duration: 2 * 4,
             ease: "easeInOut",
           },
         }}
@@ -86,7 +86,7 @@ export default function HomeIntro() {
             transition: {
               delay: 1,
               type: "tween",
-              duration: 2,
+              duration: 2 * 4,
               ease: "easeInOut",
             },
           }}
