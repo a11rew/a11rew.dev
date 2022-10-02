@@ -34,7 +34,7 @@ const child: Variants = {
     y: "-10vh",
     transition: {
       type: "tween",
-      duration: 1.2,
+      duration: 6,
     },
   },
 };
@@ -75,7 +75,8 @@ export default function HomeIntro() {
           transition: {
             delay: 1,
             type: "tween",
-            duration: 1,
+            duration: 5,
+            ease: "easeInOut",
           },
         }}
       >
@@ -85,7 +86,8 @@ export default function HomeIntro() {
             transition: {
               delay: 1,
               type: "tween",
-              duration: 1,
+              duration: 5,
+              ease: "easeInOut",
             },
           }}
           className="h-[40vh] w-full bg-theme-bg-white"
