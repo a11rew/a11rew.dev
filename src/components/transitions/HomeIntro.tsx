@@ -11,10 +11,11 @@ const parent: Variants = {
   },
   hidden: {},
   leaving: {
+    // y: "-100%",
     transition: {
       delayChildren: 1,
       // Time between first and second text element animating out
-      staggerChildren: 0.4,
+      staggerChildren: -1.2,
     },
   },
 };
@@ -31,10 +32,10 @@ const child: Variants = {
     y: "100%",
   },
   leaving: {
-    y: "-150px",
+    y: "100%",
     transition: {
       type: "tween",
-      duration: 2.4 * 4,
+      duration: 0.8,
     },
   },
 };
@@ -58,42 +59,23 @@ export default function HomeIntro() {
         onAnimationComplete={animationEnded}
         className="flex items-center justify-center w-full h-screen bg-theme-bg-white"
       >
-        <motion.div
-          exit={{
-            height: "50vh",
-          }}
-          className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl"
-        >
+        <motion.div className="flex items-center gap-2 overflow-hidden text-lg font-bold leading-9 sm:gap-2 sm:text-2xl">
           <motion.p variants={child}>Andrew Glago.</motion.p>
           <motion.p variants={child}>Software Developer</motion.p>
         </motion.div>
       </motion.div>
       <motion.div
-        className="absolute h-[20vh] bottom-0 left-0 w-full bg-blue-100"
+        className="absolute bottom-0 translate-y-[100vh] left-0 w-full h-screen bg-theme-bg-black"
         exit={{
-          height: "100vh",
+          y: "0",
           transition: {
             delay: 1,
             type: "tween",
-            duration: 2 * 4,
+            duration: 3,
             ease: "easeInOut",
           },
         }}
-      >
-        <motion.div
-          exit={{
-            height: 0,
-            transition: {
-              delay: 1,
-              type: "tween",
-              duration: 2 * 4,
-              ease: "easeInOut",
-            },
-          }}
-          className="h-[40vh] w-full bg-theme-bg-white"
-        />
-        <motion.div className="h-[100vh] w-full bg-theme-bg-black" />
-      </motion.div>
+      />
     </div>
   );
 }
