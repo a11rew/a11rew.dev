@@ -51,7 +51,7 @@ export default function HomeIntro() {
   } = useTransitionContext();
 
   function animationEnded() {
-    // setIsTransitionComplete(true);
+    setIsTransitionComplete(true);
   }
 
   return (
