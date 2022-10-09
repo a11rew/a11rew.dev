@@ -13,11 +13,12 @@ const parent: Variants = {
   },
   hidden: {},
   leaving: {
-    // y: "-100%",
+    y: "-166px", // 103.75 px per second
     transition: {
       delayChildren: 0.2,
       // Time between first and second text element animating out
       staggerChildren: -1.2,
+      duration: 1.6,
     },
   },
 };
@@ -40,7 +41,7 @@ const child: Variants = {
     y: "100%",
     transition: {
       type: "tween",
-      duration: 0.8,
+      duration: 1.2,
     },
   },
 };
@@ -55,7 +56,7 @@ export default function HomeIntro() {
   }
 
   return (
-    <div className="absolute w-full h-screen overflow-y-hidden">
+    <div className="relative w-full h-screen overflow-y-hidden">
       <motion.div
         variants={parent}
         initial="hidden"
@@ -70,13 +71,13 @@ export default function HomeIntro() {
         </motion.div>
       </motion.div>
       <motion.div
-        className="absolute bottom-0 translate-y-[100vh] left-0 w-full h-screen bg-theme-bg-black"
+        className="absolute top-0 w-full h-screen translate-y-full bg-theme-bg-black"
         exit={{
           y: "0",
           transition: {
             delay: 0.2,
             type: "tween",
-            duration: 1.5,
+            duration: 1.6,
             ease: "easeInOut",
           },
         }}
