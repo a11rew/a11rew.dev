@@ -15,7 +15,7 @@ const parent: Variants = {
   leaving: {
     // y: "-100%",
     transition: {
-      delayChildren: 1,
+      delayChildren: 0.2,
       // Time between first and second text element animating out
       staggerChildren: -1.2,
     },
@@ -74,9 +74,9 @@ export default function HomeIntro() {
         exit={{
           y: "0",
           transition: {
-            delay: 1,
+            delay: 0.2,
             type: "tween",
-            duration: 3,
+            duration: 1.5,
             ease: "easeInOut",
           },
         }}
