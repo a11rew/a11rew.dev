@@ -19,12 +19,22 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.cursor-dot-outline {
+  width: 16px;
+  height: 16px;
+  background-color: hsla(0, 0%, 100%, 0.01);
+  backdrop-filter: invert(100%);
+  -webkit-backdrop-filter: invert(100%);
 }
