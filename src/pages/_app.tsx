@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Component {...pageProps} />
       <div className="cursor-dot-outline" />
-      <div className="cursor-dot" />
     </>
   );
 }
