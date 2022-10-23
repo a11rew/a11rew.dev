@@ -16,8 +16,8 @@ const IntroProse: React.FC = (): ReactElement => {
       </h1>
 
       <p>
-        👋 Software developer passionate about building performant applications
-        for the web and beyond.
+        👋 Software developer currently most interested in building performant applications
+        for the web.
       </p>
 
       <Socials />
