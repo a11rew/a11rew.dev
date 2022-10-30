@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Logo from "@/assets/logo.svg";
+import AnimatedLink from "./animatables/AnimatedLink";
 
 function Header() {
   return (
@@ -12,14 +13,7 @@ function Header() {
 
       <nav className="hidden sm:flex gap-14">
         {links.map(({ href, label }, idx) => (
-          <Link href={href} key={href}>
-            <a
-              data-idx={`0${idx + 1}`}
-              className={`before:text-theme-text-white-muted before:text-xs before:align-top before:mr-1 before:content-[attr(data-idx)]`}
-            >
-              {label}
-            </a>
-          </Link>
+          <AnimatedLink key={href} href={href} label={label} index={idx} />
         ))}
       </nav>
     </header>
