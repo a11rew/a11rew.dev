@@ -41,7 +41,7 @@ function LandingPage() {
   return (
     <div className="min-h-screen text-theme-text-white bg-theme-bg-black">
       <div className="max-w-[1158px] m-auto px-6 h-screen">
-        <div className="fixed top-0 pt-16 w-full max-w-[1158px] m-auto pr-12">
+        <div className="fixed z-10 top-0 pt-16 w-full max-w-[1158px] m-auto pr-12">
           <Header />
         </div>
         <main className="relative flex flex-col justify-center h-screen">
@@ -63,8 +63,8 @@ function LandingPage() {
           <div className="absolute bottom-14 text-theme-text-white-muted">
             <button className="flex items-center gap-2">
               <span>SCROLL TO DISCOVER</span>
-              <span>
-                <ArrowDownIcon className="w-5 h-5 text-white animate-bounce" />
+              <span className="overflow-y-clip">
+                <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
               </span>
             </button>
           </div>

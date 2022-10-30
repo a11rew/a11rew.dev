@@ -29,6 +29,7 @@ a {
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 9999;
 }
 
 .cursor-dot-outline {
@@ -37,4 +38,5 @@ a {
   background-color: hsla(0, 0%, 100%, 0.01);
   backdrop-filter: invert(100%);
   -webkit-backdrop-filter: invert(100%);
+  z-index: 9999;
 }
