@@ -44,29 +44,38 @@ function LandingPage() {
         <div className="fixed z-10 top-0 pt-16 w-full max-w-[1158px] m-auto pr-12">
           <Header />
         </div>
-        <main className="relative flex flex-col justify-center h-screen">
-          <div className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold">
-            <span className="text-theme-text-white-muted">I am a</span> software
-            developer <Wave className="inline" />{" "}
-            <span className="text-theme-text-white-muted">
-              passionate about
-            </span>{" "}
-            building <Rocket className="inline" /> performant applications for
-            the web
-            <span className="text-theme-text-white-muted">
-              {" "}
-              and beyond
-            </span>{" "}
-            <Globe className="inline" />
-          </div>
+        <main>
+          <div className="relative flex flex-col justify-center h-screen">
+            <div className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold">
+              <span className="text-theme-text-white-muted">I am a</span>{" "}
+              software developer <Wave className="inline" />{" "}
+              <span className="text-theme-text-white-muted">
+                passionate about
+              </span>{" "}
+              building <Rocket className="inline" /> performant applications for
+              the web
+              <span className="text-theme-text-white-muted">
+                {" "}
+                and beyond
+              </span>{" "}
+              <Globe className="inline" />
+            </div>
 
-          <div className="absolute bottom-14 text-theme-text-white-muted">
-            <button className="flex items-center gap-2">
-              <span>SCROLL TO DISCOVER</span>
-              <span className="overflow-y-clip">
-                <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
-              </span>
-            </button>
+            <div className="absolute bottom-14 text-theme-text-white-muted">
+              <button className="flex items-center gap-2">
+                <span>SCROLL TO DISCOVER</span>
+                <span className="overflow-y-clip">
+                  <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
+                </span>
+              </button>
+            </div>
+          </div>
+          <div className="h-screen text-black">
+            <p className="max-w-[275px] font-medium mt-14">
+              Currently, I work at SuaCode.ai as a full-stack developer. My work
+              is focused on building technology to help democratize STEM
+              education in Africa.
+            </p>
           </div>
         </main>
       </div>
