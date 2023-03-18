@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Logo from "@/assets/logo.svg";
 import AnimatedLink from "./animatables/AnimatedLink";
 

@@ -5,7 +5,7 @@ const defaultMeta = {
   title: "Andrew Glago",
   siteName: "Andrew Glago's Blog & Portfolio Site",
   description:
-    "A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky",
+    "Thoughts from this side of the template literal. Andrew Glago's blog and portfolio site.",
   url: "https://a11rew.dev",
   type: "website",
   robots: "follow, index",
