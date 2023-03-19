@@ -83,7 +83,7 @@ function LandingPage() {
         </div>
         <main>
           <div className="relative flex flex-col justify-center h-screen">
-            <div className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold">
+            <div className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold cursor-default">
               <span className="text-theme-text-white-muted">I am a</span>{" "}
               software developer <Wave className="inline" />{" "}
               <span className="text-theme-text-white-muted">

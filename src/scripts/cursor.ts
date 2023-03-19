@@ -1,124 +1,102 @@
-if (typeof window !== "undefined") {
-  const cursor = {
-    delay: 4,
-    _x: 0,
-    _y: 0,
-    dotSize: 0,
-    outlineSize: 0,
-    endX: window.innerWidth / 2,
-    endY: window.innerHeight / 2,
-    cursorVisible: true,
-    cursorEnlarged: false,
-    timeout_id: null as number | null,
-    $outline: document.querySelector(".cursor-dot-outline") as HTMLDivElement,
+class CursorTrail {
+  speed = 0.1;
+  outlineSize = 0;
 
-    init: function () {
-      // Set up element sizes
-      this.outlineSize = this.$outline?.offsetWidth ?? 0;
-      this.timeout_id, this.setupEventListeners();
-      this.animateDotOutline();
-    },
+  mouse: { x: number; y: number } = { x: 0, y: 0 };
+  trail: { x: number; y: number } = { x: 0, y: 0 };
 
-    setupEventListeners: function () {
-      var self = this;
+  timeoutId: number | null = null;
+  $trail: HTMLDivElement;
 
-      window.onload = function () {
-        // Anchor hovering
-        document.querySelectorAll("a").forEach(function (el) {
-          el.addEventListener("mouseover", function () {
-            self.cursorEnlarged = true;
-            self.toggleCursorSize();
-          });
-          el.addEventListener("mouseout", function () {
-            self.cursorEnlarged = false;
-            self.toggleCursorSize();
-          });
+  constructor() {
+    this.$trail = document.querySelector(".cursor-trail") as HTMLDivElement;
+    this.outlineSize = this.$trail?.offsetWidth ?? 0;
+    this.setupEventListeners();
+    this.animateDotOutline();
+  }
+
+  setupEventListeners = () => {
+    window.addEventListener("load", () => {
+      // Anchor hovering
+      document.querySelectorAll("a").forEach((el) => {
+        el.addEventListener("mouseover", () => {
+          this.toggleCursorSize(true);
         });
-      };
-
-      // Click events
-      document.addEventListener("mousedown", function () {
-        self.cursorEnlarged = true;
-        self.toggleCursorSize();
+        el.addEventListener("mouseout", () => {
+          this.toggleCursorSize(false);
+        });
       });
-      document.addEventListener("mouseup", function () {
-        self.cursorEnlarged = false;
-        self.toggleCursorSize();
-      });
+    });
 
-      document.addEventListener("mousemove", function (e) {
-        // Show the cursor
-        self.cursorVisible = true;
-        self.toggleCursorVisibility();
+    // Click events
+    document.addEventListener("mousedown", () => {
+      this.toggleCursorSize(true);
+    });
+    document.addEventListener("mouseup", () => {
+      this.toggleCursorSize(false);
+    });
 
-        // Position the dot
-        // TODO: update to use transform
-        self.endX = e.pageX;
-        self.endY = e.pageY;
-      });
+    document.addEventListener("mousemove", (e) => {
+      // Show the cursor
+      this.toggleCursorVisibility(true);
 
-      // Hide/show cursor
-      document.addEventListener("mouseenter", function (e) {
-        self.cursorVisible = true;
-        self.toggleCursorVisibility();
-        self.$outline.style.opacity = "1";
-      });
+      // Position the dot
+      this.mouse.x = e.clientX;
+      this.mouse.y = e.clientY;
+    });
 
-      document.addEventListener("mouseleave", function (e) {
-        self.cursorVisible = true;
-        self.toggleCursorVisibility();
-        self.$outline.style.opacity = "0";
-      });
-    },
+    // Hide/show cursor
+    document.addEventListener("mouseenter", () => {
+      this.toggleCursorVisibility(true);
+    });
 
-    animateDotOutline: function () {
-      var self = this;
-
-      self._x += (self.endX - self._x) / self.delay;
-      self._y += (self.endY - self._y) / self.delay;
-      self.$outline.style.top = self._y + "px";
-      self.$outline.style.left = self._x + "px";
-
-      requestAnimationFrame(this.animateDotOutline.bind(self));
-    },
-
-    toggleCursorSize: function () {
-      var self = this;
-
-      if (self.cursorEnlarged) {
-        self.$outline.style.transform = "translate(-50%, -50%) scale(1.7)";
-      } else {
-        self.$outline.style.transform = "translate(-50%, -50%) scale(1)";
-      }
-    },
-
-    toggleCursorVisibility: function () {
-      var self = this;
-
-      if (self.cursorVisible) {
-        self.$outline.style.opacity = "1";
-
-        this.debounce();
-      } else {
-        self.$outline.style.opacity = "0";
-      }
-    },
-
-    debounce: function () {
-      var self = this;
-
-      if (this.timeout_id) {
-        // Cancel prev timeout
-        window.clearTimeout(this.timeout_id);
-      }
-      let id = window.setTimeout(() => {
-        self.$outline.style.opacity = "0";
-      }, 2000);
-
-      this.timeout_id = id;
-    },
+    document.addEventListener("mouseleave", () => {
+      this.toggleCursorVisibility(false);
+    });
   };
 
-  cursor.init();
+  animateDotOutline = () => {
+    this.trail.x += Math.round(this.mouse.x - this.trail.x) * this.speed;
+    this.trail.y += Math.round(this.mouse.y - this.trail.y) * this.speed;
+
+    this.$trail.style.transform = `translate3d(${
+      this.trail.x - this.outlineSize / 2
+    }px, ${this.trail.y - this.outlineSize / 2}px, 0)`;
+
+    requestAnimationFrame(this.animateDotOutline);
+  };
+
+  toggleCursorSize = (enlarge: boolean) => {
+    if (enlarge) {
+      this.$trail.style.transform = `translate3d(${
+        this.trail.x - this.outlineSize / 2
+      }px, ${this.trail.y - this.outlineSize / 2}px, 0) scale(1.7)`;
+    } else {
+      this.$trail.style.transform = `translate3d(${
+        this.trail.x - this.outlineSize / 2
+      }px, ${this.trail.y - this.outlineSize / 2}px, 0) scale(1)`;
+    }
+  };
+
+  toggleCursorVisibility = (show: boolean) => {
+    this.$trail.style.opacity = show ? "1" : "0";
+    if (show) {
+      this.debounce();
+    }
+  };
+
+  debounce = () => {
+    if (this.timeoutId) {
+      // Cancel prev timeout
+      window.clearTimeout(this.timeoutId);
+    }
+
+    const id = window.setTimeout(() => {
+      this.$trail.style.opacity = "0";
+    }, 2000);
+
+    this.timeoutId = id;
+  };
 }
-export {};
+
+export default CursorTrail;
