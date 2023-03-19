@@ -1,4 +1,5 @@
 import { motion, Variants } from "framer-motion";
+
 import { useTransitionContext } from ".";
 
 const parent: Variants = {
@@ -27,11 +28,9 @@ const child: Variants = {
   visible: {
     y: 0,
     transition: {
-      type: "spring",
+      type: "tween",
+      ease: "easeInOut",
       duration: 0.8,
-      stiffness: 45.02,
-      damping: 15,
-      mass: 1,
     },
   },
   hidden: {

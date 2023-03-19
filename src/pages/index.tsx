@@ -1,27 +1,16 @@
-import {
-  AnimatePresence,
-  useScroll,
-  motion,
-  useInView,
-  useTransform,
-  useVelocity,
-  useSpring,
-  useMotionValue,
-  useAnimationFrame,
-} from "framer-motion";
+import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import { AnimatePresence } from "framer-motion";
 
+import Globe from "@/assets/sprites/globe.svg";
+import Rocket from "@/assets/sprites/rocket.svg";
+import Wave from "@/assets/sprites/wave.svg";
+import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import {
   TransitionContextProvider,
   useTransitionContext,
 } from "@/components/transitions";
 import HomeIntro from "@/components/transitions/HomeIntro";
-import Header from "@/components/Header";
-import Wave from "@/assets/sprites/wave.svg";
-import Rocket from "@/assets/sprites/rocket.svg";
-import Globe from "@/assets/sprites/globe.svg";
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
-import { useRef } from "react";
 
 export default function Home() {
   return (
@@ -49,32 +38,6 @@ function LandingPageWithAnimatedIntro() {
 }
 
 function LandingPage() {
-  const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    stiffness: 300,
-    damping: 50,
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false,
-  });
-  const x = useTransform(baseX, (v) => `${wrap(0, -25, v)}%`);
-  const directionFactor = useRef<number>(1);
-
-  useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * -5 * (delta / 1000);
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
-    }
-    if (velocityFactor.get() !== 0) {
-      moveBy += directionFactor.current * moveBy * velocityFactor.get();
-      baseX.set(baseX.get() + moveBy);
-    }
-  });
-
   return (
     <div className="min-h-screen text-theme-text-white bg-theme-bg-black">
       <div className="max-w-[1158px] m-auto px-6 h-screen">
@@ -115,11 +78,8 @@ function LandingPage() {
             </p>
 
             <div>
-              <motion.div
-                style={{ x }}
-                className="flex w-full h-auto gap-4 overflow-hidden mt-14"
-              >
-                <motion.h2
+              <div className="flex w-full h-auto gap-4 overflow-hidden mt-14">
+                <h2
                   style={{
                     WebkitTextStroke: "1px #000",
                     WebkitTextFillColor: "#fff",
@@ -127,8 +87,8 @@ function LandingPage() {
                   className="italic font-bold text-[40px] transition-all ease-linear duration-200 whitespace-nowrap text-white"
                 >
                   featured-work
-                </motion.h2>
-                <motion.h2
+                </h2>
+                <h2
                   style={{
                     WebkitTextStroke: "1px #000",
                     WebkitTextFillColor: "#fff",
@@ -136,8 +96,8 @@ function LandingPage() {
                   className="italic font-bold text-[40px] transition-all ease-linear duration-200 whitespace-nowrap text-white"
                 >
                   featured-work
-                </motion.h2>
-              </motion.div>
+                </h2>
+              </div>
             </div>
           </div>
         </main>

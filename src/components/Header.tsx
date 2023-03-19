@@ -1,11 +1,13 @@
 import React from "react";
+
 import Logo from "@/assets/logo.svg";
+
 import AnimatedLink from "./animatables/AnimatedLink";
 
 function Header() {
   return (
     <header className="flex justify-between w-full font-bold">
-      <h1 className="flex items-center gap-2">
+      <h1 className="flex items-center gap-2 cursor-default">
         <Logo />
         Andrew Glago
       </h1>
