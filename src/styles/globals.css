@@ -19,24 +19,20 @@ a {
   box-sizing: border-box;
 }
 
-.cursor-dot,
-.cursor-dot-outline {
-  pointer-events: none;
+.cursor-trail {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  z-index: 9999;
-}
-
-.cursor-dot-outline {
   width: 16px;
   height: 16px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+
   background-color: hsla(0, 0%, 100%, 0.01);
   backdrop-filter: invert(100%);
   -webkit-backdrop-filter: invert(100%);
   z-index: 9999;
+  will-change: transform;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: opacity 0.3s ease-in-out;
 }
