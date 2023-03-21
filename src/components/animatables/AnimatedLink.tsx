@@ -21,7 +21,7 @@ const AnimatedLink = ({ href, label, index }: Props) => {
     >
       {[...Array(2)].map((_, idx) => (
         <span
-          key={2}
+          key={idx}
           className="group-hover:-translate-y-[32.5px] transition-all duration-[600ms]"
         >
           {label}

@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import Globe from "@/assets/sprites/globe.svg";
 import Rocket from "@/assets/sprites/rocket.svg";
 import Wave from "@/assets/sprites/wave.svg";
+import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import {
@@ -46,20 +47,23 @@ function LandingPage() {
         </div>
         <main>
           <div className="relative flex flex-col justify-center h-screen">
-            <div className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold cursor-default">
-              <span className="text-theme-text-white-muted">I am a</span>{" "}
-              software developer <Wave className="inline" />{" "}
+            <AnimatedLineBlock
+              className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold cursor-default"
+              replacements={{
+                "*:g": <Globe className="inline mr-[12px]" />,
+                "*:r": <Rocket className="inline mr-[12px]" />,
+                "*:w": <Wave className="inline mr-[12px]" />,
+              }}
+            >
+              <span className="text-theme-text-white-muted">I am a</span>
+              software developer *:w
               <span className="text-theme-text-white-muted">
                 passionate about
-              </span>{" "}
-              building <Rocket className="inline" /> performant applications for
-              the web
-              <span className="text-theme-text-white-muted">
-                {" "}
-                and beyond
-              </span>{" "}
-              <Globe className="inline" />
-            </div>
+              </span>
+              building *:r performant applications for the web
+              <span className="text-theme-text-white-muted">and beyond</span>
+              *:g
+            </AnimatedLineBlock>
 
             <div className="absolute bottom-14 text-theme-text-white-muted">
               <button className="flex items-center gap-2">
@@ -105,8 +109,3 @@ function LandingPage() {
     </div>
   );
 }
-
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min;
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
