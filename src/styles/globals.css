@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.doc-padding {
+  padding-top: clamp(32px, 7.2vh, 56px);
+  padding-bottom: clamp(32px, 7.2vh, 56px);
+}
+
 html,
 body {
   padding: 0;
