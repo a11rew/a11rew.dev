@@ -1,11 +1,13 @@
-import React from "react";
+/* eslint-disable react/display-name */
+import React, { forwardRef } from "react";
 
-type Props = {};
-
-const Showcase = (props: Props) => {
+const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
   return (
-    <div className="h-screen text-black">
-      <p className="max-w-[275px] font-medium mt-14">
+    <div
+      ref={ref}
+      className="h-screen text-black bg-theme-bg-white doc-padding"
+    >
+      <p className="max-w-[275px] font-medium">
         Currently, I work at SuaCode.ai as a full-stack developer. My work is
         focused on building technology to help democratize STEM education in
         Africa.
@@ -35,6 +37,6 @@ const Showcase = (props: Props) => {
       </div>
     </div>
   );
-};
+});
 
 export default Showcase;

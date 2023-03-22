@@ -1,9 +1,12 @@
-import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
+import { useRef } from "react";
 
 import { sprites } from "@/assets/sprites";
+import ArrowDownIcon from "@/assets/sprites/downArrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Header from "@/components/Header";
+import Showcase from "@/components/landing/showcase";
 import SEO from "@/components/SEO";
 import {
   TransitionContextProvider,
@@ -37,9 +40,18 @@ function LandingPageWithAnimatedIntro() {
 }
 
 function LandingPage() {
+  const lenis = useLenis(null);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const scrollShowcaseIntoView = () => {
+    lenis.scrollTo(ref.current, {
+      duration: 1.6,
+    });
+  };
+
   return (
     <div className="min-h-screen">
-      <div className=" text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto px-6 h-screen min-h-[600px] doc-padding flex flex-col justify-between">
+      <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
         <Header entryAnimation />
         <AnimatedLineBlock
           className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
@@ -57,14 +69,18 @@ function LandingPage() {
           *:g
         </AnimatedLineBlock>
         <div className="text-theme-text-white-muted">
-          <button className="flex items-center gap-2">
+          <button
+            onClick={scrollShowcaseIntoView}
+            className="flex items-center gap-2"
+          >
             <span>SCROLL TO DISCOVER</span>
-            <span className="overflow-y-clip">
+            <span className="mb-1 overflow-y-clip">
               <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
             </span>
           </button>
         </div>
       </div>
+      <Showcase ref={ref} />
     </div>
   );
 }
