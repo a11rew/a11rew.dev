@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 type Props = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const isAnimated = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current && !isAnimated.current) {
       isAnimated.current = true;
       const Splitting = require("splitting");

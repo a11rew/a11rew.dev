@@ -31,7 +31,7 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {true ? <LandingPage key={2} /> : <HomeIntro key={1} />}
+      {isTransitionComplete ? <LandingPage key={2} /> : <HomeIntro key={1} />}
     </AnimatePresence>
   );
 }
