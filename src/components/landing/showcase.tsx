@@ -2,6 +2,8 @@
 import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
 
+import FeaturedWork from "@/assets/sprites/featured-work.svg";
+
 const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div ref={ref} className="h-screen m-auto text-black showcase">
@@ -30,16 +32,9 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
             }}
           >
             {Array.from({ length: 5 }).map((_, i) => (
-              <h2
-                key={i}
-                style={{
-                  WebkitTextStroke: "1px #7A7A7A",
-                  WebkitTextFillColor: "#fff",
-                }}
-                className="mr-10 italic font-bold text-white featured whitespace-nowrap"
-              >
-                featured-work
-              </h2>
+              <div key={i} className="mr-10 shrink-0">
+                <FeaturedWork />
+              </div>
             ))}
           </Tween>
         </div>
