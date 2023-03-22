@@ -41,10 +41,10 @@ function LandingPage() {
     <div className="min-h-screen text-theme-text-white bg-theme-bg-black">
       <div className="max-w-[1158px] m-auto px-6 h-screen">
         <div className="fixed z-10 top-0 pt-16 w-full max-w-[1158px] m-auto pr-12">
-          <Header />
+          <Header entryAnimation />
         </div>
         <main>
-          <div className="relative flex flex-col justify-center h-screen">
+          <div className="relative flex flex-col justify-center h-screen min-h-[600px]">
             <AnimatedLineBlock
               className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
               replacements={{

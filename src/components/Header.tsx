@@ -1,4 +1,5 @@
 import React from "react";
+import { Tween } from "react-gsap";
 
 import Logo from "@/assets/logo.svg";
 
@@ -11,16 +12,34 @@ type Props = {
 function Header({ entryAnimation = false }: Props) {
   return (
     <header className="flex justify-between w-full font-bold">
-      <h1 className="flex items-center gap-2 cursor-default">
-        <Logo />
-        Andrew Glago
-      </h1>
+      <div className="overflow-hidden">
+        <Tween
+          {...(entryAnimation && {
+            from: { yPercent: 100 },
+            to: { yPercent: 0, duration: 1.5, ease: "power4" },
+          })}
+        >
+          <h1 className="flex items-center gap-2 cursor-default">
+            <Logo />
+            Andrew Glago
+          </h1>
+        </Tween>
+      </div>
 
-      <nav className="hidden sm:flex gap-14">
-        {links.map(({ href, label }, idx) => (
-          <AnimatedLink key={href} href={href} label={label} index={idx} />
-        ))}
-      </nav>
+      <div className="overflow-hidden">
+        <Tween
+          {...(entryAnimation && {
+            from: { yPercent: 100 },
+            to: { yPercent: 0, duration: 1.5, ease: "power4" },
+          })}
+        >
+          <nav className="hidden pl-6 sm:flex gap-14">
+            {links.map(({ href, label }, idx) => (
+              <AnimatedLink key={href} href={href} label={label} index={idx} />
+            ))}
+          </nav>
+        </Tween>
+      </div>
     </header>
   );
 }
