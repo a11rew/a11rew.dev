@@ -80,7 +80,9 @@ function LandingPage() {
           </button>
         </div>
       </div>
-      <Showcase ref={ref} />
+      <div className="bg-theme-bg-white">
+        <Showcase ref={ref} />
+      </div>
     </div>
   );
 }

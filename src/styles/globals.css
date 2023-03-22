@@ -8,6 +8,16 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+.doc-padding-top {
+  padding-top: clamp(32px, 7.2vh, 56px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.doc-padding-bottom {
+  padding-bottom: clamp(32px, 7.2vh, 56px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 
 html,
 body {
