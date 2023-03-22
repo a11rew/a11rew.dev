@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 
 import { sprites } from "@/assets/sprites";
-import ArrowDownIcon from "@/assets/sprites/downArrow.svg";
+import ArrowDownIcon from "@/assets/sprites/down-arrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Header from "@/components/Header";
 import Showcase from "@/components/landing/showcase";

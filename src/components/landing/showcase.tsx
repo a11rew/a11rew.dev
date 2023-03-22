@@ -16,11 +16,10 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
 
       <div>
-        <div className="flex w-full h-auto gap-6 overflow-hidden mt-12 text-[17rem] leading-[17rem] cursor-default select-none">
+        <div className="flex w-full h-auto gap-6 overflow-hidden my-12 text-[17rem] leading-[17rem] cursor-default select-none">
           <Tween
             from={{
               x: "-25%",
-              ease: "none",
             }}
             to={{
               x: "-100%",
