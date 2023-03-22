@@ -1,9 +1,7 @@
 import { ArrowDownIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence } from "framer-motion";
 
-import Globe from "@/assets/sprites/globe.svg";
-import Rocket from "@/assets/sprites/rocket.svg";
-import Wave from "@/assets/sprites/wave.svg";
+import { sprites } from "@/assets/sprites";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
@@ -33,7 +31,7 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {isTransitionComplete ? <LandingPage key={2} /> : <HomeIntro key={1} />}
+      {true ? <LandingPage key={2} /> : <HomeIntro key={1} />}
     </AnimatePresence>
   );
 }
@@ -48,11 +46,11 @@ function LandingPage() {
         <main>
           <div className="relative flex flex-col justify-center h-screen">
             <AnimatedLineBlock
-              className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.25rem] font-bold cursor-default"
+              className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
               replacements={{
-                "*:g": <Globe className="inline mr-[12px]" />,
-                "*:r": <Rocket className="inline mr-[12px]" />,
-                "*:w": <Wave className="inline mr-[12px]" />,
+                "*:g": sprites.globe,
+                "*:r": sprites.rocket,
+                "*:w": sprites.wave,
               }}
             >
               <span className="text-theme-text-white-muted">I am a</span>

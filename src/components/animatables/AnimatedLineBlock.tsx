@@ -1,13 +1,9 @@
 import { gsap } from "gsap";
-import React, { useEffect, useRef, useState } from "react";
-import ReactDOMServer from "react-dom/server";
-
-import { replaceNodeWithReactComponent } from "@/utils";
-// import Splitting from "splitting";
+import React, { useEffect, useRef } from "react";
 
 type Props = {
   children: React.ReactNode;
-  replacements?: Record<string, React.ReactNode>;
+  replacements?: Record<string, string>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
@@ -31,8 +27,10 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
 
         const line = document.createElement("p");
         lineContainer.append(line);
+
         // Wrap each line in a container
         ref.current?.appendChild(lineContainer);
+
         lineWords.forEach((word) => {
           const text = word.textContent;
           if (!text) return;
@@ -40,7 +38,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
           // Replace words with replacements
           if (replacements && replacements[text]) {
             const replacement = replacements[text];
-            replaceNodeWithReactComponent(word, replacement);
+            word.innerHTML = replacement;
           } else {
             word.textContent = `${word.textContent} `;
           }
