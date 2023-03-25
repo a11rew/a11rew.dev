@@ -1,3 +1,5 @@
+import isTouchDevice from "is-touch-device";
+
 class CursorTrail {
   speed = 0.1;
   outlineSize = 0;
@@ -6,9 +8,13 @@ class CursorTrail {
   trail: { x: number; y: number } = { x: 0, y: 0 };
 
   timeoutId: number | null = null;
-  $trail: HTMLDivElement;
+  $trail: HTMLDivElement | null = null;
 
   constructor() {
+    if (isTouchDevice()) {
+      return;
+    }
+
     this.$trail = document.querySelector(".cursor-trail") as HTMLDivElement;
     this.outlineSize = this.$trail?.offsetWidth ?? 0;
     this.setupEventListeners();
@@ -59,26 +65,30 @@ class CursorTrail {
     this.trail.x += Math.round(this.mouse.x - this.trail.x) * this.speed;
     this.trail.y += Math.round(this.mouse.y - this.trail.y) * this.speed;
 
-    this.$trail.style.transform = `translate3d(${
-      this.trail.x - this.outlineSize / 2
-    }px, ${this.trail.y - this.outlineSize / 2}px, 0)`;
+    if (this.$trail) {
+      this.$trail.style.transform = `translate3d(${
+        this.trail.x - this.outlineSize / 2
+      }px, ${this.trail.y - this.outlineSize / 2}px, 0)`;
+    }
 
     requestAnimationFrame(this.animateDotOutline);
   };
 
   toggleCursorSize = (enlarge: boolean) => {
-    if (enlarge) {
+    if (enlarge && this.$trail) {
       this.$trail.style.transform = `translate3d(${
         this.trail.x - this.outlineSize / 2
       }px, ${this.trail.y - this.outlineSize / 2}px, 0) scale(1.7)`;
     } else {
-      this.$trail.style.transform = `translate3d(${
-        this.trail.x - this.outlineSize / 2
-      }px, ${this.trail.y - this.outlineSize / 2}px, 0) scale(1)`;
+      if (this.$trail)
+        this.$trail.style.transform = `translate3d(${
+          this.trail.x - this.outlineSize / 2
+        }px, ${this.trail.y - this.outlineSize / 2}px, 0) scale(1)`;
     }
   };
 
   toggleCursorVisibility = (show: boolean) => {
+    if (!this.$trail) return;
     this.$trail.style.opacity = show ? "1" : "0";
     if (show) {
       this.debounce();
@@ -92,7 +102,7 @@ class CursorTrail {
     }
 
     const id = window.setTimeout(() => {
-      this.$trail.style.opacity = "0";
+      if (this.$trail) this.$trail.style.opacity = "0";
     }, 2000);
 
     this.timeoutId = id;
