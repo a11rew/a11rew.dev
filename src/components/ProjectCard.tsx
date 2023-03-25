@@ -19,7 +19,7 @@ const ProjectCard = ({ title, description, image, role, left }: Props) => {
           left && "sm:flex-row-reverse"
         )}
       >
-        <div className="h-[85vh] sm:w-[72.8%] bg-[#EBEBEB] relative shrink-0 mb-4 sm:mb-0">
+        <div className="h-[85vh] sm:w-[62.8%] bg-[#EBEBEB] relative shrink-0 mb-4 sm:mb-0">
           {image ? (
             <img
               className="absolute inset-0 object-cover w-full h-full"
@@ -28,18 +28,33 @@ const ProjectCard = ({ title, description, image, role, left }: Props) => {
             />
           ) : null}
         </div>
-        <div className={clsx("sm:absolute bottom-0", !left && "right-0")}>
+        <div
+          className={clsx("sm:absolute bottom-[10vh]", !left && "right-[5%]")}
+        >
           <h1
             className={clsx(
-              "sm:text-[80px] text-4xl font-medium sm:leading-[104px] pb-8 sm:pb-4",
-              !left && "sm:text-right"
+              "sm:text-[80px] text-4xl font-medium sm:leading-[104px] pb-8 sm:pb-4 relative w-fit ml-auto overflow-hidden",
+              !left && "sm:text-right",
+              "group"
             )}
           >
             {title}
+            <span
+              className={clsx(
+                "absolute bottom-[10px] left-0 w-full transition-all ease-in-out h-[6px] bg-black",
+                "-translate-x-full group-hover:translate-x-0 duration-[1.2s]"
+              )}
+            />
+            <span
+              className={clsx(
+                "absolute bottom-[10px] left-0 w-full transition-all ease-in-out h-[6px] bg-black",
+                "translate-x-full group-hover:translate-x-0 duration-[1.2s]"
+              )}
+            />
           </h1>
           <div
             className={clsx(
-              "sm:w-[27.2%]",
+              "sm:w-[33%]",
               left ? "mr-auto sm:pr-5" : "ml-auto sm:pl-5"
             )}
           >

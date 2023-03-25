@@ -41,7 +41,17 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
         </div>
       </div>
 
-      <div className="max-w-[1158px] m-auto doc-padding flex flex-col gap-[15vh]">
+      <div className="max-w-[1158px] m-auto doc-padding flex flex-col gap-[15vh] relative">
+        <div
+          className="right-0 ml-auto -mb-[8vh] font-medium text-right sm:absolute"
+          style={{
+            top: "clamp(32px, 7.2vh, 56px)",
+            right: "1.5rem",
+          }}
+        >
+          <h2>Selected works</h2>
+          <p>2021-2023</p>
+        </div>
         <ProjectCard
           title="Working.xyz"
           description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
