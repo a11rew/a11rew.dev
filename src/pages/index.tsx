@@ -1,3 +1,4 @@
+import { ReactLenis } from "@studio-freight/react-lenis";
 import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
@@ -34,7 +35,13 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {isTransitionComplete ? <LandingPage key={2} /> : <HomeIntro key={1} />}
+      {isTransitionComplete ? (
+        <ReactLenis root>
+          <LandingPage key={2} />
+        </ReactLenis>
+      ) : (
+        <HomeIntro key={1} />
+      )}
     </AnimatePresence>
   );
 }
