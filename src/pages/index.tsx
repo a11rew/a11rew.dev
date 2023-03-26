@@ -7,6 +7,7 @@ import { sprites } from "@/assets/sprites";
 import ArrowDownIcon from "@/assets/sprites/down-arrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Header from "@/components/Header";
+import OtherProjects from "@/components/landing/OtherProjects";
 import Showcase from "@/components/landing/Showcase";
 import SEO from "@/components/SEO";
 import {
@@ -87,8 +88,11 @@ function LandingPage() {
           </button>
         </div>
       </div>
-      <div className="bg-theme-bg-white">
+      <div>
         <Showcase ref={ref} />
+      </div>
+      <div>
+        <OtherProjects />
       </div>
     </div>
   );

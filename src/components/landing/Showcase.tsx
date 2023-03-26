@@ -8,7 +8,10 @@ import ProjectCard from "../ProjectCard";
 
 const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
   return (
-    <div ref={ref} className="min-h-screen m-auto text-black showcase">
+    <div
+      ref={ref}
+      className="min-h-screen m-auto text-black showcase bg-theme-bg-white"
+    >
       <div className="max-w-[1158px] m-auto doc-padding-top">
         <p className="max-w-[275px] font-medium">
           Currently, I work at SuaCode.ai as a full-stack developer. My work is
@@ -17,7 +20,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
         </p>
       </div>
 
-      <div>
+      <div className="py-[10vh]">
         <div className="flex w-full h-auto gap-6 overflow-hidden my-12 text-[17rem] leading-[17rem] cursor-default select-none">
           <Tween
             from={{
