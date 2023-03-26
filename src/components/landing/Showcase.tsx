@@ -10,7 +10,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div
       ref={ref}
-      className="min-h-screen m-auto text-black showcase bg-theme-bg-white"
+      className="min-h-screen m-auto text-black showcase bg-theme-bg-white pb-[10vh]"
     >
       <div className="max-w-[1158px] m-auto doc-padding-top">
         <p className="max-w-[275px] font-medium">

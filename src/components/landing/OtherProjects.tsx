@@ -4,7 +4,7 @@ import ArrowUpRightIcon from "@/assets/sprites/up-right-arow.svg";
 
 const OtherProjects = () => {
   return (
-    <div className="text-theme-bg-white doc-padding max-w-[1158px] m-auto">
+    <div className="text-theme-bg-white doc-padding max-w-[1158px] m-auto min-h-screen">
       <h1 className="sm:text-[80px] text-4xl font-medium sm:leading-[104px] text-center mt-8 sm:mt-24 mb-20">
         OTHER PROJECTS
       </h1>
