@@ -42,27 +42,15 @@ export default function Footer() {
           </a>
           <div className="flex flex-col justify-between gap-8 lg:items-end lg:flex-row">
             <div className="flex flex-wrap gap-4 mt-4 mb-8 lg:mt-0 lg:mb-0">
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.github.com/a11rew"
-              >
-                <FooterExternalButton>Github</FooterExternalButton>
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/andrew-glago-50b6b4146/"
-              >
-                <FooterExternalButton>Linkedin</FooterExternalButton>
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.twitter.com/a11rew"
-              >
-                <FooterExternalButton>Twitter</FooterExternalButton>
-              </a>
+              <FooterExternalButton href="https://www.github.com/a11rew">
+                Github
+              </FooterExternalButton>
+              <FooterExternalButton href="https://www.linkedin.com/in/andrew-glago-50b6b4146/">
+                Linkedin
+              </FooterExternalButton>
+              <FooterExternalButton href="https://www.twitter.com/a11rew">
+                Twitter
+              </FooterExternalButton>
             </div>
             <div className="text-lg text-center md:text-left lg:text-right space-y-q text-theme-text-white-muted">
               <p className="mb-2">With ❤️ from 🇬🇭 and 🇳🇬</p>
@@ -93,12 +81,18 @@ export default function Footer() {
 
 type Props = {
   children: React.ReactNode;
+  href: string;
 };
 
-function FooterExternalButton({ children }: Props) {
+function FooterExternalButton({ href, children }: Props) {
   return (
-    <button className="w-[calc(50% -1rem)] w-full md:w-auto md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted">
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="block w-[calc(50% -1rem)] text-center w-full md:w-auto md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted"
+    >
       {children}
-    </button>
+    </a>
   );
 }
