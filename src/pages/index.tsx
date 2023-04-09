@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { sprites } from "@/assets/sprites";
 import ArrowDownIcon from "@/assets/sprites/down-arrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import OtherProjects from "@/components/landing/OtherProjects";
 import Showcase from "@/components/landing/Showcase";
@@ -93,6 +94,9 @@ function LandingPage() {
       </div>
       <div>
         <OtherProjects />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

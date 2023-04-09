@@ -32,9 +32,20 @@ module.exports = {
             "animation-timing-function": "ease-in-out",
           },
         },
+        "over-bounce-reverse": {
+          "0%, 80%": {
+            transform: "translateY(0%)",
+            "animation-timing-function": "ease-in-out",
+          },
+          "100%": {
+            transform: "translateY(-100%)",
+            "animation-timing-function": "ease-in-out",
+          },
+        },
       },
       animation: {
         "over-bounce": "over-bounce 1s infinite alternate",
+        "over-bounce-reverse": "over-bounce-reverse 1s infinite alternate",
       },
     },
   },
