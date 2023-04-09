@@ -55,3 +55,8 @@ a {
   border-radius: 50%;
   transition: opacity 0.3s ease-in-out;
 }
+
+.mail-cursor {
+  cursor: url("/assets/mail.png"), pointer;
+  transition: all 0.3s ease-in-out;
+}

@@ -35,9 +35,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-center md:text-left lg:text-[10.5rem] lg:leading-[16rem] md:text-[6.5rem] md:leading-[10rem] text-8xl font-medium uppercase mb-12">
-            Reach out
-          </h2>
+          <a href="mailto:andrewglago1@gmail.com" className="mail-cursor group">
+            <h2 className="opacity-10 group-hover:opacity-100 ease-in-out duration-200 text-center md:text-left lg:text-[10.5rem] lg:leading-[16rem] md:text-[6.5rem] md:leading-[10rem] text-8xl font-medium uppercase mb-12">
+              Reach out
+            </h2>
+          </a>
           <div className="flex flex-col justify-between gap-8 lg:items-end lg:flex-row">
             <div className="flex flex-wrap gap-4 mt-4 mb-8 lg:mt-0 lg:mb-0">
               <a
