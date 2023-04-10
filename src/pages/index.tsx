@@ -1,3 +1,4 @@
+import riveWASMUrl from "@rive-app/canvas/rive.wasm";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
@@ -76,6 +77,12 @@ function LandingPage() {
         <link
           rel="preload"
           href="/assets/wave.riv"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href={riveWASMUrl}
           as="fetch"
           crossOrigin="anonymous"
         />

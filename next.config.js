@@ -8,6 +8,11 @@ const nextConfig = {
       use: ["@svgr/webpack"],
     });
 
+    config.module.rules.push({
+      test: /\.wasm$/,
+      use: ["url-loader"],
+    });
+
     return config;
   },
   i18n: {

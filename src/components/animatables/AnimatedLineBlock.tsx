@@ -1,6 +1,7 @@
-import { EventType, Rive } from "@rive-app/canvas";
+import { EventType, Rive, RuntimeLoader } from "@rive-app/canvas";
+import riveWASM from "@rive-app/canvas/rive.wasm";
 import { gsap } from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 
@@ -8,6 +9,8 @@ type Props = {
   children: React.ReactNode;
   replacements?: Record<string, string>;
 } & React.HTMLAttributes<HTMLDivElement>;
+
+RuntimeLoader.setWasmUrl(riveWASM);
 
 const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
