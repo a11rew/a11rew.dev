@@ -2,6 +2,8 @@ import { EventType, Rive } from "@rive-app/canvas";
 import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
+
 type Props = {
   children: React.ReactNode;
   replacements?: Record<string, string>;
@@ -11,7 +13,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const isAnimated = useRef(false);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (ref.current && !isAnimated.current) {
       isAnimated.current = true;
       const animatableInstances: Rive[] = [];
