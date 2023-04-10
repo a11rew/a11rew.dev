@@ -51,7 +51,6 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
             const riveInstance = new Rive({
               src: replacements[text],
               canvas,
-              useOffscreenRenderer: true,
               onLoad: () => {
                 riveInstance.resizeDrawingSurfaceToCanvas();
               },
@@ -70,7 +69,6 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
       });
 
       ref.current.style.opacity = "1";
-      ref.current.style.userSelect = "none";
 
       gsap.from(lines, {
         yPercent: 100,
@@ -106,6 +104,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
       ref={ref}
       style={{
         opacity: 0,
+        userSelect: "none",
       }}
       {...rest}
     >
