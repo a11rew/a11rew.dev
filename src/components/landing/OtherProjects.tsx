@@ -52,6 +52,7 @@ const OtherProjectCard = ({ name, tech, description }: Props) => {
             <p className="text-medium text-theme-text-white-muted">{tech}</p>
           </div>
           <button className="bg-[#3D3D3D] p-4 rounded-full group">
+            <p className="sr-only">Visit {name} on GitHub</p>
             <ArrowUpRightIcon className="transition-transform duration-200 ease-in-out group-hover:rotate-45" />
           </button>
         </div>

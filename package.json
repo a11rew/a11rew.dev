@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.11",
+    "@next/bundle-analyzer": "^13.3.0",
     "@rive-app/canvas": "^1.1.1",
     "@studio-freight/react-lenis": "^0.0.12",
     "@svgr/webpack": "^6.3.1",
