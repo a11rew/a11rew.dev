@@ -3,7 +3,6 @@ import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 
-import { sprites } from "@/assets/sprites";
 import ArrowDownIcon from "@/assets/sprites/down-arrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Footer from "@/components/Footer";
@@ -65,7 +64,7 @@ function LandingPage() {
         <AnimatedLineBlock
           className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
           replacements={{
-            "*:g": sprites.globe,
+            "*:g": "/assets/globe.riv",
             "*:r": "/assets/rocket.riv",
             "*:w": "/assets/wave.riv",
           }}

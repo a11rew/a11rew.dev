@@ -40,29 +40,24 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
 
           // Replace words with replacements
           if (replacements && replacements[text]) {
-            if (text === "*:r" || text === "*:w") {
-              // Create canvas child
-              const canvas = document.createElement("canvas");
-              canvas.style.display = "inline";
-              canvas.className = "h-[3.5rem] w-[4rem] md:-ml-3 -ml-1";
+            // Create canvas child
+            const canvas = document.createElement("canvas");
+            canvas.style.display = "inline";
+            canvas.className = "h-[3.5rem] w-[4rem] md:-ml-3 -ml-1";
 
-              // Instantiate rive
-              const riveInstance = new Rive({
-                src: replacements[text],
-                canvas,
-                useOffscreenRenderer: true,
-                onLoad: () => {
-                  riveInstance.resizeDrawingSurfaceToCanvas();
-                },
-              });
+            // Instantiate rive
+            const riveInstance = new Rive({
+              src: replacements[text],
+              canvas,
+              useOffscreenRenderer: true,
+              onLoad: () => {
+                riveInstance.resizeDrawingSurfaceToCanvas();
+              },
+            });
 
-              animatableInstances.push(riveInstance);
+            animatableInstances.push(riveInstance);
 
-              word.replaceChildren(canvas);
-            } else {
-              const replacement = replacements[text];
-              word.innerHTML = replacement;
-            }
+            word.replaceChildren(canvas);
           } else {
             word.textContent = `${word.textContent} `;
           }
