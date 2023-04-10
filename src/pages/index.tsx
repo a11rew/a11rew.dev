@@ -80,12 +80,6 @@ function LandingPage() {
           as="fetch"
           crossOrigin="anonymous"
         />
-        <link
-          rel="preload"
-          href={riveWASMUrl}
-          as="fetch"
-          crossOrigin="anonymous"
-        />
       </Head>
       <div className="min-h-screen">
         <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
