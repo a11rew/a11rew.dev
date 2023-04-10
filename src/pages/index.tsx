@@ -37,7 +37,7 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {isTransitionComplete ? (
+      {!isTransitionComplete ? (
         <ReactLenis root>
           <LandingPage key={2} />
         </ReactLenis>
@@ -66,16 +66,14 @@ function LandingPage() {
           className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
           replacements={{
             "*:g": sprites.globe,
-            "*:r": sprites.rocket,
+            "*:r": "/assets/rocket.riv",
             "*:w": sprites.wave,
           }}
         >
-          <span className="text-theme-text-white-muted">I am a</span>
-          software developer *:w
+          Software developer *:w
           <span className="text-theme-text-white-muted">passionate about</span>
-          building *:r performant applications for the web
+          building performant *:r applications for the web *:g
           <span className="text-theme-text-white-muted">and beyond</span>
-          *:g
         </AnimatedLineBlock>
         <div className="text-theme-text-white-muted">
           <button

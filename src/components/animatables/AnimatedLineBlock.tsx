@@ -1,3 +1,4 @@
+import { Rive } from "@rive-app/canvas";
 import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 
@@ -37,8 +38,30 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
 
           // Replace words with replacements
           if (replacements && replacements[text]) {
-            const replacement = replacements[text];
-            word.innerHTML = replacement;
+            if (text === "*:r") {
+              // Create canvas child
+              const canvas = document.createElement("canvas");
+              canvas.style.display = "inline";
+              canvas.className = "h-[3.5rem] w-[4rem] -ml-2";
+
+              // Instantiate rive
+              const riveInstance = new Rive({
+                src: replacements[text],
+                canvas,
+                useOffscreenRenderer: true,
+                onLoad: () => {
+                  riveInstance.resizeDrawingSurfaceToCanvas();
+                  setTimeout(() => {
+                    riveInstance.play();
+                  }, 5000);
+                },
+              });
+
+              word.replaceChildren(canvas);
+            } else {
+              const replacement = replacements[text];
+              word.innerHTML = replacement;
+            }
           } else {
             word.textContent = `${word.textContent} `;
           }
@@ -49,6 +72,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
       });
 
       ref.current.style.opacity = "1";
+      ref.current.style.userSelect = "none";
 
       gsap.from(lines, {
         yPercent: 100,
