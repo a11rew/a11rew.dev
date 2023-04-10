@@ -1,4 +1,4 @@
-import { Rive } from "@rive-app/canvas";
+import { EventType, Rive } from "@rive-app/canvas";
 import { gsap } from "gsap";
 import React, { useEffect, useRef } from "react";
 
@@ -14,6 +14,8 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   useEffect(() => {
     if (ref.current && !isAnimated.current) {
       isAnimated.current = true;
+      const animatableInstances: Rive[] = [];
+
       const Splitting = require("splitting");
 
       const split = Splitting({
@@ -38,11 +40,11 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
 
           // Replace words with replacements
           if (replacements && replacements[text]) {
-            if (text === "*:r") {
+            if (text === "*:r" || text === "*:w") {
               // Create canvas child
               const canvas = document.createElement("canvas");
               canvas.style.display = "inline";
-              canvas.className = "h-[3.5rem] w-[4rem] -ml-2";
+              canvas.className = "h-[3.5rem] w-[4rem] md:-ml-3 -ml-1";
 
               // Instantiate rive
               const riveInstance = new Rive({
@@ -51,11 +53,10 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
                 useOffscreenRenderer: true,
                 onLoad: () => {
                   riveInstance.resizeDrawingSurfaceToCanvas();
-                  setTimeout(() => {
-                    riveInstance.play();
-                  }, 5000);
                 },
               });
+
+              animatableInstances.push(riveInstance);
 
               word.replaceChildren(canvas);
             } else {
@@ -79,6 +80,26 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
         duration: 1.5,
         stagger: 0.1,
         ease: "power4",
+        onComplete: () => {
+          // Run animations in sequence
+          setTimeout(() => {
+            // Play first animation and play next animation when first animation is complete
+            // Use the onStop callback to play the next animation
+            const playInstanceAndNext = (idx: number) => {
+              const instance = animatableInstances[idx];
+              instance.play();
+              instance.on(EventType.Stop, () => {
+                // Recursively play next animation
+                if (idx < animatableInstances.length - 1) {
+                  playInstanceAndNext(idx + 1);
+                }
+              });
+            };
+
+            playInstanceAndNext(0);
+            // Start playing animations after 5 seconds
+          }, 5000);
+        },
       });
     }
   }, [ref, replacements]);

@@ -67,7 +67,7 @@ function LandingPage() {
           replacements={{
             "*:g": sprites.globe,
             "*:r": "/assets/rocket.riv",
-            "*:w": sprites.wave,
+            "*:w": "/assets/wave.riv",
           }}
         >
           Software developer *:w
