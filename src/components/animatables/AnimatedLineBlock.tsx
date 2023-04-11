@@ -15,11 +15,33 @@ RuntimeLoader.setWasmUrl(riveWASM);
 const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const isAnimated = useRef(false);
+  const isSequencePlaying = useRef(false);
 
   useIsomorphicLayoutEffect(() => {
     if (ref.current && !isAnimated.current) {
       isAnimated.current = true;
       const animatableInstances: Rive[] = [];
+
+      const playInstanceAndNext = (idx: number) => {
+        if (idx === 0 && isSequencePlaying.current) return;
+
+        // Play first animation and play next animation when first animation is complete
+        // Use the onStop callback to play the next animation
+        const instance = animatableInstances[idx];
+        instance.play("root");
+        isSequencePlaying.current = true;
+        instance.on(EventType.Stop, () => {
+          // Recursively play next animation
+          if (idx < animatableInstances.length - 1) {
+            playInstanceAndNext(idx + 1);
+          } else {
+            setTimeout(() => {
+              // Space out activations
+              isSequencePlaying.current = false;
+            }, 3000);
+          }
+        });
+      };
 
       const Splitting = require("splitting");
 
@@ -73,6 +95,10 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
 
       ref.current.style.opacity = "1";
 
+      ref.current.onmouseenter = () => {
+        playInstanceAndNext(0);
+      };
+
       gsap.from(lines, {
         yPercent: 100,
         duration: 1.5,
@@ -81,22 +107,9 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
         onComplete: () => {
           // Run animations in sequence
           setTimeout(() => {
-            // Play first animation and play next animation when first animation is complete
-            // Use the onStop callback to play the next animation
-            const playInstanceAndNext = (idx: number) => {
-              const instance = animatableInstances[idx];
-              instance.play();
-              instance.on(EventType.Stop, () => {
-                // Recursively play next animation
-                if (idx < animatableInstances.length - 1) {
-                  playInstanceAndNext(idx + 1);
-                }
-              });
-            };
-
             playInstanceAndNext(0);
-            // Start playing animations after 5 seconds
-          }, 5000);
+            // Start playing animations after 1 second
+          }, 1000);
         },
       });
     }

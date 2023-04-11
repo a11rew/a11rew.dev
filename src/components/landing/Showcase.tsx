@@ -52,7 +52,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
             right: "1.5rem",
           }}
         >
-          <h2>Selected works</h2>
+          <h2>Selected work</h2>
           <p>2021-2023</p>
         </div>
         <ProjectCard
