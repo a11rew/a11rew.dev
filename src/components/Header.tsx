@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { Tween } from "react-gsap";
 
@@ -21,10 +22,12 @@ function Header({ entryAnimation = false, white }: Props) {
             to: { yPercent: 0, duration: 1.5, ease: "power4" },
           })}
         >
-          <h1 className="flex items-center gap-2 cursor-default">
-            {white ? <LogoDark /> : <Logo />}
-            Andrew Glago
-          </h1>
+          <Link href="/">
+            <h1 className="flex items-center gap-2">
+              {white ? <LogoDark /> : <Logo />}
+              Andrew Glago
+            </h1>
+          </Link>
         </Tween>
       </div>
 

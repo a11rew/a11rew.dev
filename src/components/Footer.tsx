@@ -18,10 +18,10 @@ export default function Footer({ page = false }: Props) {
       )}
     >
       <div className="w-full max-w-[1158px] flex flex-col justify-between">
-        <div className="flex items-center justify-between">
-          <p>&copy; {new Date().getUTCFullYear()}</p>
+        {!page && (
+          <div className="flex items-center justify-between">
+            <p>&copy; {new Date().getUTCFullYear()}</p>
 
-          {!page && (
             <div>
               <button
                 className="flex items-center gap-4 group"
@@ -42,8 +42,8 @@ export default function Footer({ page = false }: Props) {
                 </div>
               </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="mt-16">
           <a href="mailto:andrewglago1@gmail.com" className="mail-cursor group">
@@ -64,24 +64,31 @@ export default function Footer({ page = false }: Props) {
               </FooterExternalButton>
             </div>
             <div className="text-lg text-center md:text-left lg:text-right space-y-q text-theme-text-white-muted">
-              <p className="mb-2">With ❤️ from 🇬🇭 and 🇳🇬</p>
-              <a
-                className="block"
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/eloke-ikiliagwu/"
-              >
-                Designed by{" "}
-                <b className="text-theme-bg-black">Eloke Ikiliagwu</b>
-              </a>
-              <a
-                className="block"
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/andrew-glago-50b6b4146/"
-              >
-                Developed by <b className="text-theme-bg-black">Andrew Glago</b>
-              </a>
+              {page ? (
+                <p>&copy; {new Date().getUTCFullYear()}</p>
+              ) : (
+                <>
+                  <p className="mb-2">With ❤️ from 🇬🇭 and 🇳🇬</p>
+                  <a
+                    className="block"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/in/eloke-ikiliagwu/"
+                  >
+                    Designed by{" "}
+                    <b className="text-theme-bg-black">Eloke Ikiliagwu</b>
+                  </a>
+                  <a
+                    className="block"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/in/andrew-glago-50b6b4146/"
+                  >
+                    Developed by{" "}
+                    <b className="text-theme-bg-black">Andrew Glago</b>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
