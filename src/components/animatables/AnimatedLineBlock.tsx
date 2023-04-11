@@ -25,6 +25,8 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
       const playInstanceAndNext = (idx: number) => {
         if (idx === 0 && isSequencePlaying.current) return;
 
+        if (animatableInstances.length === 0) return;
+
         // Play first animation and play next animation when first animation is complete
         // Use the onStop callback to play the next animation
         const instance = animatableInstances[idx];

@@ -2,14 +2,16 @@ import React from "react";
 import { Tween } from "react-gsap";
 
 import Logo from "@/assets/logo.svg";
+import LogoDark from "@/assets/logo-dark.svg";
 
 import AnimatedLink from "./animatables/AnimatedLink";
 
 type Props = {
   entryAnimation?: boolean;
+  white?: boolean;
 };
 
-function Header({ entryAnimation = false }: Props) {
+function Header({ entryAnimation = false, white }: Props) {
   return (
     <header className="flex justify-between w-full font-bold">
       <div className="overflow-hidden">
@@ -20,7 +22,7 @@ function Header({ entryAnimation = false }: Props) {
           })}
         >
           <h1 className="flex items-center gap-2 cursor-default">
-            <Logo />
+            {white ? <LogoDark /> : <Logo />}
             Andrew Glago
           </h1>
         </Tween>

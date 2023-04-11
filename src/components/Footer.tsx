@@ -4,34 +4,45 @@ import React from "react";
 
 import ArrowUpIcon from "@/assets/sprites/up-arrow.svg";
 
-export default function Footer() {
+type Props = {
+  page?: boolean;
+};
+
+export default function Footer({ page = false }: Props) {
   const lenis = useLenis(null);
   return (
-    <div className="flex justify-center min-h-[800px] bg-theme-bg-white doc-padding">
+    <div
+      className={clsx(
+        "flex justify-center bg-theme-bg-white doc-padding",
+        !page && "min-h-[800px]"
+      )}
+    >
       <div className="w-full max-w-[1158px] flex flex-col justify-between">
         <div className="flex items-center justify-between">
           <p>&copy; {new Date().getUTCFullYear()}</p>
 
-          <div>
-            <button
-              className="flex items-center gap-4 group"
-              onClick={() => {
-                lenis.scrollTo(0, {
-                  duration: 1.6,
-                });
-              }}
-            >
-              BACK TO TOP
-              <div className="bg-[#3D3D3D] md:p-3 rounded-full">
-                <ArrowUpIcon
-                  className={clsx(
-                    "transition-transform duration-200 ease-in-out",
-                    "group-hover:animate-over-bounce-reverse"
-                  )}
-                />
-              </div>
-            </button>
-          </div>
+          {!page && (
+            <div>
+              <button
+                className="flex items-center gap-4 group"
+                onClick={() => {
+                  lenis.scrollTo(0, {
+                    duration: 1.6,
+                  });
+                }}
+              >
+                BACK TO TOP
+                <div className="bg-[#3D3D3D] md:p-3 rounded-full">
+                  <ArrowUpIcon
+                    className={clsx(
+                      "transition-transform duration-200 ease-in-out",
+                      "group-hover:animate-over-bounce-reverse"
+                    )}
+                  />
+                </div>
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="mt-16">
@@ -79,12 +90,12 @@ export default function Footer() {
   );
 }
 
-type Props = {
+type FooterExternalButtonProps = {
   children: React.ReactNode;
   href: string;
 };
 
-function FooterExternalButton({ href, children }: Props) {
+function FooterExternalButton({ href, children }: FooterExternalButtonProps) {
   return (
     <a
       href={href}
