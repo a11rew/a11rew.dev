@@ -47,12 +47,12 @@ export default function Footer({ page = false }: Props) {
 
         <div className="mt-16">
           <a href="mailto:andrewglago1@gmail.com" className="mail-cursor group">
-            <h2 className="opacity-10 group-hover:opacity-100 ease-in-out duration-200 text-center md:text-left lg:text-[10.5rem] lg:leading-[16rem] md:text-[6.5rem] md:leading-[10rem] text-8xl font-medium uppercase mb-12">
+            <h2 className="opacity-10 group-hover:opacity-100 ease-in-out duration-200 text-left lg:text-[10.5rem] lg:leading-[16rem] md:text-[6.5rem] md:leading-[10rem] text-8xl font-medium uppercase mb-12">
               Reach out
             </h2>
           </a>
           <div className="flex flex-col justify-between gap-8 lg:items-end lg:flex-row">
-            <div className="flex flex-wrap gap-4 mt-4 mb-8 lg:mt-0 lg:mb-0">
+            <div className="flex flex-col items-end gap-4 mt-4 mb-8 lg:flex-row lg:mt-0 lg:mb-0">
               <FooterExternalButton href="https://www.github.com/a11rew">
                 Github
               </FooterExternalButton>
@@ -63,7 +63,7 @@ export default function Footer({ page = false }: Props) {
                 Twitter
               </FooterExternalButton>
             </div>
-            <div className="text-lg text-center md:text-left lg:text-right space-y-q text-theme-text-white-muted">
+            <div className="text-lg text-left lg:text-right space-y-q text-theme-text-white-muted">
               {page ? (
                 <p>&copy; {new Date().getUTCFullYear()}</p>
               ) : (
@@ -108,7 +108,7 @@ function FooterExternalButton({ href, children }: FooterExternalButtonProps) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="block w-[calc(50% -1rem)] text-center w-full md:w-auto md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted"
+      className="block w-full lg:w-auto text-center md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted"
     >
       {children}
     </a>
