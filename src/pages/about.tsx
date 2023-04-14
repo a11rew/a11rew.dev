@@ -1,15 +1,17 @@
+import clsx from "clsx";
+import Image from "next/image";
 import React from "react";
+import { Tween } from "react-gsap";
 
 import StickerSquare from "@/assets/sprites/sticker-square.svg";
+import OutsideWork from "@/assets/wordmarks/outside-work.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import ExternalLink from "@/components/ExternalLink";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LastPlayed from "@/components/LastPlayed";
 
-type Props = {};
-
-export default function AboutPage({}: Props) {
+export default function AboutPage() {
   return (
     <div className="min-h-screen bg-theme-bg-white">
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
@@ -54,6 +56,116 @@ export default function AboutPage({}: Props) {
             </div>
             <div className="flex items-center col-span-1 row-span-1 pt-8 md:pt-0 md:block">
               <LastPlayed />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex w-full h-auto gap-6 overflow-scroll scrollbar-hide md:my-12 md:mb-28 text-[17rem] leading-[17rem] cursor-default select-none">
+        <Tween
+          from={{
+            x: "-25%",
+          }}
+          to={{
+            x: "-100%",
+            ease: "none",
+            scrollTrigger: {
+              end: "bottom center",
+              scrub: true,
+            },
+          }}
+        >
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div key={i} className="mr-10 shrink-0">
+              <OutsideWork />
+            </div>
+          ))}
+        </Tween>
+      </div>
+
+      <div className="overflow-x-hidden scrollbar-hide min-h-[805px] about mt-12">
+        <div className="m-auto doc-padding max-w-[1158px] relative">
+          <div className="relative justify-between w-full gap-8 md:flex">
+            <div className="sticky top-0 flex flex-col gap-12">
+              <p className="max-w-xs">
+                Outside work, I am an avid gamer, currently having the most fun
+                with the Tomb Raider trilogy. Catch me on{" "}
+                <ExternalLink href="https://www.instagram.com/fps_andrew/">
+                  Instagram
+                </ExternalLink>{" "}
+                and{" "}
+                <ExternalLink href="https://www.youtube.com/channel/UCYMi1weuwpJZUNPfCFFD0yQ">
+                  YouTube
+                </ExternalLink>{" "}
+                making a montage of your favorite PUBGM player.
+              </p>
+              <p className="max-w-xs">
+                When I am not behind my desk trying to figure out why on earth
+                they were called{" "}
+                <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/atob">
+                  atob
+                </ExternalLink>{" "}
+                and{" "}
+                <ExternalLink href="https://developer.mozilla.org/en-US/docs/Web/API/btoa">
+                  btoa
+                </ExternalLink>
+                , I enjoy cycling down my city streets under the neon lit cold
+                nights.
+              </p>
+              <p className="max-w-xs">
+                I&apos;m a big basketball fan as well, you could find me{" "}
+                <ExternalLink href="https://youtu.be/QT8w8Ot8Pcw?t=72">
+                  Shaq posting up
+                </ExternalLink>{" "}
+                on the court any given Friday.
+              </p>
+            </div>
+
+            <div
+              className={clsx(
+                "flex md:flex-wrap mt-16 md:mt-0 m-auto md:max-w-[80%] md:justify-end gap-8 pr-[25%] lg:pr-[7%]",
+                "md:absolute md:right-[-15%]  overflow-scroll scrollbar-hide"
+              )}
+            >
+              <Tween
+                from={{
+                  x: "40%",
+                }}
+                to={{
+                  x: "-5%",
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: ".about",
+                    start: "top center",
+                    end: "bottom top",
+                    scrub: true,
+                  },
+                }}
+              >
+                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
+                  <Image
+                    src="/assets/photos/basketball.png"
+                    fill
+                    objectFit="cover"
+                    alt="Andrew handling a basketball. Cause clean handles, obviously."
+                  />
+                </div>
+                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
+                  <Image
+                    src="/assets/photos/bicycle.jpeg"
+                    fill
+                    objectFit="cover"
+                    alt="Andrew's bicycle"
+                  />
+                </div>
+                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
+                  <Image
+                    src="/assets/photos/esports.png"
+                    fill
+                    objectFit="cover"
+                    alt="Andrew posing for an esports competition promo photo"
+                  />
+                </div>
+              </Tween>
             </div>
           </div>
         </div>

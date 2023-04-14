@@ -39,7 +39,7 @@ const fetchLastplayed = async (): Promise<SongData> => {
 };
 
 const LastPlayed: React.FC = (): ReactElement => {
-  const { data, error } = useSWR("lp", fetchLastplayed);
+  const { data, error, isLoading } = useSWR("lp", fetchLastplayed);
 
   if (error) {
     console.error(error);
@@ -48,7 +48,7 @@ const LastPlayed: React.FC = (): ReactElement => {
   const songData = data ?? defaultSongData;
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 min-h-[140px]">
       <div>
         <a href={songData.songHref} target="_blank" rel="noreferrer noopener">
           <p className="sr-only">
@@ -57,11 +57,13 @@ const LastPlayed: React.FC = (): ReactElement => {
           </p>
           <SpotifyLogo size={20} />
         </a>
-        <h2 className="mt-2">Last played</h2>
+        <h2 className="mt-2">{isLoading ? "Loading..." : "Last played"}</h2>
       </div>
-      <p className="font-bold">
-        {songData.songArtist} / {songData.songTitle}
-      </p>
+      {!isLoading && (
+        <p className="font-bold">
+          {songData.songArtist} / {songData.songTitle}
+        </p>
+      )}
     </div>
   );
 };

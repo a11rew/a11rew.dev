@@ -2,7 +2,7 @@
 import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
 
-import FeaturedWork from "@/assets/sprites/featured-work.svg";
+import FeaturedWork from "@/assets/wordmarks/featured-work.svg";
 
 import ProjectCard from "../ProjectCard";
 
@@ -21,7 +21,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
 
       <div className="py-[10vh]">
-        <div className="flex w-full h-auto gap-6 overflow-hidden my-12 text-[17rem] leading-[17rem] cursor-default select-none">
+        <div className="flex w-full h-auto gap-6 overflow-scroll scrollbar-hide my-12 text-[17rem] leading-[17rem] cursor-default select-none">
           <Tween
             from={{
               x: "-25%",
