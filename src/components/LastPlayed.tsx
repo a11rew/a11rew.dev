@@ -1,45 +1,10 @@
 import React, { ReactElement } from "react";
-import useSWR from "swr";
 
 import SpotifyLogo from "@/assets/sprites/spotify.svg";
-
-interface SongData {
-  songTitle: string;
-  songAlbum: string;
-  songArtist: string;
-  songHref: string;
-}
-
-const defaultSongData: SongData = {
-  songTitle: "Empty Highways.",
-  songAlbum: "Yellow",
-  songArtist: "Shane Eagle",
-  songHref: "https://www.last.fm/music/Shane+Eagle/Yellow/Empty+Highways.",
-};
-
-const fetchLastplayed = async (): Promise<SongData> => {
-  const lastFMKey = process.env.NEXT_PUBLIC_LASTFM_KEY;
-
-  if (!lastFMKey) {
-    throw new Error("No LastFM API key found");
-  }
-
-  const data = await fetch(
-    `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=a11rew&limit=1&api_key=${lastFMKey}&format=json`
-  );
-  const res = await data.json();
-  const track = res.recenttracks.track[0];
-
-  return {
-    songTitle: track.name,
-    songAlbum: track.album["#text"],
-    songArtist: track.artist["#text"],
-    songHref: track.url,
-  };
-};
+import { defaultSongData, useFetchLastPlayed } from "@/hooks/music";
 
 const LastPlayed: React.FC = (): ReactElement => {
-  const { data, error, isLoading } = useSWR("lp", fetchLastplayed);
+  const { data, error, isLoading } = useFetchLastPlayed();
 
   if (error) {
     console.error(error);
