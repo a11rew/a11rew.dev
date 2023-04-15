@@ -62,10 +62,6 @@ const links = [
     href: "/posts",
     label: "Posts",
   },
-  {
-    href: "/contact",
-    label: "Contact",
-  },
 ];
 
 export default Header;
