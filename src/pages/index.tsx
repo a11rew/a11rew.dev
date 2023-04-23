@@ -18,6 +18,7 @@ import {
   useTransitionContext,
 } from "@/components/transitions";
 import HomeIntro from "@/components/transitions/HomeIntro";
+import useUpdateRootVariables from "@/hooks/useUpdateRootVariables";
 
 export default function Home() {
   const router = useRouter();
@@ -60,6 +61,11 @@ function LandingPageWithAnimatedIntro({
 function LandingPage() {
   const lenis = useLenis(null);
   const ref = useRef<HTMLDivElement>(null);
+
+  useUpdateRootVariables({
+    "--primary-color": "#141414",
+    "--primary-text": "#fff",
+  });
 
   const scrollShowcaseIntoView = () => {
     lenis.scrollTo(ref.current, {

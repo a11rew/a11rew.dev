@@ -8,6 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: "var(--primary-color)",
+        secondary: "var(--secondary-color)",
+        textPrimary: "var(--primary-text)",
+        textSecondary: "var(--secondary-text)",
         theme: {
           bg: {
             black: "#141414",

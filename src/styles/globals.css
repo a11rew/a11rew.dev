@@ -2,21 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.doc-padding {
-  padding-top: clamp(32px, 7.2vh, 56px);
-  padding-bottom: clamp(32px, 7.2vh, 56px);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.doc-padding-top {
-  padding-top: clamp(32px, 7.2vh, 56px);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-.doc-padding-bottom {
-  padding-bottom: clamp(32px, 7.2vh, 56px);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #141414;
+  --primary-text: #EBEBEB
+  --secondary-text: #7A7A7A;
 }
 
 html,
@@ -59,4 +49,21 @@ a {
 .mail-cursor {
   cursor: url("/assets/mail.png"), pointer;
   transition: all 0.3s ease-in-out;
+}
+
+.doc-padding {
+  padding-top: clamp(32px, 7.2vh, 56px);
+  padding-bottom: clamp(32px, 7.2vh, 56px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.doc-padding-top {
+  padding-top: clamp(32px, 7.2vh, 56px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.doc-padding-bottom {
+  padding-bottom: clamp(32px, 7.2vh, 56px);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }

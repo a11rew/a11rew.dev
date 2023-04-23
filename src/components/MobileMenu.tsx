@@ -55,7 +55,7 @@ export default function MobileMenu({ entryAnimation }: Props) {
                   leaveTo="-translate-y-full"
                 >
                   <Dialog.Panel className="relative w-screen pointer-events-auto">
-                    <div className="h-full text-white shadow-xl bg-theme-bg-black doc-padding">
+                    <div className="h-full shadow-xl text-textPrimary bg-primary doc-padding">
                       <nav className="flex flex-col pl-6 gap-14">
                         {navLinks.map(({ href, label }, idx) => (
                           <AnimatedLink
