@@ -2,6 +2,7 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import { Tween } from "react-gsap";
 
@@ -19,18 +20,25 @@ import {
 import HomeIntro from "@/components/transitions/HomeIntro";
 
 export default function Home() {
+  const router = useRouter();
+  const { e } = router.query;
+
   return (
     <div className="min-h-screen bg-theme-bg-black">
       <SEO />
 
       <TransitionContextProvider>
-        <LandingPageWithAnimatedIntro />
+        <LandingPageWithAnimatedIntro skipAnimation={!!e} />
       </TransitionContextProvider>
     </div>
   );
 }
 
-function LandingPageWithAnimatedIntro() {
+function LandingPageWithAnimatedIntro({
+  skipAnimation,
+}: {
+  skipAnimation?: boolean;
+}) {
   const {
     values: { isTransitionComplete },
   } = useTransitionContext();
@@ -38,7 +46,7 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {isTransitionComplete ? (
+      {skipAnimation || isTransitionComplete ? (
         <ReactLenis root>
           <LandingPage key={2} />
         </ReactLenis>

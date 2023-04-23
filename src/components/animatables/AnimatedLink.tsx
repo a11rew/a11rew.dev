@@ -9,13 +9,15 @@ type Props = {
   label: string;
   index: number;
   className?: string;
+  as?: string;
 };
 
-const AnimatedLink = ({ href, label, index, className }: Props) => {
+const AnimatedLink = ({ href, label, index, as, className }: Props) => {
   return (
     <Link
       href={href}
       data-idx={`0${index + 1}`}
+      as={as}
       className={cn(
         className,
         "relative inline-block group",

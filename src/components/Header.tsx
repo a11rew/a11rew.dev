@@ -23,7 +23,7 @@ function Header({ entryAnimation = false, white }: Props) {
             to: { yPercent: 0, duration: 1.5, ease: "power4" },
           })}
         >
-          <Link href="/" className="block">
+          <Link href="/?e=1" as="/" className="block">
             <h1 className="flex items-center gap-2">
               {white ? <LogoDark /> : <Logo />}
               Andrew Glago
@@ -40,8 +40,14 @@ function Header({ entryAnimation = false, white }: Props) {
           })}
         >
           <nav className="flex pl-6 gap-14">
-            {navLinks.map(({ href, label }, idx) => (
-              <AnimatedLink key={href} href={href} label={label} index={idx} />
+            {navLinks.map(({ href, label, as }, idx) => (
+              <AnimatedLink
+                key={href}
+                href={href}
+                label={label}
+                index={idx}
+                as={as}
+              />
             ))}
           </nav>
         </Tween>
@@ -56,15 +62,18 @@ function Header({ entryAnimation = false, white }: Props) {
 
 export const navLinks = [
   {
-    href: "/",
+    href: "/?e=1",
+    as: "/",
     label: "Home",
   },
   {
     href: "/about",
+    as: "/about",
     label: "About",
   },
   {
     href: "/posts",
+    as: "/posts",
     label: "Posts",
   },
 ];
