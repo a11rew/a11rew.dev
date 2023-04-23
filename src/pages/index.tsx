@@ -3,6 +3,7 @@ import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import { useRef } from "react";
+import { Tween } from "react-gsap";
 
 import ArrowDownIcon from "@/assets/sprites/down-arrow.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
@@ -37,7 +38,7 @@ function LandingPageWithAnimatedIntro() {
   // Show intro until transition is complete
   return (
     <AnimatePresence mode="wait">
-      {!isTransitionComplete ? (
+      {isTransitionComplete ? (
         <ReactLenis root>
           <LandingPage key={2} />
         </ReactLenis>
@@ -91,23 +92,30 @@ function LandingPage() {
               "*:w": "/assets/wave.riv",
             }}
           >
-            Software developer *:w
+            Full-stack developer *:w
             <span className="text-theme-text-white-muted">
               passionate about
             </span>
             building performant *:r applications for the web *:g
             <span className="text-theme-text-white-muted">and beyond</span>
           </AnimatedLineBlock>
-          <div className="text-theme-text-white-muted">
-            <button
-              onClick={scrollShowcaseIntoView}
-              className="flex items-center gap-2"
+          <div className="overflow-hidden text-theme-text-white-muted">
+            <Tween
+              from={{ yPercent: 100 }}
+              to={{ yPercent: 0 }}
+              duration={1.5}
+              ease="power4"
             >
-              <span>SCROLL TO DISCOVER</span>
-              <span className="mb-1 overflow-y-clip">
-                <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
-              </span>
-            </button>
+              <button
+                onClick={scrollShowcaseIntoView}
+                className="flex items-center gap-2"
+              >
+                <span>SCROLL TO DISCOVER</span>
+                <span className="mb-1 overflow-y-clip">
+                  <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
+                </span>
+              </button>
+            </Tween>
           </div>
         </div>
         <div>

@@ -2,18 +2,22 @@ import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 
+import { cn } from "@/utils";
+
 type Props = {
   href: string;
   label: string;
   index: number;
+  className?: string;
 };
 
-const AnimatedLink = ({ href, label, index }: Props) => {
+const AnimatedLink = ({ href, label, index, className }: Props) => {
   return (
     <Link
       href={href}
       data-idx={`0${index + 1}`}
-      className={clsx(
+      className={cn(
+        className,
         "relative inline-block group",
         "before:text-theme-text-white-muted before:text-xs before:align-top before:mr-1 before:content-[attr(data-idx)] before:absolute before:-left-[22px]",
         "flex flex-col gap-[8px] h-[24px] overflow-y-clip"

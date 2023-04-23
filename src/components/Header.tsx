@@ -6,6 +6,7 @@ import Logo from "@/assets/logo.svg";
 import LogoDark from "@/assets/logo-dark.svg";
 
 import AnimatedLink from "./animatables/AnimatedLink";
+import MobileMenu from "./MobileMenu";
 
 type Props = {
   entryAnimation?: boolean;
@@ -22,7 +23,7 @@ function Header({ entryAnimation = false, white }: Props) {
             to: { yPercent: 0, duration: 1.5, ease: "power4" },
           })}
         >
-          <Link href="/">
+          <Link href="/" className="block">
             <h1 className="flex items-center gap-2">
               {white ? <LogoDark /> : <Logo />}
               Andrew Glago
@@ -31,25 +32,29 @@ function Header({ entryAnimation = false, white }: Props) {
         </Tween>
       </div>
 
-      <div className="overflow-hidden">
+      <div className="hidden overflow-hidden sm:block">
         <Tween
           {...(entryAnimation && {
             from: { yPercent: 100 },
             to: { yPercent: 0, duration: 1.5, ease: "power4" },
           })}
         >
-          <nav className="hidden pl-6 sm:flex gap-14">
-            {links.map(({ href, label }, idx) => (
+          <nav className="flex pl-6 gap-14">
+            {navLinks.map(({ href, label }, idx) => (
               <AnimatedLink key={href} href={href} label={label} index={idx} />
             ))}
           </nav>
         </Tween>
       </div>
+
+      <div className="sm:hidden ">
+        <MobileMenu entryAnimation={entryAnimation} />
+      </div>
     </header>
   );
 }
 
-const links = [
+export const navLinks = [
   {
     href: "/",
     label: "Home",

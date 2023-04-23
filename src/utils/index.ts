@@ -1,4 +1,6 @@
+import clsx, { ClassValue } from "clsx";
 import ReactDOM from "react-dom/client";
+import { twMerge } from "tailwind-merge";
 
 export function replaceNodeWithReactComponent(
   element: HTMLElement | Element,
@@ -15,4 +17,8 @@ export function replaceNodeWithReactComponent(
   } else {
     window.setTimeout(callback, 1);
   }
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
