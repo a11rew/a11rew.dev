@@ -10,7 +10,10 @@ export default function ExternalLink({ children, className, ...rest }: Props) {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className={clsx("underline hover:no-underline", className)}
+      className={clsx(
+        "underline underline-offset-4 hover:no-underline",
+        className
+      )}
       {...rest}
     >
       {children}

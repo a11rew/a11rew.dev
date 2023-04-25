@@ -25,6 +25,10 @@ module.exports = {
           },
         },
       },
+      transitionProperty: {
+        height: "height",
+        width: "width",
+      },
       keyframes: {
         "over-bounce": {
           "0%, 80%": {
@@ -53,5 +57,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/typography"),
+  ],
 };

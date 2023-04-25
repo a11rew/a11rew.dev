@@ -49,7 +49,7 @@ function LandingPageWithAnimatedIntro({
     <AnimatePresence mode="wait">
       {skipAnimation || isTransitionComplete ? (
         <ReactLenis root>
-          <LandingPage key={2} />
+          <LandingPage key={2} skipAnimation={skipAnimation} />
         </ReactLenis>
       ) : (
         <HomeIntro key={1} />
@@ -58,7 +58,7 @@ function LandingPageWithAnimatedIntro({
   );
 }
 
-function LandingPage() {
+function LandingPage({ skipAnimation }: { skipAnimation?: boolean }) {
   const lenis = useLenis(null);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -97,7 +97,7 @@ function LandingPage() {
       </Head>
       <div className="min-h-screen">
         <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
-          <Header entryAnimation />
+          <Header entryAnimation={!skipAnimation} />
           <AnimatedLineBlock
             className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
             replacements={{

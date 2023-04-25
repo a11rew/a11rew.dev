@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
+import Head from "next/head";
 import Image from "next/image";
 import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
@@ -20,9 +21,12 @@ export default function AboutPage() {
   const topAlbums = isLoading ? [] : data ?? defaultTopAlbums;
 
   return (
-    <div className="min-h-screen bg-theme-bg-white">
+    <div className="min-h-screen">
+      <Head>
+        <title>About | Andrew Glago</title>
+      </Head>
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
-        <Header white entryAnimation />
+        <Header white />
 
         <div className="mt-[8vh] md:mt-[22.9vh] text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-medium cursor-default">
           <AnimatedLineBlock className="mb-2">Andrew Glago</AnimatedLineBlock>
