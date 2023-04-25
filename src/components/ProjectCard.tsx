@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import React from "react";
 
 type Props = {
@@ -21,7 +22,7 @@ const ProjectCard = ({ title, description, image, role, left }: Props) => {
       >
         <div className="h-[85vh] sm:w-[62.8%] bg-[#EBEBEB] relative shrink-0 mb-4 sm:mb-0">
           {image ? (
-            <img
+            <Image
               className="absolute inset-0 object-cover w-full h-full"
               src={image}
               alt={title}

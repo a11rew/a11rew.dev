@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
+import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
 
 import StickerSquare from "@/assets/sprites/sticker-square.svg";
@@ -147,30 +147,21 @@ export default function AboutPage() {
                   },
                 }}
               >
-                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
-                  <Image
-                    src="/assets/photos/esports.png"
-                    fill
-                    className="object-cover"
-                    alt="Andrew posing for an esports competition promo photo"
-                  />
-                </div>
-                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
-                  <Image
-                    src="/assets/photos/bicycle.jpeg"
-                    fill
-                    className="object-cover"
-                    alt="Andrew's bicycle"
-                  />
-                </div>
-                <div className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative">
-                  <Image
-                    src="/assets/photos/basketball.png"
-                    fill
-                    className="object-cover"
-                    alt="Andrew handling a basketball. Cause clean handles, obviously."
-                  />
-                </div>
+                <AboutSlideCard
+                  image="/assets/photos/esports.png"
+                  alt="Andrew posing for an esports competition promo photo."
+                  description="Posing for an esports tournament promo photo."
+                />
+                <AboutSlideCard
+                  image="/assets/photos/bicycle.jpeg"
+                  alt="Andrew's bicycle, the Raleigh MXR DS-29er."
+                  description="First love, the Raleigh MXR DS-29er."
+                />
+                <AboutSlideCard
+                  image="/assets/photos/basketball.png"
+                  alt="Andrew handling a basketball. Cause clean handles, obviously."
+                  description="Clean handles, obviously."
+                />
               </Tween>
             </div>
           </div>
@@ -217,10 +208,12 @@ export default function AboutPage() {
                   Check out my editor profile there.
                 </ExternalLink>
               </p>
-              <p className="sticky top-0 max-w-xs pt-12 bg-theme-bg-white gb">
-                Here are three of the albums I&apos;ve been listening to the
-                most lately. Let me know if you have any recommendations!
-              </p>
+              {topAlbums.length > 0 && (
+                <p className="sticky top-0 max-w-xs pt-12 bg-theme-bg-white gb">
+                  Here are three of the albums I&apos;ve been listening to the
+                  most lately. Let me know if you have any recommendations!
+                </p>
+              )}
             </div>
 
             <div
@@ -245,17 +238,34 @@ export default function AboutPage() {
               >
                 {Array.from({ length: 3 }).map((_, i) => {
                   const album = topAlbums[i]; // This kills me inside but GSAP isn't playing nicely with dynamic children
+
                   return (
                     <div
                       key={i}
-                      className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative"
+                      className={clsx(
+                        "group w-[325px] h-[325px] bg-gray-300 shrink-0 relative",
+                        "overflow-hidden"
+                      )}
                     >
                       {album && (
-                        <img
-                          src={album.image}
-                          className="object-cover w-full"
-                          alt={`Album cover image for ${album.name} by ${album.artist}`}
-                        />
+                        <>
+                          <img
+                            src={album.image}
+                            className="object-cover w-full transition-all duration-1000 group-hover:scale-105"
+                            alt={`Album cover image for ${album.name} by ${album.artist}`}
+                          />
+
+                          <div
+                            className={clsx(
+                              "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
+                              "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
+                              "transition-all opacity-0 group-hover:opacity-100 duration-1000"
+                            )}
+                          >
+                            <b>{album.name}</b>
+                            <p>{album.artist}</p>
+                          </div>
+                        </>
                       )}
                     </div>
                   );
@@ -270,3 +280,35 @@ export default function AboutPage() {
     </div>
   );
 }
+
+const AboutSlideCard = forwardRef<
+  HTMLDivElement,
+  {
+    image: string;
+    description: string;
+    alt: string;
+  }
+>(({ image, description, alt }, ref) => (
+  <div
+    ref={ref}
+    className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative group overflow-hidden"
+  >
+    <Image
+      src={image}
+      fill
+      className="object-cover transition-all duration-1000 group-hover:scale-105"
+      alt={alt}
+    />
+    <div
+      className={clsx(
+        "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
+        "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
+        "transition-all opacity-0 group-hover:opacity-100 duration-1000"
+      )}
+    >
+      <p>{description}</p>
+    </div>
+  </div>
+));
+
+AboutSlideCard.displayName = "AboutSlideCard";
