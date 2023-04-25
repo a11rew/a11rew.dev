@@ -25,7 +25,7 @@ export function getAllPosts() {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
-    .filter((post) => post.published)
+    .filter((post) => !post?.draft)
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
   return posts;
@@ -41,5 +41,5 @@ export interface IPost {
     url: string;
   };
   content: string;
-  published: boolean;
+  draft?: boolean;
 }

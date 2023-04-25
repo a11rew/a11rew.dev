@@ -39,7 +39,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.coverImage}
-                    className="object-cover w-full mb-8 h-96"
+                    className="object-scale-down w-full mb-8 md:object-cover h-96"
                     alt={post.title}
                   />
                   <div className="mb-2 -ml-1 text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-medium cursor-default">
