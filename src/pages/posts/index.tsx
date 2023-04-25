@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 
 import SearchIcon from "@/assets/sprites/search.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getAllPosts, IPost } from "@/lib/posts";
 
@@ -64,9 +65,11 @@ export default function PostsPage({
                                 day: "numeric",
                               })}
                             </div>
-                            <div className="mt-2 text-[0.875rem] leading-[1.25rem] text-theme-bg-black">
-                              {post.tags.join(", ")}
-                            </div>
+                            {post?.tags && post?.tags?.length && (
+                              <div className="mt-2 text-[0.875rem] leading-[1.25rem] text-theme-bg-black">
+                                {post.tags.join(", ")}
+                              </div>
+                            )}
                           </div>
                           {
                             // Don't render a divider after the last post
@@ -92,12 +95,14 @@ export default function PostsPage({
           </div>
         </div>
       </div>
+
+      <Footer page />
     </div>
   );
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["title", "date", "slug", "coverImage", "tags"]);
+  const allPosts = getAllPosts();
 
   const postsGroupedByYear = allPosts.reduce((acc, post) => {
     const year = new Date(post.date).getFullYear();

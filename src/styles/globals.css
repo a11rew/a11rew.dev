@@ -17,6 +17,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--primary-color);
   min-width: 360px;
+  scrollbar-gutter: stable;
 }
 
 a {

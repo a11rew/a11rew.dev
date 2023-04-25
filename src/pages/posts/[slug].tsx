@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import markdownToHtml from "@/lib/markdownToHTML";
 import { getAllPosts, getPostBySlug, IPost } from "@/lib/posts";
@@ -53,7 +54,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                   </AnimatedLineBlock>
                   <div className="italic text-theme-text-white-muted">
                     <AnimatedLineBlock>
-                      {post.tags.join(", ")}
+                      {post.tags?.join(", ")}
                     </AnimatedLineBlock>
                   </div>
 
@@ -71,6 +72,7 @@ export default function Post({ post, morePosts, preview }: Props) {
             </div>
           </div>
         </div>
+        <Footer page />
       </div>
     </div>
   );
@@ -83,16 +85,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "tags",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
-  ]);
+  const post = getPostBySlug(params.slug, true);
   const content = await markdownToHtml(post.content || "");
 
   return {
@@ -106,7 +99,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {

@@ -5,6 +5,7 @@ date: "2022-03-16T05:35:07.322Z"
 tags: ["react", "single-spa"]
 ogImage:
   url: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cjn2a64heth7c019ancp.png"
+published: true
 ---
 
 ## Introduction
