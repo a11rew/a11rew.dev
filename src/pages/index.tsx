@@ -28,6 +28,27 @@ export default function Home() {
     <div className="min-h-screen bg-theme-bg-black">
       <SEO />
 
+      <Head>
+        <link
+          rel="preload"
+          href="/assets/globe.riv"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/rocket.riv"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/wave.riv"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
+      </Head>
+
       <TransitionContextProvider>
         <LandingPageWithAnimatedIntro skipAnimation={!!e} />
       </TransitionContextProvider>
@@ -74,74 +95,50 @@ function LandingPage({ skipAnimation }: { skipAnimation?: boolean }) {
   };
 
   return (
-    <>
-      <Head>
-        <link
-          rel="preload"
-          href="/assets/globe.riv"
-          as="fetch"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/rocket.riv"
-          as="fetch"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/wave.riv"
-          as="fetch"
-          crossOrigin="anonymous"
-        />
-      </Head>
-      <div className="min-h-screen">
-        <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
-          <Header entryAnimation={!skipAnimation} />
-          <AnimatedLineBlock
-            className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
-            replacements={{
-              "*:g": "/assets/globe.riv",
-              "*:r": "/assets/rocket.riv",
-              "*:w": "/assets/wave.riv",
-            }}
+    <div className="min-h-screen">
+      <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
+        <Header entryAnimation={!skipAnimation} />
+        <AnimatedLineBlock
+          className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
+          replacements={{
+            "*:g": "/assets/globe.riv",
+            "*:r": "/assets/rocket.riv",
+            "*:w": "/assets/wave.riv",
+          }}
+        >
+          Full-stack developer *:w
+          <span className="text-theme-text-white-muted">passionate about</span>
+          building performant *:r applications for the web *:g
+          <span className="text-theme-text-white-muted">and beyond</span>
+        </AnimatedLineBlock>
+        <div className="overflow-hidden text-theme-text-white-muted">
+          <Tween
+            from={{ yPercent: 100 }}
+            to={{ yPercent: 0 }}
+            duration={1.5}
+            ease="power4"
           >
-            Full-stack developer *:w
-            <span className="text-theme-text-white-muted">
-              passionate about
-            </span>
-            building performant *:r applications for the web *:g
-            <span className="text-theme-text-white-muted">and beyond</span>
-          </AnimatedLineBlock>
-          <div className="overflow-hidden text-theme-text-white-muted">
-            <Tween
-              from={{ yPercent: 100 }}
-              to={{ yPercent: 0 }}
-              duration={1.5}
-              ease="power4"
+            <button
+              onClick={scrollShowcaseIntoView}
+              className="flex items-center gap-2"
             >
-              <button
-                onClick={scrollShowcaseIntoView}
-                className="flex items-center gap-2"
-              >
-                <span>SCROLL TO DISCOVER</span>
-                <span className="mb-1 overflow-y-clip">
-                  <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
-                </span>
-              </button>
-            </Tween>
-          </div>
-        </div>
-        <div>
-          <Showcase ref={ref} />
-        </div>
-        <div>
-          <OtherProjects />
-        </div>
-        <div>
-          <Footer />
+              <span>SCROLL TO DISCOVER</span>
+              <span className="mb-1 overflow-y-clip">
+                <ArrowDownIcon className="w-5 h-5 animate-over-bounce" />
+              </span>
+            </button>
+          </Tween>
         </div>
       </div>
-    </>
+      <div>
+        <Showcase ref={ref} />
+      </div>
+      <div>
+        <OtherProjects />
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </div>
   );
 }
