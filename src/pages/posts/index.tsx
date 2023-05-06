@@ -5,15 +5,29 @@ import React, { Fragment } from "react";
 
 import SearchIcon from "@/assets/sprites/search.svg";
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
+import LoadingSpinner from "@/components/animatables/LoadingSpinner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import useSearchPosts from "@/hooks/api/useSearchPosts";
 import { getAllPosts, IPost } from "@/lib/posts";
 
-export default function PostsPage({
-  postsGroupedByYear,
-}: {
-  postsGroupedByYear: Record<string, IPost[]>;
-}) {
+export default function PostsPage({ posts: defaultPosts }: { posts: IPost[] }) {
+  const [searchString, setSearchString] = React.useState("");
+  const { data: searchResults, isLoading } = useSearchPosts(searchString);
+
+  const postsGroupedByYear = React.useMemo(() => {
+    const posts = searchResults ?? defaultPosts ?? [];
+
+    const grouped = posts.reduce((acc, post) => {
+      const year = new Date(post.date).getFullYear();
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(post);
+      return acc;
+    }, {} as Record<string, IPost[]>);
+
+    return Object.entries(grouped).sort(([a], [b]) => Number(b) - Number(a));
+  }, [searchResults, defaultPosts]);
+
   return (
     <div className="min-h-screen">
       <Head>
@@ -31,6 +45,8 @@ export default function PostsPage({
             <input
               type="text"
               placeholder="Search for a post"
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
               className={clsx(
                 "h-full py-2",
                 "placeholder:text-theme-bg-black focus-visible:placeholder-slate-300 focus-visible:outline-none",
@@ -40,9 +56,12 @@ export default function PostsPage({
           </div>
           <hr className="border-theme-text-white" />
           <div className="mt-8">
-            {Object.entries(postsGroupedByYear)
-              .reverse()
-              .map(([year, posts], idx) => (
+            {isLoading ? (
+              <LoadingSpinner className="inline mr-4" />
+            ) : postsGroupedByYear.length === 0 ? (
+              <div>No posts found.</div>
+            ) : (
+              postsGroupedByYear.map(([year, posts], idx) => (
                 <Fragment key={year}>
                   <div className="flex flex-col gap-4 md:flex-row">
                     <div className="text-[1.5rem] leading-[2.25rem] font-medium md:w-1/6">
@@ -91,7 +110,8 @@ export default function PostsPage({
                     )
                   }
                 </Fragment>
-              ))}
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -102,19 +122,9 @@ export default function PostsPage({
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts();
-
-  const postsGroupedByYear = allPosts.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-
-    return acc;
-  }, {} as Record<number, typeof allPosts>);
+  const posts = getAllPosts();
 
   return {
-    props: { postsGroupedByYear },
+    props: { posts },
   };
 };
