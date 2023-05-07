@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 import ArrowUpRightIcon from "@/assets/sprites/up-right-arow.svg";
@@ -10,24 +11,28 @@ const OtherProjects = () => {
       </h1>
       <div className="flex flex-wrap justify-between">
         <OtherProjectCard
-          name="Lenis"
-          tech="React, Framer Motion, TypeScript"
-          description="A simple and minimalistic Pomodoro timer."
+          name="Medusa Payment Paystack"
+          tech="Javascript, Medusa.js"
+          description="Paystack Payment provider for Medusa Commerce."
+          link="https://github.com/a11rew/medusa-payment-paystack"
         />
         <OtherProjectCard
-          name="Lenis"
-          tech="React, Framer Motion, TypeScript"
-          description="A simple and minimalistic Pomodoro timer."
+          name="SHA Assist"
+          tech="Python"
+          description="Easy HTTPS domain certificate fingerprinting"
+          link="https://github.com/a11rew/sha-assist"
         />
         <OtherProjectCard
-          name="Lenis"
-          tech="React, Framer Motion, TypeScript"
-          description="A simple and minimalistic Pomodoro timer."
+          name="Phonebook"
+          tech="React, TypeScript, Vite, MobX"
+          description="A simple Google Contacts inspired contact directory."
+          link="https://phonebook-pi.vercel.app/"
         />
         <OtherProjectCard
-          name="Lenis"
-          tech="React, Framer Motion, TypeScript"
-          description="A simple and minimalistic Pomodoro timer."
+          name="Wave Portal"
+          tech="React, Typescript, Ethereum, Ethers.js"
+          description="Send messages to the world via the Ethereum blockchain."
+          link="https://wave-portal-client-six.vercel.app/"
         />
       </div>
     </div>
@@ -40,9 +45,10 @@ type Props = {
   name: string;
   tech: string;
   description: string;
+  link: string;
 };
 
-const OtherProjectCard = ({ name, tech, description }: Props) => {
+const OtherProjectCard = ({ name, tech, description, link }: Props) => {
   return (
     <div className="bg-[#292929] w-full sm:w-[49%] mb-4 sm:mb-[2vw] p-6 sm:p-11">
       <div className="flex flex-col">
@@ -51,10 +57,12 @@ const OtherProjectCard = ({ name, tech, description }: Props) => {
             <h1 className="text-2xl font-bold">{name}</h1>
             <p className="text-medium text-theme-text-white-muted">{tech}</p>
           </div>
-          <button className="bg-[#3D3D3D] p-4 rounded-full group">
-            <p className="sr-only">Visit {name} on GitHub</p>
-            <ArrowUpRightIcon className="transition-transform duration-200 ease-in-out group-hover:rotate-45" />
-          </button>
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <button className="bg-[#3D3D3D] p-4 rounded-full group">
+              <p className="sr-only">Visit {name} on GitHub</p>
+              <ArrowUpRightIcon className="transition-transform duration-200 ease-in-out group-hover:rotate-45" />
+            </button>
+          </a>
         </div>
         <hr className="my-8 border-[#3D3D3D]" />
         <div>

@@ -46,23 +46,22 @@ export default function AboutPage() {
             </div>
             <div className="flex items-center col-span-1 row-span-1 md:block">
               <p className="max-w-xs mt-auto">
-                Nisl rhoncus aliquet enim, in quis senectus. Integer elit
-                tincidunt aliquam ac sed malesuada arcu quam. Sed consequat
-                facilisis consequat mattis eu neque libero quam dictum.
+                I&apos;m Andrew Glago, a versatile software engineer with a
+                diverse background in web, mobile and embedded systems
+                development.
               </p>
             </div>
             <div className="flex items-center col-span-1 row-span-1 md:justify-end md:items-start md:col-span-2">
               <p className="max-w-xs">
-                Tincidunt egestas amet, habitant ut pharetra duis dolor odio.
-                Morbi mi lorem quam morbi et mattis aliquam arcu. Neque volutpat
-                purus aliquam congue ipsum pretium,
+                My experience spans across various industries and projects,
+                ranging from AI-driven SaaS applications to mobile systems for
+                agriculture.
               </p>
             </div>
             <div className="flex items-center col-span-1 row-span-1 md:block">
               <p className="max-w-xs">
-                Tincidunt egestas amet, habitant ut pharetra duis dolor odio.
-                Morbi mi lorem quam morbi et mattis aliquam arcu. Neque volutpat
-                purus aliquam congue ipsum pretium,
+                Currently based in Accra, Ghana, When not programming, I enjoy
+                basketball, competitive esports, and hackathons.
               </p>
             </div>
             <div className="flex items-center col-span-1 row-span-1 pt-8 md:pt-0 md:block">

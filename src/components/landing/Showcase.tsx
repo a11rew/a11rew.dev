@@ -14,9 +14,10 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
     >
       <div className="max-w-[1158px] m-auto doc-padding-top">
         <p className="max-w-[275px] font-medium">
-          Currently, I work at SuaCode.ai as a full-stack developer. My work is
-          focused on building technology to help democratize STEM education in
-          Africa.
+          Currently, I work at pubGenius. Inc, a software development
+          consultancy as a full-stack developer. I work daily on a variety of
+          projects with an amazing team of developers, designers, and
+          product-owners.
         </p>
       </div>
 
