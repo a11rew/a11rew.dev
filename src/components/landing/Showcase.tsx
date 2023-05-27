@@ -4,6 +4,7 @@ import { Tween } from "react-gsap";
 
 import FeaturedWork from "@/assets/wordmarks/featured-work.svg";
 
+import AfrigivesPromo from "../../../public/assets/project-images/afrigives/promo.png";
 import ProjectCard from "../ProjectCard";
 
 const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
@@ -57,9 +58,11 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
           <p>2021-2023</p>
         </div>
         <ProjectCard
-          title="Working.xyz"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-          role="Full-stack Developer"
+          title="Afrigives"
+          description="Mobile app for Afrigives, a non-profit organization that facilitates donations in kind to charities and disaster-stricken areas in Africa."
+          role="Mobile Developer"
+          image={AfrigivesPromo}
+          link="https://afrigives.vercel.app/"
         />
         <ProjectCard
           title="Working.xyz"

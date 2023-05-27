@@ -108,7 +108,10 @@ function FooterExternalButton({ href, children }: FooterExternalButtonProps) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="block w-full lg:w-auto text-center md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted"
+      className={clsx(
+        "block w-full lg:w-auto text-center md:px-12 py-4 border rounded-[3rem] uppercase font-medium border-theme-text-white-muted",
+        "hover:bg-theme-bg-black hover:text-theme-text-white transition-all ease-in-out duration-200"
+      )}
     >
       {children}
     </a>
