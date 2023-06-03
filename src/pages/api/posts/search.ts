@@ -7,10 +7,6 @@ type Payload = {
   query: string;
 };
 
-type Data = {
-  name: string;
-};
-
 const posts = getAllPosts();
 
 const fuse = new Fuse(posts, {
