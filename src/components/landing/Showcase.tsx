@@ -64,7 +64,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
             description="Website and mobile app for Afrigives, a non-profit organization that facilitates donations in kind to charities and disaster-stricken areas in Africa."
             role="Frontend and Mobile Developer"
             image={AfrigivesPromo}
-            link="https://afrigives.vercel.app/"
+            id="afrigives"
           />
           <ProjectCard
             title="Noter"
@@ -73,7 +73,7 @@ const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
             }
             role="Mobile Developer"
             image={NoterPromo}
-            link="https://github.com/a11rew/noter"
+            id="noter"
           />
         </div>
       </div>

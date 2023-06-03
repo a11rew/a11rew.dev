@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -7,14 +8,14 @@ type Props = {
   description: string;
   image: StaticImageData;
   role: string;
-  link?: string;
+  id: string;
 };
 
-const ProjectCard = ({ title, description, image, role, link }: Props) => {
+const ProjectCard = ({ title, description, image, role, id }: Props) => {
   return (
     <div className={clsx("sm:flex")}>
       <div className="sm:w-[62.8%] overflow-hidden relative">
-        <a href={link} target="_blank" rel="noreferrer">
+        <Link href={"/projects/" + id}>
           <Image
             className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
             src={image}
@@ -22,7 +23,7 @@ const ProjectCard = ({ title, description, image, role, link }: Props) => {
             placeholder="blur"
             quality={100}
           />
-        </a>
+        </Link>
       </div>
 
       <div className={clsx("mt-8 sm:mt-auto sm:mb-16 sm:w-[33%] sm:pl-4")}>
@@ -32,9 +33,7 @@ const ProjectCard = ({ title, description, image, role, link }: Props) => {
             "group sm:transform sm:translate-x-[-110px] filter invert mix-blend-difference"
           )}
         >
-          <a href={link} target="_blank" rel="noreferrer">
-            {title}
-          </a>
+          <Link href={"/projects/" + id}>{title}</Link>
           <span
             className={clsx(
               "absolute bottom-[10px] left-0 w-full transition-all ease-in-out h-[6px] bg-black",
