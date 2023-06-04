@@ -1,14 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import ExternalLink from "@/components/ExternalLink";
 import FillableActionButton from "@/components/FillableActionButton";
 import Header from "@/components/Header";
+import { cn } from "@/utils";
 
 import BrochurePromo from "../../../public/assets/project-images/afrigives/brochure.png";
 import AfrigivesPromo from "../../../public/assets/project-images/afrigives/promo.png";
+import "react-photo-view/dist/react-photo-view.css";
 
 export default function AfrigivesProjectPage() {
   return (
@@ -18,24 +21,36 @@ export default function AfrigivesProjectPage() {
       </Head>
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
         <Header white />
-        <div className="flex mt-6 sm:mt-12 md:mt-24">
-          <div className="sm:w-[62.8%] overflow-hidden relative space-y-16">
-            <Image
-              className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
-              src={AfrigivesPromo}
-              alt={"Image of Afrigives app in mobile device"}
-              placeholder="blur"
-              quality={100}
-            />
-            <Image
-              className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
-              src={BrochurePromo}
-              alt={"Image of Afrigives app in mobile device"}
-              placeholder="blur"
-              quality={100}
-            />
+        <div className="flex flex-col mt-12 md:flex-row md:mt-24">
+          <div
+            className={cn(
+              "md:w-[62.8%] overflow-hidden relative space-x-2 md:space-y-16",
+              "flex flex-row md:block gap-8",
+              "overflow-scroll scrollbar-hide"
+            )}
+          >
+            <PhotoProvider>
+              <PhotoView src={AfrigivesPromo.src}>
+                <Image
+                  className="object-cover transition-all duration-1000 hover:scale-105 h-[70vh] md:min-h-[85vh] w-[85%] md:w-full"
+                  src={AfrigivesPromo}
+                  alt={"Image of Afrigives app in mobile device"}
+                  placeholder="blur"
+                  quality={100}
+                />
+              </PhotoView>
+              <PhotoView src={BrochurePromo.src}>
+                <Image
+                  className="object-cover transition-all duration-1000 hover:scale-105 h-[70vh] md:min-h-[85vh] w-[85%] md:w-full"
+                  src={BrochurePromo}
+                  alt={"Image of Afrigives app in mobile device"}
+                  placeholder="blur"
+                  quality={100}
+                />
+              </PhotoView>
+            </PhotoProvider>
           </div>
-          <div className="w-[37.2%] pl-8">
+          <div className="md:w-[37.2%] md:pl-8 mt-8 md:mt-0">
             <div className="sticky top-16">
               <div className="text-left">
                 <AnimatedLineBlock className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-medium cursor-default">

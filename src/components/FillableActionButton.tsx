@@ -15,7 +15,7 @@ export default function FillableActionButton({
   return (
     <button
       className={cn(
-        "block w-full lg:w-auto text-center py-2 px-4 border rounded-[3rem] font-medium border-theme-text-white-muted",
+        "block w-full lg:w-auto text-center py-1 px-4 border rounded-[3rem] font-medium border-theme-text-white-muted",
         "hover:bg-theme-bg-black hover:text-theme-text-white transition-all ease-in-out duration-200",
         className
       )}
