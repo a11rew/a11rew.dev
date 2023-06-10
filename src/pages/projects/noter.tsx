@@ -81,7 +81,13 @@ export default function NoterProjectPage() {
                 <p>
                   Notes are persisted to the device's local storage. Edits to
                   notes are saved automatically. Notes can be searched by title
-                  or content. The app supports theming.
+                  or content and the app supports light and dark mode theming.
+                </p>
+
+                <p>
+                  Another foray into mobile development, this app was built
+                  using the barebones React Native CLI and required picking up
+                  native Android and iOS development and build process concepts.
                 </p>
               </div>
             </div>

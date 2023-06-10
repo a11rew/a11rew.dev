@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import StickerSquare from "@/assets/sprites/sticker-square.svg";
 import Music from "@/assets/wordmarks/music.svg";
@@ -14,6 +15,8 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LastPlayed from "@/components/LastPlayed";
 import { defaultTopAlbums, useFetchTopAlbums } from "@/hooks/music";
+
+import "react-photo-view/dist/react-photo-view.css";
 
 export default function AboutPage() {
   const { data, isLoading } = useFetchTopAlbums();
@@ -136,36 +139,38 @@ export default function AboutPage() {
                 "md:absolute md:-right-[15%] -mx-[10%] md:mx-0 overflow-scroll scrollbar-hide"
               )}
             >
-              <Tween
-                from={{
-                  x: "40%",
-                }}
-                to={{
-                  x: "-5%",
-                  ease: "none",
-                  scrollTrigger: {
-                    start: "top bottom",
-                    trigger: ".about",
-                    scrub: true,
-                  },
-                }}
-              >
-                <AboutSlideCard
-                  image="/assets/photos/esports.png"
-                  alt="Andrew posing for an esports competition promo photo."
-                  description="Posing for an esports tournament promo photo."
-                />
-                <AboutSlideCard
-                  image="/assets/photos/bicycle.jpeg"
-                  alt="Andrew's bicycle, the Raleigh MXR DS-29er."
-                  description="First love, the Raleigh MXR DS-29er."
-                />
-                <AboutSlideCard
-                  image="/assets/photos/basketball.png"
-                  alt="Andrew handling a basketball. Cause clean handles, obviously."
-                  description="Clean handles, obviously."
-                />
-              </Tween>
+              <PhotoProvider>
+                <Tween
+                  from={{
+                    x: "40%",
+                  }}
+                  to={{
+                    x: "-5%",
+                    ease: "none",
+                    scrollTrigger: {
+                      start: "top bottom",
+                      trigger: ".about",
+                      scrub: true,
+                    },
+                  }}
+                >
+                  <AboutSlideCard
+                    image="/assets/photos/esports.jpeg"
+                    alt="Andrew posing for an esports competition promo photo."
+                    description="Posing for an esports tournament promo photo."
+                  />
+                  <AboutSlideCard
+                    image="/assets/photos/bicycle.jpeg"
+                    alt="Andrew's bicycle, the Raleigh MXR DS-29er."
+                    description="First love, the Raleigh MXR DS-29er."
+                  />
+                  <AboutSlideCard
+                    image="/assets/photos/basketball.png"
+                    alt="Andrew handling a basketball. Cause clean handles, obviously."
+                    description="Clean handles, obviously."
+                  />
+                </Tween>
+              </PhotoProvider>
             </div>
           </div>
         </div>
@@ -219,62 +224,66 @@ export default function AboutPage() {
               )}
             </div>
 
-            <div
-              className={clsx(
-                "flex flex-row-reverse md:flex-wrap mt-16 md:mt-0 m-auto md:max-w-[80%] md:justify-end gap-8 pl-[25%] lg:pl-[7%]",
-                "md:absolute md:left-[-15%] -mx-[10%] md:mx-0 overflow-scroll scrollbar-hide"
-              )}
-            >
-              <Tween
-                from={{
-                  x: "-40%",
-                }}
-                to={{
-                  x: "5%",
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: ".music",
-                    start: "top bottom",
-                    scrub: true,
-                  },
-                }}
+            <PhotoProvider>
+              <div
+                className={clsx(
+                  "flex flex-row-reverse md:flex-wrap mt-16 md:mt-0 m-auto md:max-w-[80%] md:justify-end gap-8 pl-[25%] lg:pl-[7%]",
+                  "md:absolute md:left-[-15%] -mx-[10%] md:mx-0 overflow-scroll scrollbar-hide"
+                )}
               >
-                {Array.from({ length: 3 }).map((_, i) => {
-                  const album = topAlbums[i]; // This kills me inside but GSAP isn't playing nicely with dynamic children
+                <Tween
+                  from={{
+                    x: "-40%",
+                  }}
+                  to={{
+                    x: "5%",
+                    ease: "none",
+                    scrollTrigger: {
+                      trigger: ".music",
+                      start: "top bottom",
+                      scrub: true,
+                    },
+                  }}
+                >
+                  <>
+                    {Array.from({ length: 3 }).map((_, i) => {
+                      const album = topAlbums[i]; // This kills me inside but GSAP isn't playing nicely with dynamic children
 
-                  return (
-                    <div
-                      key={i}
-                      className={clsx(
-                        "group w-[325px] h-[325px] bg-gray-300 shrink-0 relative",
-                        "overflow-hidden"
-                      )}
-                    >
-                      {album && (
-                        <>
-                          <img
-                            src={album.image}
-                            className="object-cover w-full transition-all duration-1000 group-hover:scale-105"
-                            alt={`Album cover image for ${album.name} by ${album.artist}`}
-                          />
+                      return (
+                        album && (
+                          <PhotoView src={album.image}>
+                            <div
+                              key={i}
+                              className={clsx(
+                                "group w-[325px] h-[325px] bg-gray-300 shrink-0 relative",
+                                "overflow-hidden"
+                              )}
+                            >
+                              <img
+                                src={album.image}
+                                className="object-cover w-full transition-all duration-1000 group-hover:scale-105"
+                                alt={`Album cover image for ${album.name} by ${album.artist}`}
+                              />
 
-                          <div
-                            className={clsx(
-                              "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
-                              "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
-                              "transition-all opacity-0 group-hover:opacity-100 duration-1000"
-                            )}
-                          >
-                            <b>{album.name}</b>
-                            <p>{album.artist}</p>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  );
-                })}
-              </Tween>
-            </div>
+                              <div
+                                className={clsx(
+                                  "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
+                                  "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
+                                  "transition-all opacity-0 group-hover:opacity-100 duration-1000"
+                                )}
+                              >
+                                <b>{album.name}</b>
+                                <p>{album.artist}</p>
+                              </div>
+                            </div>
+                          </PhotoView>
+                        )
+                      );
+                    })}
+                  </>
+                </Tween>
+              </div>
+            </PhotoProvider>
           </div>
         </div>
       </div>
@@ -293,24 +302,31 @@ const AboutSlideCard = forwardRef<
   }
 >(({ image, description, alt }, ref) => (
   <div
+    onClick={() => console.log("click")}
     ref={ref}
     className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative group overflow-hidden"
   >
-    <Image
-      src={image}
-      fill
-      className="object-cover transition-all duration-1000 group-hover:scale-105"
-      alt={alt}
-    />
-    <div
-      className={clsx(
-        "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
-        "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
-        "transition-all opacity-0 group-hover:opacity-100 duration-1000"
-      )}
-    >
-      <p>{description}</p>
-    </div>
+    <PhotoView src={image}>
+      <div>
+        <Image
+          onClick={() => console.log("click image")}
+          src={image}
+          fill
+          className="object-cover transition-all duration-1000 group-hover:scale-105"
+          alt={alt}
+          quality={100}
+        />
+        <div
+          className={clsx(
+            "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
+            "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
+            "transition-all opacity-0 group-hover:opacity-100 duration-1000"
+          )}
+        >
+          <p>{description}</p>
+        </div>
+      </div>
+    </PhotoView>
   </div>
 ));
 
