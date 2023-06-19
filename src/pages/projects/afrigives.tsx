@@ -104,9 +104,8 @@ export default function AfrigivesProjectPage() {
                   disaster stricken in Africa.
                 </p>
                 <p>
-                  Designed by the amazing Eloke Ikiliagwu, my work on the
-                  project involved building the mobile app and brochure website
-                  for the platform.
+                  My work on the project involved building the mobile app and
+                  brochure website for the platform.
                 </p>
                 <p>
                   Excited about the iteration speed{" "}
