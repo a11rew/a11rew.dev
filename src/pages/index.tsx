@@ -19,11 +19,9 @@ import {
 } from "@/components/transitions";
 import HomeIntro from "@/components/transitions/HomeIntro";
 import useUpdateRootVariables from "@/hooks/useUpdateRootVariables";
+import { NextPageContext } from "next";
 
-export default function Home() {
-  const router = useRouter();
-  const { e } = router.query;
-
+export default function Home({ skipAnimation }: { skipAnimation?: boolean }) {
   return (
     <div className="min-h-screen bg-theme-bg-black">
       <SEO />
@@ -50,11 +48,21 @@ export default function Home() {
       </Head>
 
       <TransitionContextProvider>
-        <LandingPageWithAnimatedIntro skipAnimation={!!e} />
+        <LandingPageWithAnimatedIntro skipAnimation={skipAnimation} />
       </TransitionContextProvider>
     </div>
   );
 }
+
+Home.getInitialProps = async (ctx: NextPageContext) => {
+  return {
+    skipAnimation:
+      // Don't animate if we're coming from another page which adds a query param
+      !!ctx.query.e ||
+      // Don't animate if we're coming from a client-side navigation. i.e this getInitialProps is run on the client-side
+      !ctx.req,
+  };
+};
 
 function LandingPageWithAnimatedIntro({
   skipAnimation,
