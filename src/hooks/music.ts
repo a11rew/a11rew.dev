@@ -37,7 +37,7 @@ const fetchLastplayed = async (): Promise<SongData> => {
 
 export const useFetchLastPlayed = () => useSWR<SongData>("lp", fetchLastplayed);
 
-interface TopAlbum {
+export interface TopAlbum {
   name: string;
   artist: string;
   image: string;
@@ -67,7 +67,8 @@ export const defaultTopAlbums: TopAlbum[] = [
     url: "https://www.last.fm/music/Mavi/let+the+sun+talk",
   },
 ];
-const fetchTopAlbums = async (): Promise<TopAlbum[]> => {
+
+export const fetchTopAlbums = async (): Promise<TopAlbum[]> => {
   const lastFMKey = process.env.NEXT_PUBLIC_LASTFM_KEY;
 
   if (!lastFMKey) {

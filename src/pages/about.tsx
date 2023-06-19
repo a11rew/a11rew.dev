@@ -14,15 +14,16 @@ import ExternalLink from "@/components/ExternalLink";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LastPlayed from "@/components/LastPlayed";
-import { defaultTopAlbums, useFetchTopAlbums } from "@/hooks/music";
+import { defaultTopAlbums, fetchTopAlbums, TopAlbum } from "@/hooks/music";
 
 import "react-photo-view/dist/react-photo-view.css";
+import { GetStaticProps } from "next";
 
-export default function AboutPage() {
-  const { data, isLoading } = useFetchTopAlbums();
+interface AboutPageProps {
+  topAlbums: TopAlbum[];
+}
 
-  const topAlbums = isLoading ? [] : data ?? defaultTopAlbums;
-
+export default function AboutPage({ topAlbums }: AboutPageProps) {
   return (
     <div className="min-h-screen">
       <Head>
@@ -245,42 +246,11 @@ export default function AboutPage() {
                     },
                   }}
                 >
-                  <>
-                    {Array.from({ length: 3 }).map((_, i) => {
-                      const album = topAlbums[i]; // This kills me inside but GSAP isn't playing nicely with dynamic children
+                  {Array.from({ length: 3 }).map((_, i) => {
+                    const album = topAlbums[i]; // This kills me inside but GSAP isn't playing nicely with dynamic children
 
-                      return (
-                        album && (
-                          <PhotoView src={album.image}>
-                            <div
-                              key={i}
-                              className={clsx(
-                                "group w-[325px] h-[325px] bg-gray-300 shrink-0 relative",
-                                "overflow-hidden"
-                              )}
-                            >
-                              <img
-                                src={album.image}
-                                className="object-cover w-full transition-all duration-1000 group-hover:scale-105"
-                                alt={`Album cover image for ${album.name} by ${album.artist}`}
-                              />
-
-                              <div
-                                className={clsx(
-                                  "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
-                                  "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
-                                  "transition-all opacity-0 group-hover:opacity-100 duration-1000"
-                                )}
-                              >
-                                <b>{album.name}</b>
-                                <p>{album.artist}</p>
-                              </div>
-                            </div>
-                          </PhotoView>
-                        )
-                      );
-                    })}
-                  </>
+                    return <MusicSlideCard album={album} key={album.name} />;
+                  })}
                 </Tween>
               </div>
             </PhotoProvider>
@@ -302,14 +272,12 @@ const AboutSlideCard = forwardRef<
   }
 >(({ image, description, alt }, ref) => (
   <div
-    onClick={() => console.log("click")}
     ref={ref}
     className="w-[325px] h-[325px] bg-gray-300 shrink-0 relative group overflow-hidden"
   >
     <PhotoView src={image}>
       <div>
         <Image
-          onClick={() => console.log("click image")}
           src={image}
           fill
           className="object-cover transition-all duration-1000 group-hover:scale-105"
@@ -331,3 +299,54 @@ const AboutSlideCard = forwardRef<
 ));
 
 AboutSlideCard.displayName = "AboutSlideCard";
+
+const MusicSlideCard = forwardRef<HTMLDivElement, { album: TopAlbum }>(
+  ({ album }, ref) => (
+    <div ref={ref}>
+      <PhotoView src={album.image}>
+        <div
+          className={clsx(
+            "group w-[325px] h-[325px] bg-gray-300 shrink-0 relative",
+            "overflow-hidden"
+          )}
+        >
+          <img
+            src={album.image}
+            className="object-cover w-full transition-all duration-1000 group-hover:scale-105"
+            alt={`Album cover image for ${album.name} by ${album.artist}`}
+          />
+
+          <div
+            className={clsx(
+              "absolute bottom-0 z-10 flex flex-col justify-end w-full p-4 h-3/5 ",
+              "bg-gradient-to-t from-theme-bg-white invert break-words text-ellipsis",
+              "transition-all opacity-0 group-hover:opacity-100 duration-1000"
+            )}
+          >
+            <b>{album.name}</b>
+            <p>{album.artist}</p>
+          </div>
+        </div>
+      </PhotoView>
+    </div>
+  )
+);
+
+MusicSlideCard.displayName = "MusicSlideCard";
+
+export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
+  let topAlbums: TopAlbum[] = defaultTopAlbums;
+
+  try {
+    topAlbums = await fetchTopAlbums();
+  } catch (error) {
+    console.error(error);
+  }
+
+  return {
+    props: {
+      topAlbums,
+    },
+    revalidate: 60 * 60 * 24, // 1 day
+  };
+};
