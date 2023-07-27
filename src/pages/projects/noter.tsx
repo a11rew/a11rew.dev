@@ -15,7 +15,7 @@ export default function NoterProjectPage() {
   return (
     <div className="min-h-screen">
       <Head>
-        <title>Afrigives | Andrew Glago</title>
+        <title>Noter | Andrew Glago</title>
       </Head>
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
         <Header white />
@@ -32,7 +32,7 @@ export default function NoterProjectPage() {
                 <Image
                   className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
                   src={NoterPromo}
-                  alt={"Image of Afrigives app in mobile device"}
+                  alt={"Image of Noter app in mobile device"}
                   placeholder="blur"
                   quality={100}
                 />
@@ -52,21 +52,14 @@ export default function NoterProjectPage() {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://github.com/a11rew/afrigives"
+                  href="https://github.com/a11rew/noter"
                 >
                   <FillableActionButton>Code Repository</FillableActionButton>
                 </a>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://afrigives.a11rew.dev"
-                >
-                  <FillableActionButton>iOS Download</FillableActionButton>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://afrigives.a11rew.dev"
+                  href="https://play.google.com/store/apps/details?id=com.andrewglago.noter"
                 >
                   <FillableActionButton>Android Download</FillableActionButton>
                 </a>
