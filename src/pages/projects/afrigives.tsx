@@ -70,23 +70,16 @@ export default function AfrigivesProjectPage() {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
+                  href="https://play.google.com/store/apps/details?id=com.andrewglago.afrigives"
+                >
+                  <FillableActionButton>Android Download</FillableActionButton>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href="https://github.com/a11rew/afrigives"
                 >
                   <FillableActionButton>Code Repository</FillableActionButton>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://afrigives.a11rew.dev"
-                >
-                  <FillableActionButton>iOS Download</FillableActionButton>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://afrigives.a11rew.dev"
-                >
-                  <FillableActionButton>Android Download</FillableActionButton>
                 </a>
                 <a
                   target="_blank"
