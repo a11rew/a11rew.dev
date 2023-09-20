@@ -158,17 +158,17 @@ export default function AboutPage({ topAlbums }: AboutPageProps) {
                   <AboutSlideCard
                     image="/assets/photos/esports.jpeg"
                     alt="Andrew posing for an esports competition promo photo."
-                    description="Posing for an esports tournament promo photo."
+                    description="Posing for an esports tournament promo photo"
                   />
                   <AboutSlideCard
                     image="/assets/photos/bicycle.jpeg"
                     alt="Andrew's bicycle, the Raleigh MXR DS-29er."
-                    description="First love, the Raleigh MXR DS-29er."
+                    description="First love, the Raleigh MXR DS-29er"
                   />
                   <AboutSlideCard
                     image="/assets/photos/basketball.png"
-                    alt="Andrew handling a basketball. Cause clean handles, obviously."
-                    description="Clean handles, obviously."
+                    alt="Andrew dunking a basketball."
+                    description="His Airness"
                   />
                 </Tween>
               </PhotoProvider>
