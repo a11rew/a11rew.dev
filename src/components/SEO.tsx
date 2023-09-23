@@ -8,7 +8,7 @@ const defaultMeta = {
   url: "https://a11rew.dev",
   type: "website",
   robots: "follow, index",
-  image: "/og.png",
+  image: "https://a11rew.dev/og.png",
 };
 
 type SEOProps = {
