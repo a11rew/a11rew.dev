@@ -4,12 +4,11 @@ import { useRouter } from "next/router";
 const defaultMeta = {
   title: "Andrew Glago",
   siteName: "Andrew Glago's Blog & Portfolio Site",
-  description:
-    "Thoughts from this side of the template literal. Andrew Glago's blog and portfolio site.",
+  description: "Thoughts from this side of the template literal.",
   url: "https://a11rew.dev",
   type: "website",
   robots: "follow, index",
-  // image: "url to og image",
+  image: "https://a11rew.dev/og.png",
 };
 
 type SEOProps = {
@@ -39,13 +38,13 @@ export default function SEO(props: SEOProps) {
       <meta property="og:site_name" content={meta.siteName} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
-      {/* <meta name="image" property="og:image" content={meta.image} /> */}
+      <meta name="image" property="og:image" content={meta.image} />
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@th_clarence" />
+      <meta name="twitter:site" content="@a11rew" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
-      {/* <meta name="twitter:image" content={meta.image} /> */}
+      <meta name="twitter:image" content={meta.image} />
       {meta.date && (
         <>
           <meta property="article:published_time" content={meta.date} />
@@ -83,7 +82,6 @@ type Favicons = {
   type?: string;
 };
 
-// https://www.favicon-generator.org/ --> /public/favicon
 const favicons: Array<Favicons> = [
   {
     rel: "apple-touch-icon",
