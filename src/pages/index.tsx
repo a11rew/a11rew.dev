@@ -2,7 +2,6 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import { useLenis } from "@studio-freight/react-lenis";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useRef } from "react";
 import { Tween } from "react-gsap";
 
@@ -42,6 +41,12 @@ export default function Home({ skipAnimation }: { skipAnimation?: boolean }) {
         <link
           rel="preload"
           href="/assets/wave.riv"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/deps/rive.wasm"
           as="fetch"
           crossOrigin="anonymous"
         />

@@ -1,5 +1,4 @@
 import { EventType, Rive, RuntimeLoader } from "@rive-app/canvas";
-import riveWASM from "@rive-app/canvas/rive.wasm";
 import { gsap } from "gsap";
 import React, { useRef } from "react";
 
@@ -10,7 +9,7 @@ type Props = {
   replacements?: Record<string, string>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-RuntimeLoader.setWasmUrl(riveWASM);
+RuntimeLoader.setWasmUrl("/assets/deps/rive.wasm");
 
 const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
