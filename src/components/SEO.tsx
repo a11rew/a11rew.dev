@@ -41,7 +41,7 @@ export default function SEO(props: SEOProps) {
       <meta name="image" property="og:image" content={meta.image} />
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@a11rew.dev" />
+      <meta name="twitter:site" content="@a11rew" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
       <meta name="twitter:image" content={meta.image} />
