@@ -7,9 +7,12 @@ import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import FillableActionButton from "@/components/FillableActionButton";
 import Header from "@/components/Header";
 import { cn } from "@/utils";
-
-import NoterPromo from "../../../public/assets/project-images/noter/promo.png";
 import "react-photo-view/dist/react-photo-view.css";
+
+import NoterDarkMain from "../../../public/assets/project-images/noter/dark_main.png";
+import NoterDarkNote from "../../../public/assets/project-images/noter/dark_note.png";
+import NoterWhiteMain from "../../../public/assets/project-images/noter/white_main.png";
+import NoterWhiteNote from "../../../public/assets/project-images/noter/white_note.png";
 
 export default function NoterProjectPage() {
   return (
@@ -28,10 +31,37 @@ export default function NoterProjectPage() {
             )}
           >
             <PhotoProvider>
-              <PhotoView src={NoterPromo.src}>
+              <PhotoView src={NoterDarkMain.src}>
                 <Image
                   className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
-                  src={NoterPromo}
+                  src={NoterDarkMain}
+                  alt={"Image of Noter app in mobile device"}
+                  placeholder="blur"
+                  quality={100}
+                />
+              </PhotoView>
+              <PhotoView src={NoterDarkNote.src}>
+                <Image
+                  className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
+                  src={NoterDarkNote}
+                  alt={"Image of Noter app in mobile device"}
+                  placeholder="blur"
+                  quality={100}
+                />
+              </PhotoView>
+              <PhotoView src={NoterWhiteMain.src}>
+                <Image
+                  className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
+                  src={NoterWhiteMain}
+                  alt={"Image of Noter app in mobile device"}
+                  placeholder="blur"
+                  quality={100}
+                />
+              </PhotoView>
+              <PhotoView src={NoterWhiteNote.src}>
+                <Image
+                  className="object-cover transition-all duration-1000 hover:scale-105 min-h-[85vh]"
+                  src={NoterWhiteNote}
                   alt={"Image of Noter app in mobile device"}
                   placeholder="blur"
                   quality={100}

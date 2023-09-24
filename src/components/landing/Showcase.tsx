@@ -5,7 +5,7 @@ import { Tween } from "react-gsap";
 import FeaturedWork from "@/assets/wordmarks/featured-work.svg";
 
 import AfrigivesPromo from "../../../public/assets/project-images/afrigives/promo.png";
-import NoterPromo from "../../../public/assets/project-images/noter/promo.png";
+import NoterPromo from "../../../public/assets/project-images/noter/dark_main.png";
 import ProjectCard from "../ProjectCard";
 
 const Showcase = forwardRef<HTMLDivElement>((_, ref) => {
