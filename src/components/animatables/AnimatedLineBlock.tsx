@@ -4,14 +4,19 @@ import React, { useRef } from "react";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 
+export type Animatable = {
+  canvas: HTMLCanvasElement;
+  riveInstance: Rive;
+};
+
 type Props = {
   children: React.ReactNode;
-  replacements?: Record<string, string>;
+  animatables?: Record<string, Animatable>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 RuntimeLoader.setWasmUrl("/assets/deps/rive.wasm");
 
-const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
+const AnimatedLineBlock = ({ children, animatables, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const isAnimated = useRef(false);
   const isSequencePlaying = useRef(false);
@@ -67,24 +72,13 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
           if (!text) return;
 
           // Replace words with replacements
-          if (replacements && replacements[text]) {
-            // Create canvas child
-            const canvas = document.createElement("canvas");
-            canvas.style.display = "inline";
-            canvas.className = "h-[3.5rem] w-[4rem] md:-ml-3 -ml-1";
-
-            // Instantiate rive
-            const riveInstance = new Rive({
-              src: replacements[text],
-              canvas,
-              onLoad: () => {
-                riveInstance.resizeDrawingSurfaceToCanvas();
-              },
-            });
-
+          if (animatables && animatables[text]) {
+            const { canvas, riveInstance } = animatables[text];
             animatableInstances.push(riveInstance);
 
             word.replaceChildren(canvas);
+
+            riveInstance.resizeDrawingSurfaceToCanvas();
           } else {
             word.textContent = `${word.textContent} `;
           }
@@ -114,7 +108,7 @@ const AnimatedLineBlock = ({ children, replacements, ...rest }: Props) => {
         },
       });
     }
-  }, [ref, replacements]);
+  }, [ref, animatables]);
 
   return (
     <div
