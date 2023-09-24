@@ -41,35 +41,31 @@ export default function MobileMenu({ entryAnimation }: Props) {
             <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-hidden">
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="fixed inset-y-0 right-0 flex max-w-full pointer-events-none h-fit">
-                <Transition.Child
-                  as={Fragment}
-                  enter="transform transition ease-in-out duration-500 sm:duration-700"
-                  enterFrom="-translate-y-full"
-                  enterTo="translate-y-0"
-                  leave="transform transition ease-in-out duration-500 sm:duration-700"
-                  leaveFrom="translate-y-0"
-                  leaveTo="-translate-y-full"
-                >
-                  <Dialog.Panel className="relative w-screen pointer-events-auto">
-                    <div className="h-full shadow-xl text-textPrimary bg-primary doc-padding">
-                      <nav className="flex flex-col pl-6 gap-14">
-                        {navLinks.map(({ href, label }, idx) => (
-                          <AnimatedLink
-                            key={href}
-                            href={href}
-                            label={label}
-                            index={idx}
-                          />
-                        ))}
-                      </nav>
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
-            </div>
+          <div className="fixed inset-0 w-full overflow-hidden pointer-events-none">
+            <Transition.Child
+              as={Fragment}
+              enter="transform transition ease-in-out duration-500 sm:duration-700"
+              enterFrom="-translate-y-full"
+              enterTo="translate-y-0"
+              leave="transform transition ease-in-out duration-500 sm:duration-700"
+              leaveFrom="translate-y-0"
+              leaveTo="-translate-y-full"
+            >
+              <Dialog.Panel className="relative w-screen pointer-events-auto">
+                <div className="h-full shadow-xl text-textPrimary bg-primary doc-padding">
+                  <nav className="flex flex-col pl-6 gap-14">
+                    {navLinks.map(({ href, label }, idx) => (
+                      <AnimatedLink
+                        key={href}
+                        href={href}
+                        label={label}
+                        index={idx}
+                      />
+                    ))}
+                  </nav>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>

@@ -83,7 +83,7 @@ function LandingPageWithAnimatedIntro({
 
   useIsomorphicLayoutEffect(() => {
     // Build animatables here so they're ready before the intro animation
-    // Building elements are pretty expensive
+    // Building these elements is pretty expensive
     Object.entries(animatablesMap).forEach(([key, src]) => {
       if (animatables?.[key]) return;
 
@@ -136,10 +136,10 @@ function LandingPage({
 
   return (
     <div className="min-h-screen">
-      <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto h-screen min-h-[600px] flex flex-col justify-between">
+      <div className="doc-padding text-theme-text-white bg-theme-bg-black max-w-[1158px] m-auto min-h-screen flex flex-col justify-between">
         <Header entryAnimation={!skipAnimation} />
         <AnimatedLineBlock
-          className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-bold cursor-default"
+          className="text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] py-16 font-bold cursor-default"
           animatables={animatables}
         >
           Full-stack developer *:w
