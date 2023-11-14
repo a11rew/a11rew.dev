@@ -41,7 +41,7 @@ export default function AboutPage({ topAlbums }: AboutPageProps) {
           <div className="grid grid-cols-1 grid-rows-3 sm:grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-20 gap-x-12 xl:gap-x-32">
             <div className="flex items-center row-span-1 -mb-8 sm:-mb-0 md:items-start xl:justify-center md:col-span-2">
               <ExternalLink
-                href="https://drive.google.com/file/d/1Nbqi9v2-VbJwp3-JHolsX_bm1hBNWibZ/view"
+                href="https://drive.google.com/file/d/1LfPM2SiOBH95SSxxNuV25ZwotfL5H7IfGSYmQVjUauY/view"
                 className="flex items-center h-fit"
               >
                 <StickerSquare className="inline mr-1" />
