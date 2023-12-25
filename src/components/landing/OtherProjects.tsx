@@ -10,25 +10,31 @@ const OtherProjects = () => {
       </h1>
       <div className="flex flex-wrap justify-between">
         <OtherProjectCard
-          name="Medusa Payment Paystack"
+          name="💸 Medusa Payment Paystack"
           tech="Javascript, Medusa.js"
           description="Paystack Payment provider for Medusa Commerce."
           link="https://github.com/a11rew/medusa-payment-paystack"
         />
         <OtherProjectCard
-          name="SHA Assist"
+          name="🗓️ Calendar Focus Sync"
+          tech="Swift, SwiftUI"
+          description="Activate MacOS Focus Modes when calendar events begin"
+          link="https://apps.apple.com/gh/app/calendar-focus-sync/id6472858223?mt=12"
+        />
+        <OtherProjectCard
+          name="🕵️ SHA Assist"
           tech="Python"
           description="Easy HTTPS domain certificate fingerprinting"
           link="https://github.com/a11rew/sha-assist"
         />
         <OtherProjectCard
-          name="Phonebook"
+          name="☎️ Phonebook"
           tech="React, TypeScript, Vite, MobX"
           description="A simple Google Contacts inspired contact directory."
           link="https://phonebook-pi.vercel.app/"
         />
         <OtherProjectCard
-          name="Wave Portal"
+          name="👋 Wave Portal"
           tech="React, Typescript, Ethereum, Ethers.js"
           description="Send messages to the world via the Ethereum blockchain."
           link="https://wave-portal-client-six.vercel.app/"
