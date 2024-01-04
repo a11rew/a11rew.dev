@@ -21,9 +21,16 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
       <Script
         defer
-        data-domain="a11rew.dev"
-        src="https://plausible.io/js/script.js"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-66BSQ6DB4J"
       />
+      <Script id="google-analytics">
+        {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-66BSQ6DB4J');`}
+      </Script>
     </>
   );
 }
