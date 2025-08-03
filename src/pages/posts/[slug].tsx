@@ -25,7 +25,9 @@ export default function Post({ post }: Props) {
     <div>
       <Head>
         <title>{title}</title>
-        <meta property="og:image" content={post.ogImage.url} />
+        {post.ogImage && (
+          <meta property="og:image" content={post.ogImage.url} />
+        )}
       </Head>
       <div>
         <div className="min-h-screen">
