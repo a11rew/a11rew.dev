@@ -12,7 +12,7 @@ Imagine landing in Kenya with no local SIM card, no understanding of M-Pesa, and
 
 We were thrilled to have our idea validated and excited for the opportunity to scale our solution. Shortly after, however, the division at Block pioneering the technology was discontinued. This meant the partnerships with financial institutions that our solution relied on were no longer available.
 
-Leaving us with the ~~million~~ ten-thousand-dollar question:
+Leaving us with the ten-thousand-dollar question:
 
 > what were we going to build?
 
