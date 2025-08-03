@@ -36,7 +36,7 @@ export interface IPost {
   title: string;
   date: string;
   tags?: string[];
-  coverImage: string;
+  coverImage?: string;
   ogImage: {
     url: string;
   };

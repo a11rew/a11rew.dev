@@ -1,6 +1,6 @@
 ---
 title: "What do you do with $10,000? Start a company, obviously"
-date: "2024-12-28T05:35:07.322Z"
+date: "2025-08-03T09:35:07.322Z"
 draft: false
 ---
 
