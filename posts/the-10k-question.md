@@ -22,7 +22,7 @@ Hence, the ~~million~~ ten thousand dollar question:
 
 In reality though, it was not much of a question, wasn't much of a deliberation either. We knew what, and why, just weren't sure how.
 
-![[https://a11rew.dev/assets/photos/the-10k-question-presentation.mov]]
+![tbDEX Go presentation](https://a11rew.dev/assets/photos/the-10k-question-presentation.mov)
 
 _[watch the presentation here](https://www.youtube.com/watch?v=KMBg9tWR10I)_
 
