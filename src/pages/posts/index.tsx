@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Head from "next/head";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
@@ -8,6 +7,7 @@ import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import LoadingSpinner from "@/components/animatables/LoadingSpinner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
 import useSearchPosts from "@/hooks/api/useSearchPosts";
 import { getAllPosts, IPost } from "@/lib/posts";
 
@@ -30,9 +30,7 @@ export default function PostsPage({ posts: defaultPosts }: { posts: IPost[] }) {
 
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>Posts | Andrew Glago</title>
-      </Head>
+      <SEO templateTitle="Posts" />
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
         <Header white />
         <div className="mt-[8vh] text-[2.25rem] leading-[3.25rem] md:text-[3.5rem] md:leading-[4.45rem] font-medium cursor-default">

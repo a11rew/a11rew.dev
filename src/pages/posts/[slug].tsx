@@ -1,10 +1,10 @@
 import ErrorPage from "next/error";
-import Head from "next/head";
 import { useRouter } from "next/router";
 
 import AnimatedLineBlock from "@/components/animatables/AnimatedLineBlock";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SEO from "@/components/SEO";
 import markdownToHtml from "@/lib/markdownToHTML";
 import { getAllPosts, getPostBySlug, IPost } from "@/lib/posts";
 
@@ -16,19 +16,13 @@ type Props = {
 
 export default function Post({ post }: Props) {
   const router = useRouter();
-  const title = `${post.title} | Andrew Glago`;
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
 
   return (
     <div>
-      <Head>
-        <title>{title}</title>
-        {post.ogImage && (
-          <meta property="og:image" content={post.ogImage.url} />
-        )}
-      </Head>
+      <SEO templateTitle={post.title} image={post.ogImage?.url} />
       <div>
         <div className="min-h-screen">
           <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">

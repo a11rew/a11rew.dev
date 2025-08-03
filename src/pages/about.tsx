@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
-import Head from "next/head";
 import Image from "next/image";
 import React, { forwardRef } from "react";
 import { Tween } from "react-gsap";
@@ -14,6 +13,7 @@ import ExternalLink from "@/components/ExternalLink";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LastPlayed from "@/components/LastPlayed";
+import SEO from "@/components/SEO";
 import { defaultTopAlbums, fetchTopAlbums, TopAlbum } from "@/hooks/music";
 
 import "react-photo-view/dist/react-photo-view.css";
@@ -26,9 +26,7 @@ interface AboutPageProps {
 export default function AboutPage({ topAlbums }: AboutPageProps) {
   return (
     <div className="min-h-screen">
-      <Head>
-        <title>About | Andrew Glago</title>
-      </Head>
+      <SEO templateTitle="About" />
       <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">
         <Header white />
 
