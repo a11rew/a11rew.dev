@@ -30,6 +30,7 @@
     "react-gsap": "^3.2.1",
     "react-photo-view": "^1.2.3",
     "remark": "^14.0.2",
+    "remark-gfm": "^4.0.1",
     "remark-html": "^15.0.2",
     "sharp": "^0.32.1",
     "splitting": "^1.0.6",
