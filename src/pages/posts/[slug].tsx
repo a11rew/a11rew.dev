@@ -22,7 +22,11 @@ export default function Post({ post }: Props) {
 
   return (
     <div>
-      <SEO templateTitle={post.title} image={post.ogImage?.url} />
+      <SEO
+        templateTitle={post.title}
+        image={post.ogImage?.url}
+        description={post.description}
+      />
       <div>
         <div className="min-h-screen">
           <div className="doc-padding max-w-[1158px] m-auto min-h-screen flex flex-col">

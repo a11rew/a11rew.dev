@@ -82,6 +82,11 @@ export default function PostsPage({ posts: defaultPosts }: { posts: IPost[] }) {
                                 day: "numeric",
                               })}
                             </div>
+                            {post?.description && (
+                              <div className="mt-2 text-[0.875rem] leading-[1.25rem] text-theme-bg-black">
+                                {post.description}
+                              </div>
+                            )}
                             {post?.tags && post?.tags?.length && (
                               <div className="mt-2 text-[0.875rem] leading-[1.25rem] text-theme-bg-black">
                                 {post.tags.join(", ")}

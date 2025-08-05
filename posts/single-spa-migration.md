@@ -6,6 +6,7 @@ tags: ["react", "single-spa"]
 ogImage:
   url: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cjn2a64heth7c019ancp.png"
 draft: false
+description: "Learn how to migrate a Create-React-App project to work as a Single-SPA micro-frontend using CRACO, without ejecting from CRA's convenient tooling."
 ---
 
 ## Introduction
