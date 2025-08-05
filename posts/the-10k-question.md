@@ -11,7 +11,7 @@ description: "We turned a $10,000 hackathon prize into Budge AI, a personal fina
 
 Beautiful Nairobi, December 2024. We were high off life after being named [winners in Block’s TBD Hackathon](https://themandatelive.com/block-announces-winner-in-tbd-hackathon-at-africa-bitcoin-conference-highlighting-innovation-in-payments-across-africa/). We had built a no-internet-required solution for travellers to make payments without needing local payment methods.
 
-Imagine landing in Kenya with no local SIM card, no familiarity with M-Pesa, and no idea of the exchange rates, yet still being able to pay for things from your phone. That was our solution tbDEX Go.
+Imagine landing in Kenya with no local SIM card, no familiarity with M-Pesa, and no idea of the exchange rates, yet still being able to pay for things from your phone. That was our solution **tbDEX Go**.
 
 We were thrilled to have our idea validated and excited for the opportunity to scale our solution. Shortly after however, the division at Block pioneering the technology was discontinued. This meant the partnerships with financial institutions that our solution relied on were no longer available.
 
@@ -65,7 +65,9 @@ I found apps like YNAB and Spendee that promised automatic bank syncing and effo
 
 In 2023, Eloke and I started talking about this problem. We decided to build a personal finance app that lets people track their spending automatically. We quickly discovered why this feature was missing from other apps:
 
-> Open Banking is a myth. Especially in Africa
+> Open Banking is a myth.
+
+Especially in Africa.
 
 At the time, we spun our wheels trying to solve the problem in a number of different ways. Automatic tracking was a non-negotiable for our app and so we explored local financial APIs, only to find them frustratingly expensive, unreliable and slow. Not very helpful for the application we wanted to build. We shelved the idea and moved on to other things.
 
@@ -81,7 +83,7 @@ The tweet's third wish - “lets me build my own integrations for my bank and mo
 
 > I have the data - I have debit/credit alerts from my bank & mobile money, I have statements. Why can’t I just give those to the apps?
 
-Turns out, therein lied the solution to the problem we’d been mulling for two years, staring me in the face. I didn’t need to go through banks to get a list of my transactions - I already had that. I needed a solution that could work with the same transaction notification data my bank provided and then let me manage my finances based on that data.
+Turns out, therein lied the solution to the problem we’d been mulling for two years. I didn’t need to go through banks to get a list of my transactions - they'd already given me that. I needed a solution that could work with the same transaction notification data my bank provided to let me manage my finances.
 
 **Light bulb moment.**
 
