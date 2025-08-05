@@ -7,7 +7,7 @@ draft: false
 description: "We turned a $10,000 hackathon prize into Budge AI, a personal finance app that tracks your spending, no bank logins needed. Here’s how."
 ---
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfDqUewzfN_RzM24ziaiM-oZeAyfOV9Woazkup6p0gZUfMZK_RLykqIIyRf3hK8-zp8CtqTLTFvbaM82OqRWE-pOUvE8cV7shZe-dbYXSvC84pDRj1ufxI-y5ITTHwUkP-UM_Ml?key=YjQAWEEkQyVvbXX9Tl5Z5Vef)
+![Eloke celebrating with the cheque](https://i.imgur.com/CseeOJk.gif)
 
 Beautiful Nairobi, December 2024. We were high off life after being named [winners in Block’s TBD Hackathon](https://themandatelive.com/block-announces-winner-in-tbd-hackathon-at-africa-bitcoin-conference-highlighting-innovation-in-payments-across-africa/). We had built a no-internet-required solution for travellers to make payments without needing local payment methods.
 
