@@ -1,0 +1,755 @@
+<!doctype html>
+<meta charset="utf-8">
+<base href="/talks/the-agent-cant-see-your-app/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+/* tokens, stage, slide shell, typography, split layout */
+
+:root{
+  --ink:#111; --mute:#6b7280; --accent:#d9534f; --paper:#fdfdfc;
+  --drive:#2f6fd0; --observe:#0f8d80; --judge:#d9534f;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{height:100%; background:#0d0d0f; overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+#stage{position:absolute; width:1600px; height:900px; left:50%; top:50%;
+  transform-origin:center center; background:var(--paper)}
+.slide{position:absolute; inset:0; padding:80px 96px; display:none;
+  flex-direction:column; justify-content:center; color:var(--ink)}
+.slide.on{display:flex}
+.slide.tight{padding:56px 72px}
+.slide.bare{padding:34px 60px}
+.notes{display:none}
+
+h1{font-size:96px; line-height:1.02; letter-spacing:-.03em; font-weight:800}
+h2{font-size:56px; line-height:1.1; letter-spacing:-.022em; font-weight:700; margin-bottom:26px}
+h2.sm{font-size:46px; margin-bottom:20px}
+h2.mini{font-size:38px; margin-bottom:14px}
+.kicker{font-size:24px; color:var(--mute); text-transform:uppercase;
+  letter-spacing:.18em; margin-bottom:30px; font-weight:600}
+.lede{font-size:34px; line-height:1.45; color:#333; max-width:1180px; margin-top:30px}
+.lede.sm{font-size:28px}
+.note{font-size:25px; color:var(--mute); margin-top:24px}
+em{color:var(--accent); font-style:normal; font-weight:700}
+img{max-width:100%; display:block; border:1px solid #e3e3e0; border-radius:6px}
+img.plain{border:none}
+video{border-radius:10px; background:#000; display:block}
+/* full-bleed split: tall mobile asset pinned to one edge, text takes the rest */
+.slide.split{flex-direction:row; padding:0; align-items:stretch}
+.slide.split.right{flex-direction:row-reverse}
+.slide.split .media{flex:none; height:900px; display:flex; align-items:center;
+  justify-content:center; background:#eeeeeb; overflow:hidden; padding-left:76px}
+.slide.split.right .media{padding-left:0; padding-right:76px}
+.slide.split .media img, .slide.split .media video{
+  height:900px; width:auto; max-width:none; border:none; border-radius:0; display:block}
+.slide.split .body{flex:1; min-width:0; padding:64px 76px;
+  display:flex; flex-direction:column; justify-content:center}
+
+.row{display:flex; gap:52px; align-items:center}
+.row.top{align-items:flex-start}
+.row img.tall{max-height:590px; width:auto}
+.grow{flex:1}
+.centre{align-items:center; text-align:center}
+
+/* per-slide components: checks, trees, trace, loop, stats, inventory, pipeline, ring */
+.checks{margin-top:14px}
+.check{display:flex; align-items:center; gap:26px; font-size:37px;
+  padding:16px 0; border-bottom:1px solid #ececea}
+.check .q{flex:1; color:#222}
+.check .a{font-weight:700; color:#0f8d80; font-size:33px}
+
+.trees{display:flex; gap:40px; margin-top:10px; align-items:stretch}
+.tree{flex:1; border:2px solid #e2e2df; border-radius:12px; padding:26px 30px; background:#fff}
+.tree h4{font-size:27px; margin-bottom:6px; letter-spacing:-.01em}
+.tree .src{font:600 17px ui-monospace,Menlo,monospace; color:var(--mute); margin-bottom:18px}
+.tree ul{list-style:none; font:16px ui-monospace,Menlo,monospace; line-height:1.95; color:#333}
+.tree li span{color:#9a9aa0}
+.gapbox{align-self:center; text-align:center; width:210px}
+.gapbox .big{font-size:58px; color:var(--accent); font-weight:800; line-height:1}
+.gapbox .cap{font-size:19px; color:var(--mute); margin-top:12px; line-height:1.4}
+
+table.trace{width:100%; border-collapse:collapse; margin-top:6px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+table.trace td{padding:17px 18px; border-bottom:1px solid #e8e8e5; vertical-align:middle}
+table.trace tr:last-child td{border-bottom:none}
+.badge{display:inline-block; min-width:132px; text-align:center; color:#fff;
+  font-size:19px; font-weight:700; letter-spacing:.14em; padding:8px 12px; border-radius:5px}
+.b-drive{background:var(--drive)} .b-obs{background:var(--observe)} .b-judge{background:var(--judge)}
+.b-none{background:#c9c9c6}
+td.call{font-size:25px; color:#111; letter-spacing:-.01em}
+td.call .arg{color:#7b7b82}
+td.res{font-size:24px; color:#444; text-align:right; white-space:nowrap}
+td.res b{color:#111}
+.res-yes{color:#0f8d80 !important; font-weight:700}
+.res-no{color:var(--accent) !important; font-weight:700}
+tr.hl td{background:#fff6f5}
+.legend{display:flex; gap:34px; margin-top:26px; font-size:21px; color:var(--mute)}
+.legend b{display:inline-block; width:15px; height:15px; border-radius:3px; margin-right:9px}
+
+.loop{display:flex; align-items:center; justify-content:center; gap:18px;
+  margin-top:20px; flex-wrap:wrap; max-width:1320px}
+.lstep{border:2px solid #ddd; border-radius:10px; padding:20px 24px; font-size:24px;
+  background:#fff; line-height:1.3; text-align:center}
+.lstep .t{font:600 15px ui-monospace,Menlo,monospace; color:var(--mute);
+  letter-spacing:.1em; display:block; margin-bottom:7px}
+.arrow{font-size:34px; color:#bbb}
+
+.stats{display:flex; gap:56px; margin-top:34px; flex-wrap:wrap}
+.stat .n{font-size:78px; font-weight:800; letter-spacing:-.035em; line-height:1}
+.stat .n.good{color:#0f8d80} .stat .n.bad{color:var(--accent)}
+.stat .c{font-size:22px; color:var(--mute); margin-top:10px; max-width:280px; line-height:1.4}
+
+ul.big{margin:26px 0 0 30px; font-size:31px; line-height:1.62; color:#333; max-width:1240px}
+ul.big li{margin-bottom:16px}
+ul.big code{font-size:27px; background:#f1f1ee; padding:2px 8px; border-radius:4px}
+
+.big-quote{font-size:62px; line-height:1.24; letter-spacing:-.025em; font-weight:800; max-width:1330px}
+.attrib{font-size:26px; color:var(--mute); margin-top:34px}
+
+
+.pipe{display:flex; align-items:stretch; gap:13px; margin-top:6px; justify-content:center}
+.pcard{width:150px; border:2px solid #e2e2df; border-radius:10px; padding:14px 12px;
+  background:#fff; display:flex; flex-direction:column}
+.pcard h6{font-size:20px; letter-spacing:-.01em; margin-bottom:5px}
+.pcard .tool{font:600 13px ui-monospace,Menlo,monospace; color:var(--mute); line-height:1.4}
+.chip{font:700 11px ui-monospace,Menlo,monospace; letter-spacing:.12em; color:#fff;
+  border-radius:4px; padding:4px 6px; text-align:center; margin-top:12px}
+.c-ctx{background:#7a8794} .c-build{background:var(--drive)}
+.c-ver{background:var(--observe)} .c-judge{background:var(--judge)}
+.parrow{align-self:center; font-size:25px; color:#c4c4c0}
+.human{width:120px; border:3px solid var(--judge); background:#fff}
+
+/* the verification ring */
+.ring{position:relative; width:500px; height:500px; flex:none}
+.ring svg{position:absolute; inset:0; width:500px; height:500px}
+.rnode{position:absolute; width:158px; border:2px solid #e2e2df; border-radius:10px;
+  background:#fff; padding:10px 12px}
+.rnode h6{font-size:18px; letter-spacing:-.01em; margin-bottom:3px}
+.rnode .tool{font:600 12px ui-monospace,Menlo,monospace; color:var(--mute); line-height:1.38}
+.rnode .chip{margin-top:8px; font-size:10px; padding:3px 5px; letter-spacing:.1em}
+.rn-n{left:250px; top:0; transform:translateX(-50%)}
+.rn-e{left:500px; top:250px; transform:translate(-100%,-50%)}
+.rn-s{left:250px; top:500px; transform:translate(-50%,-100%)}
+.rn-w{left:0; top:250px; transform:translateY(-50%)}
+.rcentre{position:absolute; left:250px; top:250px; transform:translate(-50%,-50%);
+  width:200px; text-align:center; color:var(--accent); line-height:1.5;
+  font:700 15px ui-monospace,Menlo,monospace; letter-spacing:.04em}
+.rfail{position:absolute; left:70px; top:400px; transform:translate(-50%,-50%);
+  font:700 13px ui-monospace,Menlo,monospace; color:var(--accent); letter-spacing:.1em}
+.passwrap{align-self:center; display:flex; flex-direction:column;
+  align-items:center; gap:3px}
+.passwrap .lbl{font:700 12px ui-monospace,Menlo,monospace;
+  color:var(--observe); letter-spacing:.12em}
+
+.fixbox{border:2px solid #bfe3dd; background:#f3faf8; border-radius:10px;
+  padding:18px 22px; margin-top:26px}
+.fixbox .lbl{font:700 12px ui-monospace,Menlo,monospace; letter-spacing:.14em;
+  color:var(--observe); margin-bottom:9px}
+.fixbox code{font:700 27px ui-monospace,Menlo,monospace; color:#111}
+.fixbox p{font-size:19px; color:#555; margin-top:10px; line-height:1.45}
+
+.kit{display:grid; grid-template-columns:1fr 1fr 1fr; gap:26px 40px; margin-top:6px}
+.col{display:flex; flex-direction:column; gap:16px}
+.colhead{font:700 13px ui-monospace,Menlo,monospace; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--mute); padding-bottom:7px;
+  border-bottom:2px solid #e4e4e0}
+.kitem{border-left:4px solid #dcdcd8; padding:1px 0 1px 15px}
+.kitem.good{border-left-color:var(--observe)}
+.kitem.warn{border-left-color:var(--accent)}
+.kitem h5{font-size:21px; letter-spacing:-.01em; margin-bottom:5px}
+.kitem p{font-size:16px; color:#555; line-height:1.42}
+.kitem p b{color:#222}
+.kitem code{font-family:ui-monospace,Menlo,monospace; font-size:14px;
+  background:#f1f1ee; padding:1px 5px; border-radius:3px}
+.kitem .u{font:600 14px ui-monospace,Menlo,monospace; color:var(--observe);
+  display:block; margin-top:6px; word-break:break-all}
+.kitem.warn .u{color:var(--accent)}
+
+.inv{display:grid; grid-template-columns:1fr 1fr; gap:22px 46px; margin-top:12px}
+.item{border-left:4px solid #e4e4e0; padding:4px 0 4px 20px}
+.item h5{font-size:25px; letter-spacing:-.01em; margin-bottom:6px}
+.item h5 .tag{font:600 15px ui-monospace,Menlo,monospace; color:var(--mute);
+  letter-spacing:0; margin-left:8px}
+.item p{font-size:20px; color:#555; line-height:1.45}
+.item p b{color:#222}
+.item code{font-family:ui-monospace,Menlo,monospace; font-size:17px;
+  background:#f1f1ee; padding:1px 5px; border-radius:3px}
+.item .u{font:600 18px ui-monospace,Menlo,monospace; color:var(--observe);
+  display:block; margin-top:5px}
+.item.warn{border-left-color:var(--accent)}
+.item.warn .u{color:var(--accent)}
+
+/* viewer chrome */
+#counter{position:fixed; right:18px; bottom:14px; color:#7d7d85;
+  font:600 15px ui-monospace,Menlo,monospace; letter-spacing:.08em}
+#bar{position:fixed; left:0; bottom:0; height:3px; background:var(--accent);
+  transition:width .22s ease}
+#hint{position:fixed; left:18px; bottom:13px; color:#7d7d85;
+  font:500 13px ui-monospace,Menlo,monospace; transition:opacity .6s}
+#hint.fade{opacity:0}
+#help{position:fixed; left:18px; bottom:12px; z-index:60; opacity:0;
+  pointer-events:none; transition:opacity .5s, color .2s, background .2s;
+  font:500 13px ui-monospace,Menlo,monospace; color:#7d7d85; cursor:pointer;
+  background:rgba(125,125,133,.14); border:0; border-radius:999px; padding:4px 11px}
+#help.on{opacity:1; pointer-events:auto}
+#help:hover{color:#fff; background:rgba(125,125,133,.55)}
+#legend{position:fixed; left:18px; bottom:46px; z-index:60; display:none;
+  background:rgba(13,13,15,.94); color:#e8e8ea; border-radius:12px; padding:16px 18px;
+  font:500 13px ui-monospace,Menlo,monospace; box-shadow:0 10px 34px rgba(0,0,0,.4)}
+#legend.on{display:block}
+#legend .row{display:grid; grid-template-columns:132px 1fr; gap:5px 16px;
+  align-items:baseline; white-space:nowrap}
+#legend .row + .row{margin-top:9px}
+#legend .row span{color:#9c9ca6}
+#legend kbd{display:inline-block; min-width:20px; text-align:center; color:#fff;
+  background:#26262b; border:1px solid #3c3c44; border-bottom-width:2px;
+  border-radius:5px; padding:1px 5px; margin-right:3px; font-size:12px}
+#rotate{display:none}
+@media (max-width:820px) and (orientation:portrait) and (pointer:coarse){
+  #rotate{display:block; position:fixed; z-index:70; left:50%; top:14px;
+    transform:translateX(-50%); white-space:nowrap; background:rgba(13,13,15,.9);
+    color:#e8e8ea; padding:8px 15px; border-radius:999px; text-align:center;
+    font:600 13px -apple-system,system-ui,sans-serif; transition:opacity .5s}
+  #rotate.fade{opacity:0; pointer-events:none}
+}
+
+</style>
+<title>The Agent Can't See Your App</title>
+
+
+
+<div id="stage">
+
+<!-- ═══ ACT 1 ═══ -->
+
+<section class="slide on">
+  <div class="kicker">Claude Code Accra</div>
+  <h1>The Agent<br>Can't See Your App</h1>
+  <div class="lede">Claude Code can't curl your iOS app or read its DOM.
+    So we instrument it, and give the agent a way to verify its own work.</div>
+  <div class="note">Andrew Glago · 7 August 2026</div>
+  </section>
+
+<section class="slide split">
+  <div class="media">
+    <video src="layout-feedback-loop-before.mp4" loop muted playsinline></video>
+  </div>
+  <div class="body">
+    <h1 style="font-size:62px">"This modal is slow. Fix it."</h1>
+  </div>
+  </section>
+
+<section class="slide split">
+  <div class="media">
+    <img src="layout-feedback-loop-before.png" alt="filter modal, 42/40 fps">
+  </div>
+  <div class="body">
+    <h2 class="sm">"This modal is slow. Fix it."</h2>
+    <div class="stats" style="margin-top:16px; gap:52px">
+      <div class="stat"><div class="n bad">42</div><div class="c">UI thread</div></div>
+      <div class="stat"><div class="n bad">40</div><div class="c">JS thread</div></div>
+    </div>
+    <div class="lede" style="margin-top:44px">Every other modal in the app holds 60.</div>
+    <div class="lede sm" style="margin-top:26px; color:var(--mute)">
+      The yellow boxes are profiler highlights. They mark every subtree
+      React re-rendered.</div>
+    <div class="lede sm" style="margin-top:22px">
+      Nothing is animating. Nobody is touching it.
+      <em>The modal is idle.</em></div>
+  </div>
+  </section>
+
+<!-- ═══ ACT 2 ═══ -->
+
+<section class="slide">
+  <h2>So the agent checks its work.</h2>
+  <div class="checks">
+    <div class="check"><span class="q">Did it crash?</span><span class="a">No</span></div>
+    <div class="check"><span class="q">Any exception in the logs?</span><span class="a">None</span></div>
+    <div class="check"><span class="q">Do the tests pass?</span><span class="a">All green</span></div>
+    <div class="check"><span class="q">Does the screenshot match?</span><span class="a">Pixel-identical</span></div>
+    <div class="check"><span class="q">Is the code correct?</span><span class="a">Yes, it is</span></div>
+  </div>
+  <div class="lede">Five green checks. The bug is still there.
+    The agent reports <em>done</em>.</div>
+  </section>
+
+<section class="slide">
+  <div class="big-quote">In a verifiable domain,<br>
+    a problem the agent can't solve<br>
+    is a <em>context</em> problem.</div>
+  </section>
+
+<!-- ═══ ACT 3 ═══ -->
+
+<section class="slide tight">
+  <div class="kicker" style="margin-bottom:18px">Context, layer one</div>
+  <h2 class="sm">Give it both views of the screen.</h2>
+  <div class="trees">
+    <div class="tree">
+      <h4>The fiber tree</h4>
+      <div class="src">what you authored · metro-mcp</div>
+      <ul>
+        <li>BottomSheet</li>
+        <li>&nbsp;&nbsp;PortalProvider</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;CssInterop.View <span>← style layer</span></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pressable <span>label="Apply"</span></li>
+      </ul>
+    </div>
+    <div class="gapbox">
+      <div class="big">≠</div>
+      <div class="cap">the diff is a verification signal you cannot get any other way</div>
+    </div>
+    <div class="tree">
+      <h4>The platform tree</h4>
+      <div class="src">what shipped · mobile-mcp</div>
+      <ul>
+        <li>RCTView</li>
+        <li>&nbsp;&nbsp;RCTView</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;RCTScrollView</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RCTView <span>label=<em>none</em></span></li>
+        <li style="color:var(--accent)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label eaten in between</li>
+      </ul>
+    </div>
+  </div>
+  <div class="lede sm" style="margin-top:26px">One screen, two trees.
+    Either one alone is partial context. <em>The agent needs both.</em></div>
+  </section>
+
+<section class="slide">
+  <div class="kicker" style="margin-bottom:18px">Context, layer two</div>
+  <h2>Two servers, two jobs.</h2>
+  <div class="row" style="margin-top:10px">
+    <div class="grow">
+      <div class="kicker" style="color:var(--observe); margin-bottom:14px">metro-mcp, the inspector</div>
+      <ul class="big" style="margin-left:22px; font-size:27px">
+        <li>Connects to Metro over CDP</li>
+        <li>Fiber tree, props, testIDs, a11y</li>
+        <li>Console, network, errors</li>
+        <li><code>start_profiling</code> / <code>stop_profiling</code></li>
+      </ul>
+    </div>
+    <div class="grow">
+      <div class="kicker" style="color:var(--drive); margin-bottom:14px">mobile-mcp, the driver</div>
+      <ul class="big" style="margin-left:22px; font-size:27px">
+        <li>iOS and Android, sim or real device</li>
+        <li>Taps, swipes, typing</li>
+        <li>Screenshots and coordinates</li>
+        <li>Puts the app in the state to test</li>
+      </ul>
+    </div>
+  </div>
+  </section>
+
+<!-- ═══ ACT 4 ═══ -->
+
+<section class="slide tight">
+  <h2 class="sm">13.9 seconds. Nobody touching the screen.</h2>
+  <img src="profiler/01-commit-bar-chart.jpg" alt="commit bar chart">
+  <div class="stats" style="margin-top:38px">
+    <div class="stat"><div class="n bad">611</div><div class="c">commits while idle</div></div>
+    <div class="stat"><div class="n">22.8<span style="font-size:38px">ms</span></div>
+      <div class="c">average interval, metronomic</div></div>
+    <div class="stat"><div class="n">44<span style="font-size:38px">/s</span></div>
+      <div class="c">against a 16.67ms frame budget</div></div>
+  </div>
+  </section>
+
+<section class="slide">
+  <h2>611 commits. Three shapes.</h2>
+  <div class="stats" style="margin-top:20px; gap:76px">
+    <div class="stat"><div class="n" style="color:var(--drive)">245</div>
+      <div class="c"><b>4 fibers.</b> BottomSheet's own hook.<br>0.35ms average, cheap.</div></div>
+    <div class="stat"><div class="n bad">245</div>
+      <div class="c"><b>66 fibers.</b> Portal cascade.<br>4.44ms average, peak <b>42.76ms</b>.</div></div>
+    <div class="stat"><div class="n" style="color:#9aa0a6">121</div>
+      <div class="c"><b>0 fibers.</b> React committed<br>having re-rendered <b>nothing</b>.</div></div>
+  </div>
+  <div class="lede">The 42.76ms commit is <em>2.5 frames</em> at 60Hz. Over 5 at 120Hz.
+    For a modal sitting still.</div>
+  </section>
+
+<section class="slide split">
+  <div class="media" style="background:#fff">
+    <img src="profiler/03-why-did-this-render.jpg" alt="render log">
+  </div>
+  <div class="body">
+    <h2 class="sm">Why did this render?</h2>
+    <div class="lede" style="margin-top:14px; font-size:42px">
+      Props changed:<br><em>children</em>.
+    </div>
+    <div class="lede sm" style="margin-top:36px">
+      Every 23ms, on a screen with no user input.
+      The list does not stop. It runs the whole 14 seconds.
+    </div>
+    <div class="lede sm" style="color:var(--mute); margin-top:30px">
+      No crash. No exception.<br>Tests pass. Screenshot identical.
+    </div>
+  </div>
+  </section>
+
+<section class="slide tight">
+  <h2 class="sm">The loop, running</h2>
+  <table class="trace">
+    <tr>
+      <td style="width:172px"><span class="badge b-drive">DRIVE</span></td>
+      <td class="call">mobile_click_on_screen_at_coordinates<span class="arg">(70, 201)</span></td>
+      <td class="res">filter modal open</td>
+    </tr>
+    <tr>
+      <td><span class="badge b-obs">OBSERVE</span></td>
+      <td class="call">start_profiling<span class="arg">()</span></td>
+      <td class="res">recording</td>
+    </tr>
+    <tr>
+      <td><span class="badge b-none">WAIT</span></td>
+      <td class="call"><span class="arg">14 seconds, no input</span></td>
+      <td class="res">screen idle</td>
+    </tr>
+    <tr>
+      <td><span class="badge b-obs">OBSERVE</span></td>
+      <td class="call">stop_profiling<span class="arg">()</span></td>
+      <td class="res"><b>commits: 611</b></td>
+    </tr>
+    <tr class="hl">
+      <td><span class="badge b-judge">JUDGE</span></td>
+      <td class="call">commits === 0<span class="arg"> // an idle screen commits zero times</span></td>
+      <td class="res res-no">FALSE</td>
+    </tr>
+    <tr>
+      <td><span class="badge b-judge">JUDGE</span></td>
+      <td class="call"><span class="arg">fix, then re-profile.</span> commits === 0</td>
+      <td class="res res-yes">TRUE</td>
+    </tr>
+  </table>
+  <div class="legend">
+    <span><b style="background:var(--drive)"></b>mobile-mcp puts the app in the state</span>
+    <span><b style="background:var(--observe)"></b>metro-mcp reads what happened</span>
+    <span><b style="background:var(--judge)"></b>the criterion you supplied</span>
+  </div>
+  </section>
+
+<section class="slide split right">
+  <div class="media">
+    <img src="modal-frame.png" alt="the filter modal, footer at the bottom">
+  </div>
+  <div class="body">
+    <h2 class="sm">What was actually happening</h2>
+    <div class="loop" style="justify-content:flex-start; gap:12px; margin-top:12px">
+      <div class="lstep" style="font-size:21px; padding:16px 18px">
+        <span class="t">1</span>setFooterHeight(X)</div><div class="arrow">→</div>
+      <div class="lstep" style="font-size:21px; padding:16px 18px">
+        <span class="t">2</span>paddingBottom<br>recomputes</div><div class="arrow">→</div>
+      <div class="lstep" style="font-size:21px; padding:16px 18px">
+        <span class="t">3</span>sheet height<br>recalculates</div><div class="arrow">→</div>
+      <div class="lstep" style="font-size:21px; padding:16px 18px">
+        <span class="t">4</span>layout pass on<br>all children</div><div class="arrow">→</div>
+      <div class="lstep" style="font-size:21px; padding:16px 18px">
+        <span class="t">5</span>footer onLayout<br>fires with Y</div>
+    </div>
+    <div style="font-size:27px; color:var(--accent); margin-top:24px; font-weight:700">
+      ↑ &nbsp; if Y ≠ X, repeat. 245 times in 14 seconds.</div>
+    <div class="lede sm" style="margin-top:24px">The cost was not the component.
+      The sheet renders through a Portal, so one small state change cascaded to
+      <em>66 fibers</em>: scroll view, gesture handlers, style recalc, the whole form.</div>
+    <div class="fixbox">
+      <div class="lbl">THE FIX</div>
+      <code>const FOOTER_HEIGHT = 64</code>
+      <p style="margin-top:12px; color:#777">Break the cycle.</p>
+    </div>
+  </div>
+  </section>
+
+<section class="slide split right">
+  <div class="media">
+    <video src="layout-feedback-loop-after.mp4" loop muted playsinline></video>
+  </div>
+  <div class="body">
+    <h2 class="sm">Same modal. Same screen. After.</h2>
+    <div class="stats" style="margin-top:30px; gap:52px">
+      <div class="stat"><div class="n good">60/60</div><div class="c">up from 42/40</div></div>
+      <div class="stat"><div class="n good">0</div><div class="c">commits while idle,<br>down from 611</div></div>
+    </div>
+    <div class="stats" style="margin-top:44px">
+      <div class="stat"><div class="n good">1,172<span style="font-size:36px">ms</span></div>
+        <div class="c" style="max-width:420px">JS thread time recovered per 14 seconds,
+          roughly 6% of the thread</div></div>
+    </div>
+  </div>
+  </section>
+
+<!-- ═══ ACT 5 ═══ -->
+
+<section class="slide">
+  <div class="kicker">The actual lesson</div>
+  <h1 style="font-size:62px">The agent had the code<br>the whole time.</h1>
+  <div class="lede">Which can look like everything. It isn't. It still had to be
+    <em>given</em> the context — and the goal.</div>
+  <div class="big-quote" style="font-size:46px; margin-top:38px">
+    "An idle screen commits zero times."</div>
+  <div class="lede sm">Go into the loop: here's your context, here's the exit goal.
+    Write it down once, and the agent closes the loop without you.</div>
+  </section>
+
+<section class="slide tight">
+  <h2 class="sm">Got loops?</h2>
+  <div class="pipe" style="align-items:center; gap:11px">
+
+    <div class="pcard" style="width:120px">
+      <h6>Ticket</h6>
+      <div class="tool">Jira · acli</div>
+      <div class="chip c-ctx">CONTEXT</div>
+    </div>
+    <div class="parrow">→</div>
+
+    <div class="pcard" style="width:120px">
+      <h6>Design</h6>
+      <div class="tool">Figma MCP</div>
+      <div class="chip c-ctx">CONTEXT</div>
+    </div>
+    <div class="parrow">→</div>
+
+    <div class="pcard" style="width:120px">
+      <h6>Isolate</h6>
+      <div class="tool">git worktree</div>
+      <div class="chip c-build">BUILD</div>
+    </div>
+    <div class="parrow">→</div>
+
+    <div class="ring">
+      <svg viewBox="0 0 500 500" aria-hidden="true">
+        <defs>
+          <marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="5"
+                  orient="auto" markerUnits="strokeWidth">
+            <path d="M0,1 L8,5 L0,9 Z" fill="#bdbdb8"/>
+          </marker>
+          <marker id="ahr" markerWidth="10" markerHeight="10" refX="7" refY="5"
+                  orient="auto" markerUnits="strokeWidth">
+            <path d="M0,1 L8,5 L0,9 Z" fill="#d9534f"/>
+          </marker>
+        </defs>
+        <!-- Write(W) → Drive(N) -->
+        <path d="M57.7 194.9 A200 200 0 0 1 162.3 70.2" fill="none"
+              stroke="#d5d5d1" stroke-width="3.5" marker-end="url(#ah)"/>
+        <!-- Drive(N) → Observe(E) -->
+        <path d="M337.7 70.2 A200 200 0 0 1 442.3 194.9" fill="none"
+              stroke="#d5d5d1" stroke-width="3.5" marker-end="url(#ah)"/>
+        <!-- Observe(E) → Judge(S) -->
+        <path d="M442.3 305.1 A200 200 0 0 1 337.7 429.8" fill="none"
+              stroke="#d5d5d1" stroke-width="3.5" marker-end="url(#ah)"/>
+        <!-- Judge(S) → Write(W) : the FAIL leg -->
+        <path d="M162.3 429.8 A200 200 0 0 1 57.7 305.1" fill="none"
+              stroke="#d9534f" stroke-width="3.5" marker-end="url(#ahr)"/>
+      </svg>
+
+      <div class="rnode rn-w">
+        <h6>Write</h6>
+        <div class="tool">Claude Code<br>context7 for APIs</div>
+        <div class="chip c-build">BUILD</div>
+      </div>
+      <div class="rnode rn-n">
+        <h6>Drive</h6>
+        <div class="tool">mobile-mcp<br>tap, swipe, ÷3</div>
+        <div class="chip c-drive" style="background:var(--drive)">DRIVE</div>
+      </div>
+      <div class="rnode rn-e">
+        <h6>Observe</h6>
+        <div class="tool">metro-mcp<br>profiler · fiber<br>console · network</div>
+        <div class="chip c-ver">OBSERVE</div>
+      </div>
+      <div class="rnode rn-s">
+        <h6>Judge</h6>
+        <div class="tool">commits === 0<br>avgSelfMs only</div>
+        <div class="chip c-judge">JUDGE</div>
+      </div>
+
+      <div class="rcentre">the last<br>10 minutes</div>
+      <div class="rfail">FAIL</div>
+    </div>
+
+    <div class="passwrap">
+      <span class="lbl">PASS</span>
+      <span class="parrow" style="color:var(--observe)">→</span>
+    </div>
+
+    <div class="pcard" style="width:120px">
+      <h6>Review</h6>
+      <div class="tool">greptile · CI</div>
+      <div class="chip c-ver">VERIFY</div>
+    </div>
+    <div class="parrow">→</div>
+
+    <div class="pcard human">
+      <h6>You</h6>
+      <div class="tool">intent, taste</div>
+      <div class="chip c-judge">JUDGE</div>
+    </div>
+
+  </div>
+  <div class="lede sm" style="margin-top:34px">Every arrow is context handed forward.
+    Every green chip is a check the agent runs on itself, with screenshots attached.
+    <em>Only the last box is judgment.</em></div>
+  </section>
+
+<!-- ═══ ACT 6 ═══ -->
+
+<section class="slide tight">
+  <h2 class="sm">Worth keeping</h2>
+  <div class="inv">
+    <div class="item">
+      <h5>metro-mcp <span class="tag">the inspector</span></h5>
+      <p>Fiber tree, props, testIDs, console, network, profiling. All over CDP.</p>
+      <span class="u">claude mcp add metro-mcp -- npx -y metro-mcp</span>
+    </div>
+    <div class="item">
+      <h5>mobile-mcp <span class="tag">the driver</span></h5>
+      <p>Taps, swipes, typing, screenshots. iOS and Android, simulator or real device.</p>
+      <span class="u">github.com/mobile-next/mobile-mcp</span>
+    </div>
+    <div class="item">
+      <h5>React DevTools Profiler</h5>
+      <p>Tick <b>"record why each component rendered"</b> first. Export the JSON,
+        let the agent parse it.</p>
+      <span class="u">npx react-devtools</span>
+    </div>
+    <div class="item">
+      <h5>context7</h5>
+      <p>Library docs at the version you actually depend on. Kills the confidently-called,
+        renamed-two-versions-ago function.</p>
+      <span class="u">github.com/upstash/context7</span>
+    </div>
+    <div class="item">
+      <h5>Maestro</h5>
+      <p>UI test runner. metro-mcp can record a real interaction and generate a Maestro
+        flow with real selectors.</p>
+      <span class="u">maestro.dev</span>
+    </div>
+    <div class="item warn">
+      <h5>Hermes allows one CDP connection</h5>
+      <p>Pressing <code>j</code> in Metro, or opening the dev-menu debugger, steals it
+        and silently drops your MCP. metro-mcp's proxy multiplexes around it.</p>
+    </div>
+    <div class="item warn">
+      <h5><code>chrome-devtools-mcp</code> cannot work</h5>
+      <p>Puppeteer-based, needs CDP domains Hermes does not implement.
+        Architectural, not environmental.</p>
+    </div>
+  </div>
+  </section>
+
+<section class="slide">
+  <div class="row" style="gap:70px">
+    <div class="grow">
+      <h1 style="font-size:62px">The agent stops asking you<br>whether it worked.</h1>
+      <div class="lede sm" style="margin-top:30px">Give it access. Give it the numbers.
+        Then give it the one thing it cannot derive:
+        <em>what "working" means.</em></div>
+      <div class="attrib" style="margin-top:44px">
+        Andrew Glago<br>
+        <b style="color:#111">@a11rew</b>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <img class="plain" src="qr-budgeai-join.png" alt="budgeai.com/join"
+           style="width:330px; height:330px">
+      <div style="font-size:25px; font-weight:700; margin-top:18px">Budge AI</div>
+      <div style="font-size:21px; color:var(--mute); margin-top:7px; line-height:1.4">
+        Know where your money<br>actually went.</div>
+      <div class="mono" style="font-size:19px; color:var(--observe); margin-top:12px">budgeai.com/join</div>
+    </div>
+  </div>
+  </section>
+
+</div>
+
+
+
+<div id="counter"></div>
+<div id="bar"></div>
+<div id="rotate">Rotate your phone for a bigger view</div>
+<div id="hint">&#8592; &#8594; or tap to move &nbsp;&middot;&nbsp; F for fullscreen</div>
+<div id="legend" role="dialog" aria-label="Controls">
+  <div class="row"><span><kbd>&#8594;</kbd><kbd>&#8595;</kbd><kbd>space</kbd></span>Next slide</div>
+  <div class="row"><span><kbd>&#8592;</kbd><kbd>&#8593;</kbd></span>Previous slide</div>
+  <div class="row"><span><kbd>Home</kbd><kbd>End</kbd></span>First / last slide</div>
+  <div class="row"><span><kbd>F</kbd></span>Fullscreen</div>
+  <div class="row"><span><kbd>?</kbd></span>Show / hide this panel</div>
+  <div class="row"><span>Click &middot; swipe</span>Right side or swipe left to advance</div>
+</div>
+<button id="help" type="button" aria-label="Show controls">? &nbsp;controls</button>
+<script>
+const slides=[...document.querySelectorAll('#stage .slide')];
+const stage=document.getElementById('stage');
+const counter=document.getElementById('counter');
+const bar=document.getElementById('bar');
+const hint=document.getElementById('hint');
+const help=document.getElementById('help');
+const legend=document.getElementById('legend');
+const rotateNote=document.getElementById('rotate');
+let i=0;
+let started=false;
+function dismissHint(){ hint.classList.add('fade'); help.classList.add('on'); }
+function toggleLegend(on){
+  const open = on===undefined ? !legend.classList.contains('on') : on;
+  legend.classList.toggle('on', open);
+  help.setAttribute('aria-expanded', open);
+}
+const vw=()=>document.documentElement.clientWidth;
+const vh=()=>document.documentElement.clientHeight;
+const PORTRAIT_Q='(max-width:820px) and (orientation:portrait) and (pointer:coarse)';
+function isPortrait(){ return matchMedia(PORTRAIT_Q).matches; }
+matchMedia(PORTRAIT_Q).addEventListener('change',fit);
+function fit(){
+  const p=isPortrait();
+  const s=p ? Math.min(vh()/1600, vw()/900)
+            : Math.min(vw()/1600, vh()/900);
+  stage.style.transform=`translate(-50%,-50%) rotate(${p?90:0}deg) scale(${s})`;
+}
+function go(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>{
+    const on=k===i;
+    s.classList.toggle('on',on);
+    s.querySelectorAll('video').forEach(v=>{
+      if(on){v.currentTime=0; v.play().catch(()=>{});} else v.pause();
+    });
+  });
+  counter.textContent=`${i+1} / ${slides.length}`;
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  if(started) dismissHint();
+}
+addEventListener('resize',fit);
+addEventListener('orientationchange',()=>setTimeout(fit,80));
+addEventListener('keydown',e=>{
+  const k=e.key;
+  if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'){e.preventDefault();go(i+1);}
+  else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(i-1);}
+  else if(k==='Home')go(0); else if(k==='End')go(slides.length-1);
+  else if(k==='f'||k==='F')document.documentElement.requestFullscreen?.();
+  else if(k==='?'||k==='h'||k==='H'){e.preventDefault(); toggleLegend();}
+  else if(k==='Escape')toggleLegend(false);
+});
+addEventListener('click',e=>{
+  if(e.target.closest('#rotate')){ rotateNote.classList.add('fade'); return; }
+  if(e.target.closest('#help')){ toggleLegend(); return; }
+  if(e.target.closest('#legend'))return;
+  if(legend.classList.contains('on')){ toggleLegend(false); return; }
+  go(i + (e.clientX < vw()*0.3 ? -1 : 1)); });
+let tx=null, ty=null;
+addEventListener('touchstart',e=>{
+  tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY;
+},{passive:true});
+addEventListener('touchend',e=>{
+  if(tx===null)return;
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  const d=Math.abs(dy)>Math.abs(dx) && isPortrait() ? dy : dx;
+  if(Math.abs(d)>50){ go(i + (d<0?1:-1)); }
+  tx=ty=null;
+},{passive:true});
+fit(); go(0); started=true;
+setTimeout(dismissHint,7000);
+setTimeout(()=>rotateNote.classList.add('fade'),5000);
+</script>

@@ -336,7 +336,11 @@ export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
   let topAlbums: TopAlbum[] = defaultTopAlbums;
 
   try {
-    topAlbums = await fetchTopAlbums();
+    const fetched = await fetchTopAlbums();
+    // The card row always renders three slots, and a quiet week returns fewer.
+    if (fetched.length >= 3) {
+      topAlbums = fetched;
+    }
   } catch (error) {
     console.error(error);
   }

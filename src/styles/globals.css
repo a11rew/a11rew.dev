@@ -68,3 +68,9 @@ a {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
+/* Escapes the prose measure to the width of the page container. */
+.prose .bleed {
+  width: min(calc(100vw - 3rem), calc(1158px - 3rem));
+  max-width: none;
+}
