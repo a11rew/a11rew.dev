@@ -19,6 +19,14 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/talks/:slug",
+        destination: "/talks/:slug/index.html",
+      },
+    ];
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
